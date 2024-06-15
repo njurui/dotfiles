@@ -59,7 +59,7 @@ GET_TRACKERS() {
         for URL in $URLS; do
             TRACKER+="$(${DOWNLOADER} ${URL} | tr "," "\n")$NL"
         done
-        TRACKER="$(echo "$TRACKER" | awk NF | sort -u | sed 'H;1h;$!d;x;y/\n/,/' )"
+        TRACKER="$(echo "$TRACKER" | awk NF | sort -u | gsed 'H;1h;$!d;x;y/\n/,/' )"
     fi
 
     [[ -z "${TRACKER}" ]] && {
@@ -83,7 +83,7 @@ ADD_TRACKERS() {
         exit 1
     else
         [ -z $(grep "bt-tracker=" ${ARIA2_CONF}) ] && echo "bt-tracker=" >>${ARIA2_CONF}
-        sed -i "s@^\(bt-tracker=\).*@\1${TRACKER}@" ${ARIA2_CONF} && echo -e "$(DATE_TIME) ${INFO} BT trackers successfully added to Aria2 configuration file !"
+        gsed -i "s@^\(bt-tracker=\).*@\1${TRACKER}@" ${ARIA2_CONF} && echo -e "$(DATE_TIME) ${INFO} BT trackers successfully added to Aria2 configuration file !"
     fi
 }
 
