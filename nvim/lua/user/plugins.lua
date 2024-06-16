@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
     vim.fn.system({
         "git",
         "clone",
@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    "nvim-lua/plenary.nvim",
+    -- Appearence
     {
         "catppuccin/nvim",
         name = "catppuccin",
@@ -35,104 +35,8 @@ require("lazy").setup({
         end,
     },
     {
-        "windwp/nvim-autopairs",
-        config = function()
-            require("nvim-autopairs").setup()
-        end,
-    },
-    -- {
-    --     "zbirenbaum/copilot.lua",
-    --     cmd = "Copilot",
-    --     event = "InsertEnter",
-    --     config = function()
-    --         require("copilot").setup({})
-    --     end,
-    -- },
-    --
-    -- {
-    --     "zbirenbaum/copilot-cmp",
-    --     config = function()
-    --         require("copilot_cmp").setup()
-    --     end
-    -- },
-    {
-        "kylechui/nvim-surround",
-        event = "VeryLazy",
-        config = function()
-            require("nvim-surround").setup({})
-        end,
-    },
-    {
-        "numToStr/Comment.nvim",
-        config = function()
-            require("Comment").setup()
-        end,
-    },
-    { "stevearc/dressing.nvim" },
-    -- Lua
-    {
-        "folke/persistence.nvim",
-        event = "BufReadPre",                                             -- this will only start session saving when an actual file was opened
-        opts = {
-            dir = vim.fn.expand(vim.fn.stdpath("state") .. "/sessions/"), -- directory where session files are saved
-            options = { "buffers", "curdir", "tabpages", "winsize" },     -- sessionoptions used for saving
-            pre_save = nil,                                               -- a function to call before saving the session
-            save_empty = false,                                           -- don't save if there are no open file buffers
-            -- add any custom options here
-        }
-    },
-    -- {
-    --     "rmagatti/auto-session",
-    --     config = function()
-    --         require("auto-session").setup({
-    --             auto_session_enabled = true,
-    --             auto_save_enabled = true,
-    --             auto_restore_enabled = false,
-    --             pre_save_cmds = { "NvimTreeClose", "OutlineClose", },
-    --             -- post_restore_cmds = { "NvimTreeOpen", },
-    --             session_lens = {
-    --                 -- If load_on_setup is set to false, one needs to eventually call `require("auto-session").setup_session_lens()` if they want to use session-lens.
-    --                 buftypes_to_ignore = {}, -- list of buffer types what should not be deleted from current session
-    --                 load_on_setup = true,
-    --                 theme_conf = { border = true },
-    --                 previewer = false,
-    --             },
-    --         })
-    --     end,
-    -- },
-    -- {
-    --     "folke/noice.nvim",
-    --     config = function()
-    --         require("noice").setup({})
-    --     end,
-    --     dependencies = {
-    --         "MunifTanjim/nui.nvim",
-    --         "rcarriga/nvim-notify",
-    --     },
-    -- },
-    {
-        "nvim-tree/nvim-tree.lua",
-        config = function()
-            require("nvim-tree").setup({
-                filters = { custom = { "^.git$" }, },
-            })
-        end,
-    },
-    {
-        "antosha417/nvim-lsp-file-operations",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-tree.lua",
-        },
-        config = function()
-            require("lsp-file-operations").setup()
-        end,
-    },
-    {
-        'famiu/bufdelete.nvim',
-    },
-    {
         "akinsho/bufferline.nvim",
+        dependencies = { 'famiu/bufdelete.nvim' },
         config = function()
             local bufferline = require("bufferline")
             bufferline.setup({
@@ -163,20 +67,15 @@ require("lazy").setup({
     },
     {
         "nvim-lualine/lualine.nvim",
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function()
             local lualine = require("lualine")
             lualine.setup({
                 options = {
                     icons_enabled = true,
                     theme = "auto",
-                    component_separators = {
-                        left = "|",
-                        right = "|",
-                    },
-                    section_separators = {
-                        left = " ",
-                        right = "",
-                    },
+                    component_separators = { left = '', right = '' },
+                    section_separators = { left = '', right = '' },
                     disabled_filetypes = {
                         statusline = { "alpha" },
                         winbar = { "alpha" },
@@ -191,9 +90,7 @@ require("lazy").setup({
                 sections = {
                     lualine_a = { "mode" },
                     lualine_b = { "branch", "diff", "diagnostics" },
-                    lualine_c = {
-                        "filename",
-                    },
+                    lualine_c = { "filename" },
                     lualine_x = { "encoding", "fileformat", "filetype" },
                     lualine_y = { "progress" },
                     lualine_z = { "location" },
@@ -206,132 +103,13 @@ require("lazy").setup({
                     lualine_y = {},
                     lualine_z = {},
                 },
-                -- extensions = { "nvim-tree", "symbols-outline", "nvim-dap-ui" },
-                extensions = { "nvim-tree", "nvim-dap-ui" },
+                extensions = { "nvim-tree", "nvim-dap-ui", "toggleterm", "symbols-outline", "lazy" },
             })
-        end,
-    },
-    {
-        "ahmedkhalf/project.nvim",
-        config = function()
-            require("project_nvim").setup({
-                sync_root_with_cwd = true,
-                respect_buf_cwd = true,
-                update_focused_file = {
-                    enable = true,
-                    update_root = true,
-                },
-            })
-        end,
-    },
-    { "lukas-reineke/indent-blankline.nvim" },
-    {
-        "mfussenegger/nvim-dap",
-        config = function()
-            local dap = require("dap")
-            local dap_breakpoint = {
-                error = {
-                    -- text = "🧘🛑⊚⭕🟢🔵🚫👉⭐️⛔️🔴",
-                    text = "🔴",
-                    texthl = "LspDiagnosticsSignError",
-                    linehl = "",
-                    numhl = "",
-                },
-                rejected = {
-                    text = "",
-                    texthl = "LspDiagnosticsSignHint",
-                    linehl = "",
-                    numhl = "",
-                },
-                stopped = {
-                    text = "👉",
-                    texthl = "LspDiagnosticsSignInformation",
-                    linehl = "DiagnosticUnderlineInfo",
-                    numhl = "LspDiagnosticsSignInformation",
-                },
-            }
-
-            vim.fn.sign_define("DapBreakpoint", dap_breakpoint.error)
-            vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
-            vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
-            dap.adapters.lldb = {
-                type = "executable",
-                command = "/opt/homebrew/opt/llvm/bin/lldb-dap", -- adjust as needed, must be absolute path
-                name = "lldb",
-            }
-            dap.adapters.codelldb = {
-                type = 'server',
-                port = "${port}",
-                executable = {
-                    command = '/Users/ryan/.config/nvim/lua/user/codelldb/adapter/codelldb',
-                    args = { "--port", "${port}" },
-
-                    -- On windows you may have to uncomment this:
-                    -- detached = false,
-                }
-            }
-            dap.configurations.cpp = {
-                -- {
-                --     name = "Launch",
-                --     type = "lldb",
-                --     request = "launch",
-                --     program = function()
-                --         return vim.fn.input("Path to executable: ",
-                --             vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":r"))
-                --     end,
-                --     cwd = "${workspaceFolder}",
-                --     stopOnEntry = true,
-                --     args = function()
-                --         local input = vim.fn.input("Input args: ")
-                --         return require("user.util").str2argtable(input)
-                --     end,
-                --     -- runInTerminal = false,
-                -- },
-                {
-                    name = "Launch file",
-                    type = "lldb",
-                    request = "launch",
-                    program = function()
-                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                    end,
-                    cwd = '${workspaceFolder}',
-                    stopOnEntry = true,
-                },
-
-            }
-            dap.configurations.c = dap.configurations.cpp
-            dap.configurations.rust = dap.configurations.cpp
-        end,
-    },
-    {
-        "theHamsta/nvim-dap-virtual-text",
-        dependencies = { "mfussenegger/nvim-dap" },
-        config = function()
-            require("nvim-dap-virtual-text").setup()
-        end,
-    },
-    {
-        "rcarriga/nvim-dap-ui",
-        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-        config = function()
-            require("dapui").setup()
-            local dap, dapui = require("dap"), require("dapui")
-            dap.listeners.before.attach.dapui_config = function()
-                dapui.open()
-            end
-            dap.listeners.before.launch.dapui_config = function()
-                dapui.open()
-            end
-            dap.listeners.before.event_terminated.dapui_config = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited.dapui_config = function()
-                dapui.close()
-            end
         end,
     },
     {
         "goolord/alpha-nvim",
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function()
             local alpha = require("alpha")
             local dashboard = require("alpha.themes.dashboard")
@@ -347,7 +125,6 @@ require("lazy").setup({
                 dashboard.button("f", "󰈞  Find file", ":Telescope find_files <CR>"),
                 dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
                 dashboard.button("p", "󰉋  Find project", ":Telescope projects <CR>"),
-                -- dashboard.button("s", "󰍣  Open session", ":lua require'auto-session.session-lens'.search_session()<CR>"),
                 dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
                 dashboard.button("t", "󰦨  Find text", ":Telescope live_grep <CR>"),
                 dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
@@ -368,87 +145,88 @@ require("lazy").setup({
         end,
     },
     {
-        "folke/which-key.nvim",
+        "lukas-reineke/indent-blankline.nvim",
         config = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-            require("which-key").setup({})
+            require("ibl").setup()
+        end
+    },
+    {
+        "HiPhish/rainbow-delimiters.nvim",
+        config = function()
+            -- This module contains a number of default definitions
+            local rainbow_delimiters = require("rainbow-delimiters")
+
+            vim.g.rainbow_delimiters = {
+                strategy = {
+                    [''] = rainbow_delimiters.strategy['global'],
+                    vim = rainbow_delimiters.strategy['local'],
+                },
+                query = {
+                    [''] = 'rainbow-delimiters',
+                    lua = 'rainbow-blocks',
+                },
+                priority = {
+                    [''] = 110,
+                    lua = 210,
+                },
+                highlight = {
+                    'RainbowDelimiterRed',
+                    'RainbowDelimiterYellow',
+                    'RainbowDelimiterBlue',
+                    'RainbowDelimiterOrange',
+                    'RainbowDelimiterGreen',
+                    'RainbowDelimiterViolet',
+                    'RainbowDelimiterCyan',
+                },
+            }
         end,
     },
     {
-        "lewis6991/gitsigns.nvim",
+        "utilyre/barbecue.nvim",
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons",
+        },
         config = function()
-            require("gitsigns").setup({
-                signs = {
-                    add = { hl = "GitSignsAdd", text = "A|", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-                    change = {
-                        hl = "GitSignsChange",
-                        text = "C|",
-                        numhl = "GitSignsChangeNr",
-                        linehl = "GitSignsChangeLn",
-                    },
-                    delete = {
-                        hl = "GitSignsDelete",
-                        text = "D_",
-                        numhl = "GitSignsDeleteNr",
-                        linehl = "GitSignsDeleteLn",
-                    },
-                    topdelete = {
-                        hl = "GitSignsDelete",
-                        text = "D‾",
-                        numhl = "GitSignsDeleteNr",
-                        linehl = "GitSignsDeleteLn",
-                    },
-                    changedelete = {
-                        hl = "GitSignsChange",
-                        text = "D~",
-                        numhl = "GitSignsChangeNr",
-                        linehl = "GitSignsChangeLn",
-                    },
-                },
-                on_attach = function(bufnr)
-                    local gs = package.loaded.gitsigns
-
-                    local function map(mode, l, r, opts)
-                        opts = opts or {}
-                        opts.buffer = bufnr
-                        vim.keymap.set(mode, l, r, opts)
-                    end
-
-                    -- Navigation
-                    map('n', ']c', function()
-                        if vim.wo.diff then return ']c' end
-                        vim.schedule(function() gs.next_hunk() end)
-                        return '<Ignore>'
-                    end, { expr = true })
-
-                    map('n', '[c', function()
-                        if vim.wo.diff then return '[c' end
-                        vim.schedule(function() gs.prev_hunk() end)
-                        return '<Ignore>'
-                    end, { expr = true })
-
-                    -- Actions
-                    map('n', '<leader>hs', gs.stage_hunk)
-                    map('n', '<leader>hr', gs.reset_hunk)
-                    map('v', '<leader>hs', function() gs.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
-                    map('v', '<leader>hr', function() gs.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
-                    map('n', '<leader>hS', gs.stage_buffer)
-                    map('n', '<leader>hu', gs.undo_stage_hunk)
-                    map('n', '<leader>hR', gs.reset_buffer)
-                    map('n', '<leader>hp', gs.preview_hunk)
-                    map('n', '<leader>hb', function() gs.blame_line { full = true } end)
-                    map('n', '<leader>tb', gs.toggle_current_line_blame)
-                    map('n', '<leader>hd', gs.diffthis)
-                    map('n', '<leader>hD', function() gs.diffthis('~') end)
-                    map('n', '<leader>td', gs.toggle_deleted)
-
-                    -- Text object
-                    map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-                end,
+            require("barbecue").setup({
+                exclude_filetypes = { "toggleterm" },
             })
         end,
     },
+    {
+        "j-hui/fidget.nvim",
+        config = function()
+            require("fidget").setup({})
+        end,
+    },
+    {
+        'stevearc/dressing.nvim',
+        opts = {},
+    },
+
+    -- Insert Enhance
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = function()
+            require("nvim-autopairs").setup()
+        end,
+    },
+    {
+        "kylechui/nvim-surround",
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({})
+        end,
+    },
+    {
+        "numToStr/Comment.nvim",
+        config = function()
+            require("Comment").setup()
+        end,
+    },
+
+    -- Lsp Utility
     {
         "hrsh7th/nvim-cmp",
         dependencies = {
@@ -459,28 +237,31 @@ require("lazy").setup({
             "saadparwaiz1/cmp_luasnip",
             "hrsh7th/cmp-cmdline",
             "L3MON4D3/LuaSnip",
+            "onsails/lspkind.nvim",
         },
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
             local luasnip = require("luasnip")
             local cmp = require("cmp")
             local lspkind = require("lspkind")
+            local compare = require("cmp.config.compare")
+            local has_words_before = function()
+                unpack = unpack or table.unpack
+                local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+                return col ~= 0 and
+                    vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+            end
+
             lspkind.init({
                 symbol_map = {
                     -- Copilot = "",
                 },
             })
-            local compare = require("cmp.config.compare")
-            local has_words_before = function()
-                local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-                return col ~= 0
-                    and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-            end
 
             cmp.setup({
                 snippet = {
                     expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
+                        luasnip.lsp_expand(args.body)
                     end,
                 },
                 sorting = {
@@ -496,13 +277,19 @@ require("lazy").setup({
                         compare.order,
                     },
                 },
+                -- window = {
+                --     completion = {
+                --         winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+                --         -- col_offset = -3,
+                --         side_padding = 0,
+                --     },
+                -- },
                 sources = {
-                    -- { name = "copilot" },
-                    { name = 'nvim_lsp_signature_help' },
                     { name = "nvim_lsp" },
                     { name = "luasnip" },
                     { name = "buffer" },
                     { name = "path" },
+                    { name = "cmdline" }
                 },
                 formatting = {
                     format = lspkind.cmp_format({
@@ -510,11 +297,9 @@ require("lazy").setup({
                         maxwidth = 50,
                         ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
                         menu = {
-                            -- copilot = "[Copilot]",
                             buffer = "[Buffer]",
                             nvim_lsp = "[LSP]",
                             luasnip = "[LuaSnip]",
-                            nvim_lua = "[Lua]",
                             path = "[Path]",
                             cmdline = "[Command]",
                         },
@@ -531,36 +316,40 @@ require("lazy").setup({
                     }),
                     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
                     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-                    -- ["<C-d>"] = cmp.mapping(function(fallback)
-                    --     if luasnip.expand_or_jumpable() then
-                    --         luasnip.expand_or_jump()
-                    --     end
-                    -- end, { "i", "s" }),
-                    -- ["<C-u>"] = cmp.mapping(function(fallback)
-                    --     if luasnip.jumpable(-1) then
-                    --         luasnip.jump(-1)
-                    --     end
-                    -- end, { "i", "s" }),
-                    ["<Tab>"] = cmp.mapping(function(fallback)
+
+                    ['<Tab>'] = cmp.mapping(function(fallback)
                         if cmp.visible() then
-                            cmp.select_next_item()
+                            if #cmp.get_entries() == 1 then
+                                cmp.confirm({ select = true })
+                            else
+                                cmp.select_next_item()
+                            end
                         elseif luasnip.expand_or_jumpable() then
                             luasnip.expand_or_jump()
                         elseif has_words_before() then
                             cmp.complete()
+                            if #cmp.get_entries() == 1 then
+                                cmp.confirm({ select = true })
+                            end
                         else
                             fallback()
                         end
                     end, { "i", "s" }),
-                    ["<S-Tab>"] = cmp.mapping(function(fallback)
-                        if cmp.visible() then
-                            cmp.select_prev_item()
-                        elseif luasnip.jumpable(-1) then
-                            luasnip.jump(-1)
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
+
+                    -- ["<Tab>"] = cmp.mapping(function(fallback)
+                    --     -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
+                    --     if cmp.visible() then
+                    --         local entry = cmp.get_selected_entry()
+                    --         if not entry then
+                    --             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                    --         end
+                    --         cmp.confirm()
+                    --     elseif luasnip.expand_or_jumpable() then
+                    --         luasnip.expand_or_jump()
+                    --     else
+                    --         fallback()
+                    --     end
+                    -- end, { "i", "s", "c", }),
                 },
             })
 
@@ -578,23 +367,31 @@ require("lazy").setup({
                     { name = "cmdline" },
                 },
             })
-            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-            cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
-            vim.cmd([[highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080]])
-            vim.cmd([[highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6]])
-            vim.cmd([[highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbrMatch]])
-            vim.cmd([[highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE]])
-            vim.cmd([[highlight! link CmpItemKindInterface CmpItemKindVariable]])
-            vim.cmd([[highlight! link CmpItemKindText CmpItemKindVariable]])
-            vim.cmd([[highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0]])
-            vim.cmd([[highlight! link CmpItemKindMethod CmpItemKindFunction]])
-            vim.cmd([[highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4]])
-            vim.cmd([[highlight! link CmpItemKindProperty CmpItemKindKeyword]])
-            vim.cmd([[highlight! link CmpItemKindUnit CmpItemKindKeyword]])
+            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+            cmp.event:on(
+                'confirm_done',
+                cmp_autopairs.on_confirm_done()
+            )
+
+            -- gray
+            vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { bg = 'NONE', strikethrough = true, fg = '#808080' })
+            -- blue
+            vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { bg = 'NONE', fg = '#569CD6' })
+            vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', { link = 'CmpIntemAbbrMatch' })
+            -- light blue
+            vim.api.nvim_set_hl(0, 'CmpItemKindVariable', { bg = 'NONE', fg = '#9CDCFE' })
+            vim.api.nvim_set_hl(0, 'CmpItemKindInterface', { link = 'CmpItemKindVariable' })
+            vim.api.nvim_set_hl(0, 'CmpItemKindText', { link = 'CmpItemKindVariable' })
+            -- pink
+            vim.api.nvim_set_hl(0, 'CmpItemKindFunction', { bg = 'NONE', fg = '#C586C0' })
+            vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { link = 'CmpItemKindFunction' })
+            -- front
+            vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg = 'NONE', fg = '#D4D4D4' })
+            vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { link = 'CmpItemKindKeyword' })
+            vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link = 'CmpItemKindKeyword' })
         end,
     },
-
     {
         "neovim/nvim-lspconfig",
         config = function()
@@ -673,42 +470,232 @@ require("lazy").setup({
             })
         end,
     },
-    -- {
-    -- 	"jose-elias-alvarez/null-ls.nvim",
-    -- 	config = function()
-    -- 		require("null-ls").setup({
-    -- 			sources = {
-    -- 				require("null-ls").builtins.formatting.black,
-    -- 				require("null-ls").builtins.formatting.stylua,
-    -- 			},
-    -- 		})
-    -- 	end,
-    -- },
     {
-        "HiPhish/rainbow-delimiters.nvim",
+        'kevinhwang91/nvim-ufo',
+        dependencies = 'kevinhwang91/promise-async',
         config = function()
-            -- This module contains a number of default definitions
-            local rainbow_delimiters = require("rainbow-delimiters")
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities.textDocument.foldingRange = {
+                dynamicRegistration = false,
+                lineFoldingOnly = true
+            }
+            local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+            for _, ls in ipairs(language_servers) do
+                require('lspconfig')[ls].setup({
+                    capabilities = capabilities
+                    -- you can add other fields for setting up lsp server in this table
+                })
+            end
+            require('ufo').setup()
+        end
+    },
+    {
+        "antosha417/nvim-lsp-file-operations",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-tree.lua",
+        },
+        config = function()
+            require("lsp-file-operations").setup()
+        end,
+    },
+    {
+        "hedyhli/outline.nvim",
+        config = function()
+            require("outline").setup({
+                outline_window = {
+                    position = 'right',
+                    relative_width = true,
+                },
+                symbol_folding = {
+                    autofold_depth = 2,
+                    auto_unfold = {
+                        hovered = true,
+                    },
+                },
+                preview_window = {
+                    auto_preview = false,
+                },
+            })
+        end,
+    },
 
-            vim.g.rainbow_delimiters = {
-                strategy = {
-                    [""] = rainbow_delimiters.strategy["global"],
-                    vim = rainbow_delimiters.strategy["local"],
+    -- Debug
+    {
+        "ahmedkhalf/project.nvim",
+        config = function()
+            require("project_nvim").setup()
+        end,
+    },
+    {
+        "mfussenegger/nvim-dap",
+        config = function()
+            local dap = require("dap")
+            local dap_breakpoint = {
+                error = {
+                    -- text = "🧘🛑⊚⭕🟢🔵🚫👉⭐️⛔️🔴",
+                    text = "🔴",
+                    texthl = "LspDiagnosticsSignError",
+                    linehl = "",
+                    numhl = "",
                 },
-                query = {
-                    [""] = "rainbow-delimiters",
-                    lua = "rainbow-blocks",
+                rejected = {
+                    text = "",
+                    texthl = "LspDiagnosticsSignHint",
+                    linehl = "",
+                    numhl = "",
                 },
-                highlight = {
-                    "RainbowDelimiterRed",
-                    "RainbowDelimiterYellow",
-                    "RainbowDelimiterBlue",
-                    "RainbowDelimiterOrange",
-                    "RainbowDelimiterGreen",
-                    "RainbowDelimiterViolet",
-                    "RainbowDelimiterCyan",
+                stopped = {
+                    text = "👉",
+                    texthl = "LspDiagnosticsSignInformation",
+                    linehl = "DiagnosticUnderlineInfo",
+                    numhl = "LspDiagnosticsSignInformation",
                 },
             }
+
+            vim.fn.sign_define("DapBreakpoint", dap_breakpoint.error)
+            vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
+            vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
+
+            dap.adapters.lldb = {
+                type = "executable",
+                command = "/opt/homebrew/opt/llvm/bin/lldb-dap", -- adjust as needed, must be absolute path
+                name = "lldb",
+            }
+
+            dap.configurations.cpp = {
+                {
+                    name = "Launch",
+                    type = "lldb",
+                    request = "launch",
+                    program = function()
+                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                    end,
+                    cwd = '${workspaceFolder}',
+                    stopOnEntry = false,
+
+                    args = function()
+                        local input = vim.fn.input("Input args: ")
+                        return vim.fn.split(input, '\\s\\+', true)
+                    end,
+
+                    runInTerminal = true,
+                },
+
+            }
+            dap.configurations.c = dap.configurations.cpp
+            dap.configurations.rust = dap.configurations.cpp
+        end,
+    },
+    {
+        "theHamsta/nvim-dap-virtual-text",
+        dependencies = { "mfussenegger/nvim-dap" },
+        config = function()
+            require("nvim-dap-virtual-text").setup()
+        end,
+    },
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+        config = function()
+            require("dapui").setup()
+            local dap, dapui = require("dap"), require("dapui")
+            dap.listeners.before.attach.dapui_config = function()
+                dapui.open()
+            end
+            dap.listeners.before.launch.dapui_config = function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated.dapui_config = function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited.dapui_config = function()
+                dapui.close()
+            end
+        end,
+    },
+
+    -- File Manager
+    {
+        "nvim-tree/nvim-tree.lua",
+        config = function()
+            require("nvim-tree").setup({
+                filters = { custom = { "^.git$" }, },
+            })
+        end,
+    },
+
+    -- Other Functions
+    {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup({})
+        end,
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup({
+                signs      = {
+                    add          = { text = 'A┃' },
+                    change       = { text = 'C┃' },
+                    delete       = { text = 'D_' },
+                    topdelete    = { text = 'D‾' },
+                    changedelete = { text = 'D~' },
+                    untracked    = { text = 'U┆' },
+                },
+                signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
+                numhl      = true,  -- Toggle with `:Gitsigns toggle_numhl`
+                linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+                word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+
+                on_attach  = function(bufnr)
+                    local gitsigns = require('gitsigns')
+
+                    local function map(mode, l, r, opts)
+                        opts = opts or {}
+                        opts.buffer = bufnr
+                        vim.keymap.set(mode, l, r, opts)
+                    end
+
+                    -- Navigation
+                    map('n', ']c', function()
+                        if vim.wo.diff then
+                            vim.cmd.normal({ ']c', bang = true })
+                        else
+                            gitsigns.nav_hunk('next')
+                        end
+                    end)
+
+                    map('n', '[c', function()
+                        if vim.wo.diff then
+                            vim.cmd.normal({ '[c', bang = true })
+                        else
+                            gitsigns.nav_hunk('prev')
+                        end
+                    end)
+
+                    -- Actions
+                    map('n', '<leader>hs', gitsigns.stage_hunk)
+                    map('n', '<leader>hr', gitsigns.reset_hunk)
+                    map('v', '<leader>hs', function() gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
+                    map('v', '<leader>hr', function() gitsigns.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end)
+                    map('n', '<leader>hS', gitsigns.stage_buffer)
+                    map('n', '<leader>hu', gitsigns.undo_stage_hunk)
+                    map('n', '<leader>hR', gitsigns.reset_buffer)
+                    map('n', '<leader>hp', gitsigns.preview_hunk)
+                    map('n', '<leader>hb', function() gitsigns.blame_line { full = true } end)
+                    map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
+                    map('n', '<leader>hd', gitsigns.diffthis)
+                    map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
+                    map('n', '<leader>td', gitsigns.toggle_deleted)
+
+                    -- Text object
+                    map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+                end,
+            })
         end,
     },
     {
@@ -717,11 +704,17 @@ require("lazy").setup({
         config = function()
             local toggleterm = require('toggleterm')
             toggleterm.setup({
+                winbar = {
+                    enabled = false,
+                    name_formatter = function(term) --  term: Terminal
+                        return term.name
+                    end
+                },
                 open_mapping = '<C-\\>',
                 direction = 'horizontal',
                 shade_terminals = true,
                 close_on_exit = true,   -- close the terminal window when the process exits
-                start_in_insert = true,
+                start_in_insert = false,
                 insert_mappings = true, -- whether or not the open mapping applies in insert mode
             })
         end,
@@ -748,16 +741,7 @@ require("lazy").setup({
             })
             telescope.load_extension("projects")
             telescope.load_extension("undo")
-            -- telescope.load_extension("file_browser")
-            -- telescope.load_extension("session-lens")
         end,
-    },
-    -- {
-    --     "nvim-telescope/telescope-file-browser.nvim",
-    --     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-    -- },
-    {
-        "onsails/lspkind.nvim"
     },
     {
         "nvim-treesitter/nvim-treesitter",
@@ -767,8 +751,6 @@ require("lazy").setup({
         config = function()
             require("nvim-treesitter.configs").setup({
                 ensure_installed = "all",
-                -- Automatically install missing parsers when entering buffer
-                -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
                 auto_install = true,
                 highlight = {
                     enable = true,
@@ -776,11 +758,16 @@ require("lazy").setup({
                 },
                 incremental_selection = {
                     enable = true,
+                    keymaps = {
+                        init_selection = "gnn", -- set to `false` to disable one of the mappings
+                        node_incremental = "grn",
+                        scope_incremental = "grc",
+                        node_decremental = "grm",
+                    },
                 },
             })
         end,
     },
-
     {
         "Pocco81/auto-save.nvim",
         config = function()
@@ -812,64 +799,27 @@ require("lazy").setup({
         end,
     },
     {
-        "utilyre/barbecue.nvim",
-        dependencies = {
-            "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons",
-        },
-        config = function()
-            require("barbecue").setup()
-        end,
-    },
-    "SmiteshP/nvim-navic",
-    {
-        "j-hui/fidget.nvim",
-        config = function()
-            require("fidget").setup({})
-        end,
-    },
-    {
         "iamcco/markdown-preview.nvim",
-        ft = "markdown",
-        build = ":call mkdp#util#install()",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
     },
     {
-        "hedyhli/outline.nvim",
+        "rmagatti/auto-session",
         config = function()
-            require("outline").setup({
-                outline_window = {
-                    -- Where to open the split window: right/left
-                    position = 'right',
-                    -- Percentage or integer of columns
-                    width = 25,
-                    -- Whether width is relative to the total width of nvim
-                    -- When relative_width = true, this means take 25% of the total
-                    -- screen width for outline window.
-                    relative_width = true,
-                },
-                symbol_folding = {
-                    autofold_depth = false,
-                    -- auto_unfold = {
-                    --     hovered = true,
-                    -- },
-                },
-                preview_window = {
-                    auto_preview = false,
+            require("auto-session").setup({
+                auto_session_enabled = false,
+                auto_save_enabled = true,
+                auto_restore_enabled = false,
+                pre_save_cmds = { "NvimTreeClose", "OutlineClose", },
+                session_lens = {
+                    -- If load_on_setup is set to false, one needs to eventually call `require("auto-session").setup_session_lens()` if they want to use session-lens.
+                    buftypes_to_ignore = {}, -- list of buffer types what should not be deleted from current session
+                    load_on_setup = true,
+                    theme_conf = { border = true },
+                    previewer = false,
                 },
             })
         end,
     },
-    -- {
-    --     'stevearc/aerial.nvim',
-    --     opts = {},
-    --     config = function()
-    --         require("aerial").setup({
-    --             backends = { "lsp", "treesitter", "markdown", "asciidoc", "man" },
-    --         })
-    --     end,
-    --     dependencies = {
-    --         "nvim-treesitter/nvim-treesitter",
-    --         "nvim-tree/nvim-web-devicons"
-    --     },
-    -- },
 })

@@ -116,13 +116,8 @@ map("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
 -- map("n", "<leader>fs", ":lua require'auto-session.session-lens'.search_session()<CR>", opts)
 -- map("n", "<leader>fs", ":Telescope session-lens<CR>", opts)
 
--- persistence.nvim
--- restore the session for the current directory
-vim.api.nvim_set_keymap("n", "<leader>sc", [[<cmd>lua require("persistence").load()<cr>]], {})
--- restore the last session
-vim.api.nvim_set_keymap("n", "<leader>sl", [[<cmd>lua require("persistence").load({ last = true })<cr>]], {})
--- stop Persistence => session won't be saved on exit
-vim.api.nvim_set_keymap("n", "<leader>ss", [[<cmd>lua require("persistence").stop()<cr>]], {})
+-- auto-session.nvim
+map("n", "<leader>fs", ":lua require('auto-session.session-lens').search_session()<CR>", opts)
 
 --lsp
 --outline
@@ -163,8 +158,8 @@ map(
 -- 继续
 map("n", "<leader>dc", ":lua require'dap'.continue()<CR>", opts)
 -- 设置断点
-map("n", "<leader>db", ":lua require('dap').toggle_breakpoint();require'user.util'.store_breakpoints(true)<CR>", opts)
-map("n", "<leader>dB", ":lua require('dap').clear_breakpoints();require'user.util'.store_breakpoints(true)<CR>", opts)
+map("n", "<leader>db", ":lua require('dap').toggle_breakpoint()<CR>", opts)
+map("n", "<leader>dB", ":lua require('dap').clear_breakpoints()<CR>", opts)
 --  stepOver, stepOut, stepInto
 map("n", "<leader>dn", ":lua require'dap'.step_over()<CR>", opts)
 map("n", "<leader>df", ":lua require'dap'.step_out()<CR>", opts)
