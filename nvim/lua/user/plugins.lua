@@ -289,7 +289,6 @@ require("lazy").setup({
                     { name = "luasnip" },
                     { name = "buffer" },
                     { name = "path" },
-                    { name = "cmdline" }
                 },
                 formatting = {
                     format = lspkind.cmp_format({
