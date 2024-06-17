@@ -434,6 +434,9 @@ require("lazy").setup({
             lspconfig.rust_analyzer.setup({
                 capabilities = capabilities,
             })
+            lspconfig.verible.setup({
+                capabilities = capabilities,
+            })
             lspconfig.texlab.setup({
                 capabilities = capabilities,
                 settings = {
