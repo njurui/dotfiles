@@ -41,8 +41,10 @@ export LSCOLORS="Gxfxcxdxbxegedabagacad"
 # export GREP_COLORS
 export GREP_COLORS='mt=1;33'
 
-# export llvm
-export PATH=/opt/homebrew/opt/llvm/bin:$PATH
+# export llvm-lib
+# export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 # Editor
 export EDITOR='nvim'           # $EDITOR is the default for most shells
