@@ -41,8 +41,10 @@ export LSCOLORS="Gxfxcxdxbxegedabagacad"
 # export GREP_COLORS
 export GREP_COLORS='mt=1;33'
 
-# export llvm-lib
+# export llvm-toolchain
 # export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export CC="/opt/homebrew/opt/llvm/bin/clang"
+export CXX="/opt/homebrew/opt/llvm/bin/clang++"
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
