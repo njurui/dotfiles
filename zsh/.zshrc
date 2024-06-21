@@ -49,9 +49,8 @@ export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 # Editor
-export EDITOR='nvim'           # $EDITOR is the default for most shells
-export VISUAL=$EDITOR          # $VISUAL in case
-export ALTERNATE_EDITOR='nvim' # $EDITOR if all else fails
+# export EDITOR='nvim'           # $EDITOR is the default for most shells
+# export VISUAL=$EDITOR          # $VISUAL in case
 
 # aliases
 alias -g ...='../..'
