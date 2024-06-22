@@ -27,7 +27,7 @@ fi
 source <(fzf --zsh)
 
 # z.lua
-eval "$(lua $(brew --prefix z.lua)/share/z.lua/z.lua --init zsh)"
+. /opt/homebrew/etc/profile.d/z.sh
 
 # Powerlevel10k
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
