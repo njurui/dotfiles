@@ -45,8 +45,11 @@ export GREP_COLORS='mt=1;33'
 # export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export CC="/opt/homebrew/opt/llvm/bin/clang"
 export CXX="/opt/homebrew/opt/llvm/bin/clang++"
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+export CPATH="/opt/homebrew/opt/llvm/include/c++/v1"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+# export C_INCLUDE_PATH=""
+# export OBJC_INCLUDE_PATH=""
+# export CPLUS_INCLUDE_PATH=""
 
 # Editor
 # export EDITOR='nvim'           # $EDITOR is the default for most shells
