@@ -29,6 +29,8 @@ zinit wait lucid for \
 zinit light agkozak/zsh-z
 
 # zsh-vi-mode
+# Do the initialization when the script is sourced (i.e. Initialize instantly) to avoid conflict with fzf
+ZVM_INIT_MODE=sourcing
 zinit light jeffreytse/zsh-vi-mode
 
 # fzf-tab
