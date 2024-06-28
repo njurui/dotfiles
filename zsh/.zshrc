@@ -33,6 +33,7 @@ zinit light jeffreytse/zsh-vi-mode
 
 # fzf-tab
 zinit light Aloxaf/fzf-tab
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # fzf
 source <(fzf --zsh)
