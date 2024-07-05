@@ -438,7 +438,18 @@ require("lazy").setup({
             lspconfig.rust_analyzer.setup({
                 capabilities = capabilities,
             })
-            lspconfig.verible.setup({
+            -- lspconfig.verible.setup({
+            --     capabilities = capabilities,
+            -- })
+            lspconfig.veridian.setup({
+                cmd = { 'veridian' },
+                root_dir = function(fname)
+                    local lspconfutil = require 'lspconfig/util'
+                    local root_pattern = lspconfutil.root_pattern("veridian.yml", ".git")
+                    local filename = lspconfutil.path.is_absolute(fname) and fname
+                        or lspconfutil.path.join(vim.loop.cwd(), fname)
+                    return root_pattern(filename) or lspconfutil.path.dirname(filename)
+                end,
                 capabilities = capabilities,
             })
             lspconfig.texlab.setup({
