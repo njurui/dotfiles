@@ -9,33 +9,22 @@ fi
 HISTSIZE=100000000
 SAVEHIST=100000000
 
-# zinit
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
+# powerlevel10k
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+# fast-syntax-highlighting
+source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma-continuum/fast-syntax-highlighting \
- blockf \
-    zsh-users/zsh-completions \
- atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions
+# zsh-autosuggestions
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # z
-zinit light agkozak/zsh-z
+. /opt/homebrew/etc/profile.d/z.sh
 
 # zsh-vi-mode
 # Do the initialization when the script is sourced (i.e. Initialize instantly) to avoid conflict with fzf
-ZVM_INIT_MODE=sourcing
-zinit light jeffreytse/zsh-vi-mode
-
-# fzf-tab
-zinit light Aloxaf/fzf-tab
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+export ZVM_INIT_MODE=sourcing
+source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # fzf
 source <(fzf --zsh)
@@ -53,10 +42,13 @@ export CC="/opt/homebrew/opt/llvm/bin/clang"
 export CXX="/opt/homebrew/opt/llvm/bin/clang++"
 export CPATH="/opt/homebrew/opt/llvm/include/c++/v1"
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
-# export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 # export C_INCLUDE_PATH=""
 # export OBJC_INCLUDE_PATH=""
 # export CPLUS_INCLUDE_PATH=""
+
+# export postgresql
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
 # Editor
 # export EDITOR='nvim'           # $EDITOR is the default for most shells
