@@ -51,9 +51,10 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=00;36:pi=40;33:so=01;35:do=01;35:bd=40
 # export llvm-toolchain
 export CC="/opt/homebrew/opt/llvm/bin/clang"
 export CXX="/opt/homebrew/opt/llvm/bin/clang++"
-export CPATH="/opt/homebrew/opt/llvm/include/c++/v1"
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export CPATH="/opt/homebrew/opt/llvm/include/c++/v1:/opt/homebrew/include"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+export RUSTFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/lib"
 # export C_INCLUDE_PATH=""
 # export OBJC_INCLUDE_PATH=""
 # export CPLUS_INCLUDE_PATH=""
