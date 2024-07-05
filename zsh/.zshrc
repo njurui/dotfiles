@@ -9,22 +9,33 @@ fi
 HISTSIZE=100000000
 SAVEHIST=100000000
 
-# powerlevel10k
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+# zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
-# fast-syntax-highlighting
-source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-# zsh-autosuggestions
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
 
 # z
-. /opt/homebrew/etc/profile.d/z.sh
+zinit light agkozak/zsh-z
 
 # zsh-vi-mode
 # Do the initialization when the script is sourced (i.e. Initialize instantly) to avoid conflict with fzf
 export ZVM_INIT_MODE=sourcing
-source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+zinit light jeffreytse/zsh-vi-mode
+
+# fzf-tab
+zinit light Aloxaf/fzf-tab
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # fzf
 source <(fzf --zsh)
@@ -72,11 +83,11 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 # alias for ls
-alias lsa='ls --color=auto -lah'
-alias l='ls --color=auto -lah'
-alias ls='ls --color=auto'
-alias ll='ls --color=auto -lh'
-alias la='ls --color=auto -lAh'
+alias lsa='gls --color=auto -lah'
+alias l='gls --color=auto -lah'
+alias ls='gls --color=auto'
+alias ll='gls --color=auto -lh'
+alias la='gls --color=auto -lAh'
 
 # alias for grep
 alias egrep='grep -E --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
