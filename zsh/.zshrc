@@ -50,7 +50,7 @@ export LS_COLORS='no=00:fi=00:di=01;34:ln=00;36:pi=40;33:so=01;35:do=01;35:bd=40
 
 # export llvm-toolchain
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export CPATH="/opt/homebrew/opt/llvm/include/c++/v1:/opt/homebrew/include"
+export CPATH="/opt/homebrew/include"
 # export C_INCLUDE_PATH=""
 # export OBJC_INCLUDE_PATH=""
 # export CPLUS_INCLUDE_PATH=""
