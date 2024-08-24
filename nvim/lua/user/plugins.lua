@@ -847,7 +847,8 @@ require("lazy").setup({
         "rmagatti/auto-session",
         config = function()
             require("auto-session").setup({
-                auto_session_enabled = false,
+                auto_session_enabled = true,
+                auto_session_root_dir = vim.fn.stdpath('data') .. "/sessions/",
                 auto_save_enabled = true,
                 auto_restore_enabled = false,
                 pre_save_cmds = { "NvimTreeClose", "OutlineClose", },
@@ -860,6 +861,27 @@ require("lazy").setup({
                 },
             })
         end,
+    },
+    {
+        "karb94/neoscroll.nvim",
+        config = function()
+            require('neoscroll').setup({
+                mappings = { -- Keys to be mapped to their corresponding default scrolling animation
+                    '<C-u>', '<C-d>',
+                    -- '<C-b>', '<C-f>',
+                    -- '<C-y>', '<C-e>',
+                    -- 'zt', 'zz', 'zb',
+                },
+                hide_cursor = false,         -- Hide cursor while scrolling
+                stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+                respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+                cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+                easing = 'sine',             -- Default easing function
+                pre_hook = nil,              -- Function to run before the scrolling animation starts
+                post_hook = nil,             -- Function to run after the scrolling animation ends
+                performance_mode = false,    -- Disable "Performance Mode" on all buffers.
+            })
+        end
     },
     -- {
     --     'ojroques/nvim-osc52',

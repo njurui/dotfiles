@@ -16,8 +16,8 @@ map("n", "g_", "$", opts)
 
 -- map("n", "<leader>q", ":q<CR>", opts)
 -- map("n", "<leader>w", ":w<CR>", opts)
-map("n", "<leader>ww", ":wa<CR>", opts)
-map("n", "<leader>wq", ":wq<CR>", opts)
+-- map("n", "<leader>ww", ":wa<CR>", opts)
+map("n", "<leader>wq", ":wqa<CR>", opts)
 map("n", "<leader>qq", ":qa<CR>", opts)
 -- map("n", "<leader>wqa", ":wqa<CR>", opts)
 
@@ -62,8 +62,8 @@ map("n", "<C-l>", "<C-w>l", opts)
 -- 相等比例
 -- map("n", "s=", "<C-w>=", opts)
 
-map("n", "<C-d>", "<C-d>zz", opts)
-map("n", "<C-u>", "<C-u>zz", opts)
+-- map("n", "<C-d>", "<C-d>zz", opts)
+-- map("n", "<C-u>", "<C-u>zz", opts)
 
 -- treesitter 折叠
 map("n", "zc", ":foldclose<CR>", opts)
@@ -76,8 +76,8 @@ map("n", "U", ":Telescope undo<cr>", opts)
 
 -- bufferline
 -- 左右Tab切换
-map("n", "<leader>h", ":BufferLineCyclePrev<CR>", opts)
-map("n", "<leader>l", ":BufferLineCycleNext<CR>", opts)
+map("n", "<C-b>", ":BufferLineCyclePrev<CR>", opts)
+map("n", "<C-f>", ":BufferLineCycleNext<CR>", opts)
 map("n", "<leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>", opts)
 map("n", "<leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>", opts)
 map("n", "<leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>", opts)
@@ -92,10 +92,10 @@ map("n", "<leader>$", "<Cmd>BufferLineGoToBuffer -1<CR>", opts)
 -- "moll/vim-bbye" 关闭当前 buffer
 map("n", "<leader>bc", ":Bdelete!<CR>", opts)
 -- 关闭左/右侧标签页
-map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opts)
-map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opts)
+-- map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opts)
+-- map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opts)
 -- 关闭其他标签页
-map("n", "<leader>bo", ":BufferLineCloseRight<CR>:BufferLineCloseLeft<CR>", opts)
+-- map("n", "<leader>bo", ":BufferLineCloseRight<CR>:BufferLineCloseLeft<CR>", opts)
 -- 关闭选中标签页
 map("n", "<leader>bp", ":BufferLinePickClose<CR>", opts)
 
@@ -112,7 +112,6 @@ map("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 map("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
 map("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 map("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
--- vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
 -- map("n", "<leader>fs", ":lua require'auto-session.session-lens'.search_session()<CR>", opts)
 -- map("n", "<leader>fs", ":Telescope session-lens<CR>", opts)
 
