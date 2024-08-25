@@ -125,12 +125,13 @@ map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", opts)
 -- -- code action
 map("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", opts)
 -- -- go xx
+map("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
 map("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
 map("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opts)
-map("n", "gh", ":lua vim.lsp.buf.hover()<CR>", opts)
 map("n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
+-- map("n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
 -- -- diagnostic
-map("n", "gp", ":lua vim.diagnostic.open_float()<CR>", opts)
+-- map("n", "<C-w>d", ":lua vim.diagnostic.open_float()<CR>", opts)
 map("n", "gk", ":lua vim.diagnostic.goto_prev()<CR>", opts)
 map("n", "gj", ":lua vim.diagnostic.goto_next()<CR>", opts)
 map("n", "<leader>f", ":lua vim.lsp.buf.format({async=true})<CR>", opts)
