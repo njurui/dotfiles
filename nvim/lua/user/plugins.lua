@@ -887,7 +887,7 @@ require("lazy").setup({
                 mappings = { -- Keys to be mapped to their corresponding default scrolling animation
                     '<C-u>', '<C-d>',
                     -- '<C-b>', '<C-f>',
-                    -- '<C-y>', '<C-e>',
+                    '<C-y>', '<C-e>',
                     -- 'zt', 'zz', 'zb',
                 },
                 hide_cursor = false,         -- Hide cursor while scrolling
