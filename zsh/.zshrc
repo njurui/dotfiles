@@ -5,6 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+## Basic environment variables
 # History size of zsh
 HISTSIZE=100000000
 SAVEHIST=100000000
@@ -17,27 +18,11 @@ export LSCOLORS="Gxfxcxdxbxegedabagacad"
 # export LS_COLORS for GNU ls
 export LS_COLORS='no=00:fi=00:di=01;34:ln=00;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=41;33;01:ex=00;32:*.cmd=00;32:*.exe=01;32:*.com=01;32:*.bat=01;32:*.btm=01;32:*.dll=01;32:*.tar=00;31:*.tbz=00;31:*.tgz=00;31:*.rpm=00;31:*.deb=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.lzma=00;31:*.zip=00;31:*.zoo=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.tb2=00;31:*.tz2=00;31:*.tbz2=00;31:*.avi=01;35:*.bmp=01;35:*.fli=01;35:*.gif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mng=01;35:*.mov=01;35:*.mpg=01;35:*.pcx=01;35:*.pbm=01;35:*.pgm=01;35:*.png=01;35:*.ppm=01;35:*.tga=01;35:*.tif=01;35:*.xbm=01;35:*.xpm=01;35:*.dl=01;35:*.gl=01;35:*.wmv=01;35:*.aiff=00;32:*.au=00;32:*.mid=00;32:*.mp3=00;32:*.ogg=00;32:*.voc=00;32:*.wav=00;32:'
 
-# environment variable for clang
-export CPATH="/opt/homebrew/include"
-# export C_INCLUDE_PATH=""
-# export OBJC_INCLUDE_PATH=""
-# export CPLUS_INCLUDE_PATH=""
-
-# export flags of llvm for build system
-export CC="/opt/homebrew/opt/llvm/bin/clang"
-export CXX="/opt/homebrew/opt/llvm/bin/clang++"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include/c++/v1 -I/opt/homebrew/include"
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
-export RUSTFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/lib"
-
-# prevent tmux from loading $PATH twice
-typeset -aU path
-path=( /opt/homebrew/opt/llvm/bin /opt/homebrew/opt/postgresql@16/bin $path )
-
 # Editor
 # export EDITOR='nvim'           # $EDITOR is the default for most shells
 # export VISUAL=$EDITOR          # $VISUAL in case
 
+## Aliases
 # alias for cd
 alias -g ...='../..'
 alias -g ....='../../..'
@@ -151,16 +136,7 @@ unsetopt beep                 # be quiet!
 setopt combining_chars        # combine zero-length punctuation characters (accents) with the base character
 # setopt emacs                  # use emacs keybindings in the shell
 
-# powerlevel10k
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-
-# zsh-fast-syntax-highlighting
-source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-
-# zsh-autosuggestions
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# zsh-completions
+## Zsh completion style
 zmodload -i zsh/complist
 
 WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
@@ -206,12 +182,42 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 # ... unless we really want to.
 zstyle '*' single-ignored show
 
+## Brew related environment config
+if type brew &>/dev/null; then
+
+# environment variable for clang
+export CPATH="/opt/homebrew/include"
+# export C_INCLUDE_PATH=""
+# export OBJC_INCLUDE_PATH=""
+# export CPLUS_INCLUDE_PATH=""
+
+# export flags of llvm for build system
+export CC="/opt/homebrew/opt/llvm/bin/clang"
+export CXX="/opt/homebrew/opt/llvm/bin/clang++"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include/c++/v1 -I/opt/homebrew/include"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+export RUSTFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/lib"
+
+# prevent tmux from loading $PATH twice
+typeset -aU path
+path=( /opt/homebrew/opt/llvm/bin /opt/homebrew/opt/postgresql@16/bin $path )
+
+# zsh-completions
 FPATH="/opt/homebrew/share/zsh/site-functions:$FPATH"
 autoload -Uz compinit
 compinit
 
 # z
 . /opt/homebrew/etc/profile.d/z.sh
+
+# powerlevel10k
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+
+# zsh-fast-syntax-highlighting
+source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+# zsh-autosuggestions
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-vi-mode
 # Do the initialization when the script is sourced (i.e. Initialize instantly) to avoid conflict with fzf
@@ -220,6 +226,8 @@ source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # fzf
 source <(fzf --zsh)
+
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
