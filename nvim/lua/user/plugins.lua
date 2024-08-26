@@ -435,6 +435,9 @@ require("lazy").setup({
             lspconfig.pyright.setup({
                 capabilities = capabilities,
             })
+            lspconfig.ruff.setup({
+                capabilities = capabilities,
+            })
             lspconfig.rust_analyzer.setup({
                 capabilities = capabilities,
             })
