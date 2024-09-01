@@ -36,7 +36,7 @@ map("v", "J", ":move '>+1<CR>gv-gv", opts)
 map("v", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- 在visual mode 里粘贴不要复制
-map("v", "p", '"_dP', opts)
+-- map("v", "p", '"_dP', opts)
 
 map("n", "q", "", opts)
 map("v", "q", "", opts)
