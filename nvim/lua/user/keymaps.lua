@@ -16,8 +16,8 @@ map("n", "g_", "$", opts)
 
 -- map("n", "<leader>q", ":q<CR>", opts)
 -- map("n", "<leader>w", ":w<CR>", opts)
--- map("n", "<leader>ww", ":wa<CR>", opts)
 map("n", "<leader>wq", ":wqa<CR>", opts)
+map("n", "<leader>ww", ":wa<CR>", opts)
 map("n", "<leader>qq", ":qa<CR>", opts)
 -- map("n", "<leader>wqa", ":wqa<CR>", opts)
 
