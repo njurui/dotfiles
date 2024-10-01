@@ -1,9 +1,9 @@
 -- 进入Terminal 自动进入插入模式
--- local terGrp = vim.api.nvim_create_augroup("termOpen", { clear = true })
--- vim.api.nvim_create_autocmd("TermOpen", {
--- 	group = terGrp,
--- 	command = "startinsert",
--- })
+local terGrp = vim.api.nvim_create_augroup("termOpen", { clear = true })
+vim.api.nvim_create_autocmd("TermOpen", {
+    group = terGrp,
+    command = "startinsert",
+})
 
 local yankGrp = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -20,5 +20,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
         vim.opt.formatoptions = vim.opt.formatoptions
             - "o" -- O and o, don't continue comments
             + "r" -- But do continue when pressing enter.
+    end,
+})
+
+local jsonFormat = vim.api.nvim_create_augroup("jsonFormat", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "json", "yaml" },
+    group = jsonFormat,
+    callback = function()
+        vim.opt_local.formatprg = "jq"
     end,
 })
