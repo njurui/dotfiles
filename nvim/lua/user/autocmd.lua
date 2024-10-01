@@ -22,12 +22,3 @@ vim.api.nvim_create_autocmd("BufEnter", {
             + "r" -- But do continue when pressing enter.
     end,
 })
-
-local jsonFormat = vim.api.nvim_create_augroup("jsonFormat", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "json", "yaml" },
-    group = jsonFormat,
-    callback = function()
-        vim.opt_local.formatprg = "jq"
-    end,
-})
