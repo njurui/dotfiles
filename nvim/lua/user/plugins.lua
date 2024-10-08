@@ -335,6 +335,16 @@ require("lazy").setup({
                         end
                     end, { "i", "s" }),
 
+                    ["<S-Tab>"] = cmp.mapping(function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item()
+                        elseif luasnip.locally_jumpable(-1) then
+                            luasnip.jump(-1)
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
+
                     -- ["<Tab>"] = cmp.mapping(function(fallback)
                     --     -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
                     --     if cmp.visible() then
@@ -773,9 +783,9 @@ require("lazy").setup({
                 open_mapping = '<C-\\>',
                 direction = 'horizontal',
                 shade_terminals = true,
-                close_on_exit = true,   -- close the terminal window when the process exits
-                start_in_insert = false,
-                insert_mappings = true, -- whether or not the open mapping applies in insert mode
+                close_on_exit = true,    -- close the terminal window when the process exits
+                start_in_insert = true,
+                insert_mappings = false, -- whether or not the open mapping applies in insert mode
             })
         end,
     },
@@ -836,6 +846,9 @@ require("lazy").setup({
     },
     {
         "CRAG666/code_runner.nvim",
+        dependencies = {
+            'akinsho/toggleterm.nvim',
+        },
         config = function()
             require("code_runner").setup({
                 mode = "toggleterm",
@@ -846,7 +859,7 @@ require("lazy").setup({
                     -- "cd $dir && clang -g -Wl,-stack_size -Wl,0x10000000 -Wextra -fsanitize=address -Wall -Wsign-compare -Wwrite-strings -Wtype-limits $fileName -o $fileNameWithoutExt && time $dir/$fileNameWithoutExt",
                     "cd $dir && clang $fileName -o $fileNameWithoutExt && time $dir/$fileNameWithoutExt",
                     cpp =
-                    "cd $dir && clang++ --std=c++2b $fileName -o $fileNameWithoutExt && time $dir/$fileNameWithoutExt",
+                    "cd $dir && clang++ --std=gnu++26 $fileName -o $fileNameWithoutExt && time $dir/$fileNameWithoutExt",
                     python = "time python3 -u",
                     typescript = "time deno run",
                     sh = "zsh",
