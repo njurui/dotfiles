@@ -186,6 +186,7 @@ zstyle '*' single-ignored show
 if type brew &>/dev/null; then
 
 # environment variable for clang
+export LIBRARY_PATH=/opt/homebrew/opt/llvm/lib/c++:/opt/homebrew/lib
 export CPATH="/opt/homebrew/include"
 # export C_INCLUDE_PATH=""
 # export OBJC_INCLUDE_PATH=""
@@ -197,9 +198,6 @@ export CXX="/opt/homebrew/opt/llvm/bin/clang++"
 export CPPFLAGS="-I/opt/homebrew/include -I/opt/homebrew/opt/llvm/include/c++/v1"
 export LDFLAGS="-L/opt/homebrew/lib -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
 export RUSTFLAGS="-L/opt/homebrew/lib -L/opt/homebrew/opt/llvm/lib/c++"
-
-# export LIBRARY_PATH for clang on Macos
-export LIBRARY_PATH=/opt/homebrew/opt/llvm/lib/c++:/opt/homebrew/lib
 
 # prevent tmux from loading $PATH twice
 typeset -aU path
