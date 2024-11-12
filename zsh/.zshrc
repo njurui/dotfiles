@@ -194,13 +194,16 @@ export CPATH="/opt/homebrew/include"
 # export flags of llvm for build system
 export CC="/opt/homebrew/opt/llvm/bin/clang"
 export CXX="/opt/homebrew/opt/llvm/bin/clang++"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include/c++/v1 -I/opt/homebrew/include"
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
-export RUSTFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/lib"
+export CPPFLAGS="-I/opt/homebrew/include -I/opt/homebrew/opt/llvm/include/c++/v1"
+export LDFLAGS="-L/opt/homebrew/lib -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+export RUSTFLAGS="-L/opt/homebrew/lib -L/opt/homebrew/opt/llvm/lib/c++"
+
+# export LIBRARY_PATH for clang on Macos
+export LIBRARY_PATH=/opt/homebrew/opt/llvm/lib/c++:/opt/homebrew/lib
 
 # prevent tmux from loading $PATH twice
 typeset -aU path
-path=( /opt/homebrew/opt/llvm/bin /opt/homebrew/opt/postgresql@16/bin $path )
+path=( /opt/homebrew/opt/llvm/bin /opt/homebrew/opt/postgresql@17/bin $path )
 
 # zsh-completions
 FPATH="/opt/homebrew/share/zsh/site-functions:$FPATH"
