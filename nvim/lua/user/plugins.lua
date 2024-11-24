@@ -441,6 +441,7 @@ require("lazy").setup({
                     -- fallbackFlags = { '--std=c++2b' },
                 },
                 capabilities = capabilities,
+                flags = { allow_incremental_sync = false },
             })
             lspconfig.pyright.setup({
                 capabilities = capabilities,
