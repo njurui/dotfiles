@@ -196,6 +196,7 @@ export CPATH="/opt/homebrew/include"
 export CC="/opt/homebrew/opt/llvm/bin/clang"
 export CXX="/opt/homebrew/opt/llvm/bin/clang++"
 export CPPFLAGS="-I/opt/homebrew/include -I/opt/homebrew/opt/llvm/include/c++/v1"
+export CXXFLAGS="-I/opt/homebrew/include -I/opt/homebrew/opt/llvm/include/c++/v1"
 export LDFLAGS="-L/opt/homebrew/lib -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
 export RUSTFLAGS="-L/opt/homebrew/lib -L/opt/homebrew/opt/llvm/lib/c++"
 
