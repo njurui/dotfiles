@@ -1,0 +1,29 @@
+nnoremap <Space> <Nop>
+let mapleader = " "
+
+set scrolloff=8
+set hlsearch
+set ignorecase
+set smartcase
+set number
+set clipboard+=unnamed
+set incsearch
+set commentary
+set surround
+set multiple-cursors
+
+map Q gq
+
+nnoremap q <Nop>
+nnoremap s <Nop>
+
+nnoremap J :m .+1<CR>==
+nnoremap K :m .-2<CR>==
+nnoremap sh :sp<CR>
+nnoremap sv :vsp<CR>
+nnoremap sc <C-w>c
+
+vnoremap J :m '>+1<CR>gv-gv
+vnoremap K :m '<-2<CR>gv-gv
+
+map <leader>f <Action>(ReformatCode)<CR>
