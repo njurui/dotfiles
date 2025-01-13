@@ -287,13 +287,14 @@ require("lazy").setup({
                         compare.order,
                     },
                 },
-                -- window = {
-                --     completion = {
-                --         winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-                --         -- col_offset = -3,
-                --         side_padding = 0,
-                --     },
-                -- },
+                window = {
+                    completion = {
+                        border = "rounded",
+                        -- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+                        -- col_offset = -3,
+                        -- side_padding = 0,
+                    },
+                },
                 sources = {
                     { name = "nvim_lsp" },
                     { name = "luasnip" },
