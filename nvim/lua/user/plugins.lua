@@ -456,6 +456,33 @@ require("lazy").setup({
             }
 
             local on_attach = function(client, bufnr)
+                -- Highlight symbol under cursor
+                if client.server_capabilities.documentHighlightProvider then
+                    vim.cmd [[
+                        hi! LspReferenceRead cterm=bold ctermbg=Grey guibg='#5C5C5C'
+                        hi! LspReferenceText cterm=bold ctermbg=Grey guibg='#5C5C5C'
+                        hi! LspReferenceWrite cterm=bold ctermbg=Grey guibg='#5C5C5C'
+                    ]]
+                    vim.api.nvim_create_augroup('lsp_document_highlight', {
+                        clear = false
+                    })
+                    vim.api.nvim_clear_autocmds({
+                        buffer = bufnr,
+                        group = 'lsp_document_highlight',
+                    })
+                    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+                        group = 'lsp_document_highlight',
+                        buffer = bufnr,
+                        callback = vim.lsp.buf.document_highlight,
+                    })
+                    vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+                        group = 'lsp_document_highlight',
+                        buffer = bufnr,
+                        callback = vim.lsp.buf.clear_references,
+                    })
+                end
+
+                -- Show line diagnostics automatically in hover window
                 vim.api.nvim_create_autocmd("CursorHold", {
                     buffer = bufnr,
                     callback = function()
