@@ -20,6 +20,9 @@ require("lazy").setup({
         config = function()
             require("catppuccin").setup({
                 flavour = "mocha", -- latte, frappe, macchiato, mocha
+                no_italic = false,     -- Force no italic
+                no_bold = false,       -- Force no bold
+                no_underline = false,  -- Force no underline
                 transparent_background = true,
                 integrations = {
                     cmp = true,
@@ -29,6 +32,13 @@ require("lazy").setup({
                     which_key = true,
                     notify = true,
                     mini = false,
+                },
+                color_overrides = {
+                    mocha = {
+                        base = "#000000",
+                        mantle = "#000000",
+                        crust = "#000000",
+                    },
                 },
             })
             vim.cmd.colorscheme("catppuccin")
@@ -473,7 +483,7 @@ require("lazy").setup({
                         build = {
                             args = {
                                 "-pdf",
-                                "-pdflatex",
+                                "-xelatex",
                                 "-shell-escape",
                                 "-interaction=nonstopmode",
                                 "-synctex=1",
