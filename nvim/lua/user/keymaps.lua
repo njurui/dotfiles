@@ -129,7 +129,7 @@ map("n", "gd", ":lua vim.lsp.buf.definition()<CR>", opts)
 map("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opts)
 map("n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
 map("n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
-map("n", "<C-k>", ":lua vim.lsp.buf.signature_help<CR>", opts)
+-- map("n", "<C-k>", ":lua vim.lsp.buf.signature_help<CR>", opts)
 -- -- diagnostic
 map("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>", opts)
 map("n", "gk", ":lua vim.diagnostic.goto_prev()<CR>", opts)
