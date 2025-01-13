@@ -42,6 +42,9 @@ require("lazy").setup({
                 },
             })
             vim.cmd.colorscheme("catppuccin")
+
+            -- Set CursorLine guibg (Used together with kitty)
+            vim.api.nvim_set_hl(0, "CursorLine", { bg = "#212121" })
         end,
     },
     {
