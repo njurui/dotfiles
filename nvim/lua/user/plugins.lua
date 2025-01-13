@@ -62,7 +62,6 @@ require("lazy").setup({
                         },
                     },
                     diagnostics = "nvim_lsp",
-                    ---@diagnostic disable-next-line: unused-local
                     diagnostics_indicator = function(count, level, diagnostics_dict, context)
                         local s = " "
                         for e, n in pairs(diagnostics_dict) do
@@ -229,11 +228,11 @@ require("lazy").setup({
                 },
                 -- you can enable a preset for easier configuration
                 presets = {
-                    bottom_search = true, -- use a classic bottom cmdline for search
-                    command_palette = true, -- position the cmdline and popupmenu together
+                    bottom_search = true,         -- use a classic bottom cmdline for search
+                    command_palette = true,       -- position the cmdline and popupmenu together
                     long_message_to_split = true, -- long messages will be sent to a split
-                    inc_rename = false, -- enables an input dialog for inc-rename.nvim
-                    lsp_doc_border = false, -- add a border to hover docs and signature help
+                    inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+                    lsp_doc_border = false,       -- add a border to hover docs and signature help
                 },
             })
         end,
@@ -455,6 +454,42 @@ require("lazy").setup({
                 dynamicRegistration = false,
                 lineFoldingOnly = true
             }
+
+            local on_attach = function(client, bufnr)
+                vim.api.nvim_create_autocmd("CursorHold", {
+                    buffer = bufnr,
+                    callback = function()
+                        local opts = {
+                            focusable = false,
+                            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+                            border = 'rounded',
+                            source = 'always',
+                            scope = 'cursor',
+                        }
+                        vim.diagnostic.open_float(nil, opts)
+                    end
+                })
+            end
+
+            local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+            for type, icon in pairs(signs) do
+                local hl = "DiagnosticSign" .. type
+                vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+            end
+
+            vim.diagnostic.config({
+                virtual_text = {
+                    source = "always", -- Or "if_many"
+                },
+                float = {
+                    source = "always", -- Or "if_many"
+                },
+                signs = true,
+                underline = true,
+                update_in_insert = false,
+                severity_sort = true,
+            })
+
             lspconfig.clangd.setup({
                 -- root_dir = function(fname)
                 --     return require("lspconfig.util").root_pattern(
@@ -485,33 +520,38 @@ require("lazy").setup({
                     -- fallbackFlags = { '--std=c++2b' },
                 },
                 capabilities = capabilities,
+                on_attach = on_attach,
                 flags = { allow_incremental_sync = false },
             })
             lspconfig.pyright.setup({
                 capabilities = capabilities,
+                on_attach = on_attach,
             })
             lspconfig.ruff.setup({
                 capabilities = capabilities,
+                on_attach = on_attach,
             })
             lspconfig.rust_analyzer.setup({
                 capabilities = capabilities,
+                on_attach = on_attach,
             })
             -- lspconfig.verible.setup({
             --     capabilities = capabilities,
+            --     on_attach = on_attach,
             -- })
-            lspconfig.veridian.setup({
-                cmd = { 'veridian' },
-                root_dir = function(fname)
-                    local lspconfutil = require 'lspconfig/util'
-                    local root_pattern = lspconfutil.root_pattern("veridian.yml", ".git")
-                    local filename = lspconfutil.path.is_absolute(fname) and fname
-                        or lspconfutil.path.join(vim.loop.cwd(), fname)
-                    return root_pattern(filename) or lspconfutil.path.dirname(filename)
-                end,
-                capabilities = capabilities,
-            })
+            -- lspconfig.veridian.setup({
+            --     cmd = { 'veridian' },
+            --     root_dir = function(fname)
+            --         local lspconfutil = require 'lspconfig/util'
+            --         local root_pattern = lspconfutil.root_pattern("veridian.yml", ".git")
+            --         local filename = lspconfutil.path.is_absolute(fname) and fname
+            --             or lspconfutil.path.join(vim.loop.cwd(), fname)
+            --         return root_pattern(filename) or lspconfutil.path.dirname(filename)
+            --     end,
+            --     capabilities = capabilities,
+            --     on_attach = on_attach,
+            -- })
             lspconfig.texlab.setup({
-                capabilities = capabilities,
                 settings = {
                     texlab = {
                         build = {
@@ -540,9 +580,12 @@ require("lazy").setup({
                         },
                     },
                 },
+                capabilities = capabilities,
+                on_attach = on_attach,
             })
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
+                on_attach = on_attach,
             })
         end,
     },
