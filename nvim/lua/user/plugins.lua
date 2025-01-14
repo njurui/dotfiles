@@ -54,8 +54,8 @@ require("lazy").setup({
             local bufferline = require("bufferline")
             bufferline.setup({
                 options = {
-                    close_command = "Bdelete! %d",       -- can be a string | function, | false see "Mouse actions"
-                    right_mouse_command = "Bdelete! %d", -- can be a string | function | false, see "Mouse actions"
+                    close_command = "Bdelete! %d", -- can be a string | function, | false see "Mouse actions"
+                    separator_style = "thin",
                     offsets = {
                         {
                             filetype = "NvimTree",
