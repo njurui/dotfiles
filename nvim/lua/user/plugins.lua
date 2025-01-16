@@ -972,7 +972,7 @@ require("lazy").setup({
 
                     float_opts = {
                         border = 'rounded',
-                        winblend = 40,
+                        winblend = 25,
                         width = function()
                             return math.floor(vim.o.columns * 0.6)
                         end,
