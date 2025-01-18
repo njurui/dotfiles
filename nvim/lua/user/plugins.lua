@@ -300,6 +300,7 @@ require("lazy").setup({
                 "hrsh7th/cmp-cmdline",
                 "L3MON4D3/LuaSnip",
                 "onsails/lspkind.nvim",
+                "rcarriga/cmp-dap",
             },
             config = function()
                 require("luasnip.loaders.from_vscode").lazy_load()
@@ -321,6 +322,10 @@ require("lazy").setup({
                 })
 
                 cmp.setup({
+                    enabled = function()
+                        return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+                            or require("cmp_dap").is_dap_buffer()
+                    end,
                     snippet = {
                         expand = function(args)
                             luasnip.lsp_expand(args.body)
@@ -364,6 +369,7 @@ require("lazy").setup({
                                 luasnip = "[LuaSnip]",
                                 path = "[Path]",
                                 cmdline = "[Command]",
+                                dap = "[DAP]",
                             },
                         }),
                     },
@@ -437,6 +443,12 @@ require("lazy").setup({
                     sources = {
                         { name = "path" },
                         { name = "cmdline" },
+                    },
+                })
+
+                cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+                    sources = {
+                        { name = "dap" },
                     },
                 })
 
@@ -1058,8 +1070,8 @@ require("lazy").setup({
                         python = "time python3 -u",
                         typescript = "time deno run",
                         sh = "zsh",
-                        -- rust = "cd $dir && rustc $fileName && time $dir/$fileNameWithoutExt",
-                        rust = "cd $dir && cargo build && time cargo run",
+                        rust = "cd $dir && rustc $fileName && time $dir/$fileNameWithoutExt",
+                        -- rust = "cd $dir && cargo build && time cargo run",
                         markdown =
                         "pandoc -f markdown --pdf-engine=xelatex --listings --template eisvogel $fileName -o $fileNameWithoutExt.pdf",
                     },
