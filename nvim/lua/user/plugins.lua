@@ -522,6 +522,7 @@ require("lazy").setup({
         },
         {
             "neovim/nvim-lspconfig",
+            dependencies = {},
             config = function()
                 local lspconfig = require("lspconfig")
                 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -535,10 +536,10 @@ require("lazy").setup({
                     -- Highlight symbol under cursor
                     if client.server_capabilities.documentHighlightProvider then
                         vim.cmd [[
-                        hi! LspReferenceRead cterm=bold ctermbg=Grey guibg='#5C5C5C'
-                        hi! LspReferenceText cterm=bold ctermbg=Grey guibg='#5C5C5C'
-                        hi! LspReferenceWrite cterm=bold ctermbg=Grey guibg='#5C5C5C'
-                    ]]
+                            hi! LspReferenceRead cterm=bold ctermbg=Grey guibg='#5C5C5C'
+                            hi! LspReferenceText cterm=bold ctermbg=Grey guibg='#5C5C5C'
+                            hi! LspReferenceWrite cterm=bold ctermbg=Grey guibg='#5C5C5C'
+                        ]]
                         vim.api.nvim_create_augroup('lsp_document_highlight', {
                             clear = false
                         })
@@ -556,6 +557,11 @@ require("lazy").setup({
                             buffer = bufnr,
                             callback = vim.lsp.buf.clear_references,
                         })
+                    end
+
+                    -- Inlay Hint Enabled
+                    if client.server_capabilities.inlayHintProvider then
+                        vim.lsp.inlay_hint.enable(true, { bufnr })
                     end
 
                     -- Show line diagnostics automatically in hover window
@@ -1070,8 +1076,8 @@ require("lazy").setup({
                         python = "time python3 -u",
                         typescript = "time deno run",
                         sh = "zsh",
-                        rust = "cd $dir && rustc $fileName && time $dir/$fileNameWithoutExt",
-                        -- rust = "cd $dir && cargo build && time cargo run",
+                        -- rust = "cd $dir && rustc $fileName && time $dir/$fileNameWithoutExt",
+                        rust = "cd $dir && cargo build && time cargo run",
                         markdown =
                         "pandoc -f markdown --pdf-engine=xelatex --listings --template eisvogel $fileName -o $fileNameWithoutExt.pdf",
                     },
