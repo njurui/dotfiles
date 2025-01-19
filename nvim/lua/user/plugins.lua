@@ -404,9 +404,13 @@ require("lazy").setup({
                             if cmp.visible() then
                                 local entry = cmp.get_selected_entry()
                                 if not entry then
-                                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                                    cmp.select_next_item({
+                                        behavior = cmp.SelectBehavior.Select,
+                                    })
                                 end
-                                cmp.confirm()
+                                cmp.confirm({
+                                    behavior = cmp.ConfirmBehavior.Replace,
+                                })
                             else
                                 fallback()
                             end
