@@ -292,28 +292,29 @@ require("lazy").setup({
         {
             "hrsh7th/nvim-cmp",
             dependencies = {
-                "rafamadriz/friendly-snippets",
+                -- "rafamadriz/friendly-snippets",
                 "hrsh7th/cmp-nvim-lsp",
                 "hrsh7th/cmp-buffer",
                 "hrsh7th/cmp-path",
-                "saadparwaiz1/cmp_luasnip",
+                -- "saadparwaiz1/cmp_luasnip",
                 "hrsh7th/cmp-cmdline",
-                "L3MON4D3/LuaSnip",
+                -- "L3MON4D3/LuaSnip",
                 "onsails/lspkind.nvim",
                 "rcarriga/cmp-dap",
             },
             config = function()
-                require("luasnip.loaders.from_vscode").lazy_load()
-                local luasnip = require("luasnip")
                 local cmp = require("cmp")
                 local lspkind = require("lspkind")
                 local compare = require("cmp.config.compare")
-                local has_words_before = function()
-                    unpack = unpack or table.unpack
-                    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-                    return col ~= 0 and
-                        vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-                end
+
+                -- require("luasnip.loaders.from_vscode").lazy_load()
+                -- local luasnip = require("luasnip")
+                -- local has_words_before = function()
+                --     unpack = unpack or table.unpack
+                --     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+                --     return col ~= 0 and
+                --         vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+                -- end
 
                 lspkind.init({
                     symbol_map = {
@@ -322,15 +323,16 @@ require("lazy").setup({
                 })
 
                 cmp.setup({
+                    -- snippet = {
+                    --     expand = function(args)
+                    --         luasnip.lsp_expand(args.body)
+                    --     end,
+                    -- },
+
                     enabled = function()
                         return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
                             or require("cmp_dap").is_dap_buffer()
                     end,
-                    snippet = {
-                        expand = function(args)
-                            luasnip.lsp_expand(args.body)
-                        end,
-                    },
                     sorting = {
                         priority_weight = 2,
                         comparators = {
@@ -357,14 +359,16 @@ require("lazy").setup({
                     },
 
                     -- Ignore preselect requests from LSP
-                    preselect = cmp.PreselectMode.None,
+                    -- preselect = cmp.PreselectMode.None,
+
+                    preselect = cmp.PreselectMode.Item,
                     completion = {
-                        completeopt = 'noselect',
+                        completeopt = 'menu,menuone,noinsert',
                     },
 
                     sources = {
                         { name = "nvim_lsp" },
-                        { name = "luasnip" },
+                        -- { name = "luasnip" },
                         { name = "buffer" },
                         { name = "path" },
                     },
@@ -376,7 +380,7 @@ require("lazy").setup({
                             menu = {
                                 buffer = "[Buffer]",
                                 nvim_lsp = "[LSP]",
-                                luasnip = "[LuaSnip]",
+                                -- luasnip = "[LuaSnip]",
                                 path = "[Path]",
                                 cmdline = "[Command]",
                                 dap = "[DAP]",
@@ -390,54 +394,54 @@ require("lazy").setup({
                         ["<C-n>"] = cmp.mapping.select_next_item(),
                         ["<CR>"] = cmp.mapping.confirm({
                             select = false,
-                            behavior = cmp.ConfirmBehavior.Replace,
+                            behavior = cmp.ConfirmBehavior.Insert,
                         }),
                         ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
                         ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 
-                        ['<Tab>'] = cmp.mapping(function(fallback)
+                        ["<Tab>"] = cmp.mapping(function(fallback)
+                            -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
                             if cmp.visible() then
-                                if #cmp.get_entries() == 1 then
-                                    cmp.confirm({ select = true })
-                                else
-                                    cmp.select_next_item()
+                                local entry = cmp.get_selected_entry()
+                                if not entry then
+                                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
                                 end
-                            elseif luasnip.expand_or_jumpable() then
-                                luasnip.expand_or_jump()
-                            elseif has_words_before() then
-                                cmp.complete()
-                                if #cmp.get_entries() == 1 then
-                                    cmp.confirm({ select = true })
-                                end
+                                cmp.confirm()
                             else
                                 fallback()
                             end
-                        end, { "i", "s" }),
+                        end, { "i", "s", "c", }),
 
-                        ["<S-Tab>"] = cmp.mapping(function(fallback)
-                            if cmp.visible() then
-                                cmp.select_prev_item()
-                            elseif luasnip.locally_jumpable(-1) then
-                                luasnip.jump(-1)
-                            else
-                                fallback()
-                            end
-                        end, { "i", "s" }),
+                        -- Super-Tab like mapping
 
-                        -- ["<Tab>"] = cmp.mapping(function(fallback)
-                        --     -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
+                        -- ['<Tab>'] = cmp.mapping(function(fallback)
                         --     if cmp.visible() then
-                        --         local entry = cmp.get_selected_entry()
-                        --         if not entry then
-                        --             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                        --         if #cmp.get_entries() == 1 then
+                        --             cmp.confirm({ select = true })
+                        --         else
+                        --             cmp.select_next_item()
                         --         end
-                        --         cmp.confirm()
                         --     elseif luasnip.expand_or_jumpable() then
                         --         luasnip.expand_or_jump()
+                        --     elseif has_words_before() then
+                        --         cmp.complete()
+                        --         if #cmp.get_entries() == 1 then
+                        --             cmp.confirm({ select = true })
+                        --         end
                         --     else
                         --         fallback()
                         --     end
-                        -- end, { "i", "s", "c", }),
+                        -- end, { "i", "s" }),
+                        --
+                        -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+                        --     if cmp.visible() then
+                        --         cmp.select_prev_item()
+                        --     elseif luasnip.locally_jumpable(-1) then
+                        --         luasnip.jump(-1)
+                        --     else
+                        --         fallback()
+                        --     end
+                        -- end, { "i", "s" }),
                     },
                 })
 
