@@ -355,6 +355,13 @@ require("lazy").setup({
                             border = "rounded",
                         },
                     },
+
+                    -- Ignore preselect requests from LSP
+                    preselect = cmp.PreselectMode.None,
+                    completion = {
+                        completeopt = 'noselect',
+                    },
+
                     sources = {
                         { name = "nvim_lsp" },
                         { name = "luasnip" },
