@@ -296,9 +296,9 @@ require("lazy").setup({
                 "hrsh7th/cmp-nvim-lsp",
                 "hrsh7th/cmp-buffer",
                 "hrsh7th/cmp-path",
-                -- "saadparwaiz1/cmp_luasnip",
                 "hrsh7th/cmp-cmdline",
-                -- "L3MON4D3/LuaSnip",
+                "L3MON4D3/LuaSnip",
+                "saadparwaiz1/cmp_luasnip", -- required by LuaSnip
                 "onsails/lspkind.nvim",
                 "rcarriga/cmp-dap",
             },
@@ -307,8 +307,8 @@ require("lazy").setup({
                 local lspkind = require("lspkind")
                 local compare = require("cmp.config.compare")
 
+                local luasnip = require("luasnip")
                 -- require("luasnip.loaders.from_vscode").lazy_load()
-                -- local luasnip = require("luasnip")
                 -- local has_words_before = function()
                 --     unpack = unpack or table.unpack
                 --     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -323,11 +323,11 @@ require("lazy").setup({
                 })
 
                 cmp.setup({
-                    -- snippet = {
-                    --     expand = function(args)
-                    --         luasnip.lsp_expand(args.body)
-                    --     end,
-                    -- },
+                    snippet = {
+                        expand = function(args)
+                            luasnip.lsp_expand(args.body)
+                        end,
+                    },
 
                     enabled = function()
                         return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
@@ -393,7 +393,7 @@ require("lazy").setup({
                         ["<C-p>"] = cmp.mapping.select_prev_item(),
                         ["<C-n>"] = cmp.mapping.select_next_item(),
                         ["<CR>"] = cmp.mapping.confirm({
-                            select = false,
+                            select = true,
                             behavior = cmp.ConfirmBehavior.Insert,
                         }),
                         ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
@@ -411,6 +411,8 @@ require("lazy").setup({
                                 cmp.confirm({
                                     behavior = cmp.ConfirmBehavior.Replace,
                                 })
+                            elseif luasnip.locally_jumpable(1) then
+                                luasnip.jump(1)
                             else
                                 fallback()
                             end
