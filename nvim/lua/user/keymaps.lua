@@ -70,7 +70,7 @@ map("n", "zc", ":foldclose<CR>", opts)
 map("n", "zo", ":foldopen<CR>", opts)
 
 -- nvim-tree
-map("n", "<leader>m", ":NvimTreeToggle<CR>", opts)
+map("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
 
 map("n", "<leader>u", ":Telescope undo<cr>", opts)
 
@@ -139,7 +139,7 @@ map("n", "gk", ":lua vim.diagnostic.goto_prev()<CR>", opts)
 map("n", "gj", ":lua vim.diagnostic.goto_next()<CR>", opts)
 map("n", "<leader>f", ":lua vim.lsp.buf.format({async=true})<CR>", opts)
 --autosave
--- map("n", "<leader>ss", ":ASToggle<CR>", opts)
+map("n", "<leader>s", ":ASToggle<CR>", opts)
 --markdown-preview
 map("n", "<leader>mp", ":MarkdownPreview<CR>", opts)
 
