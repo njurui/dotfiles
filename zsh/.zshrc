@@ -1,3 +1,6 @@
+# Used to profile zsh start time
+# zmodload zsh/zprof
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -226,8 +229,8 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-vi-mode
 # Do the initialization when the script is sourced (i.e. Initialize instantly) to avoid conflict with fzf
-export ZVM_INIT_MODE=sourcing
-source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# export ZVM_INIT_MODE=sourcing
+# source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # fzf
 source <(fzf --zsh)
@@ -236,3 +239,6 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Used to profile zsh start time
+# zprof
