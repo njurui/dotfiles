@@ -664,6 +664,10 @@ require("lazy").setup({
                     capabilities = capabilities,
                     on_attach = on_attach,
                 })
+                lspconfig.tinymist.setup({
+                    capabilities = capabilities,
+                    on_attach = on_attach,
+                })
                 -- lspconfig.verible.setup({
                 --     capabilities = capabilities,
                 --     on_attach = on_attach,
@@ -1081,6 +1085,11 @@ require("lazy").setup({
             build = function() vim.fn["mkdp#util#install"]() end,
         },
         {
+            'chomosuke/typst-preview.nvim',
+            ft = 'typst',
+            opts = {}, -- lazy.nvim will implicitly calls `setup {}`
+        },
+        {
             "rmagatti/auto-session",
             lazy = false,
             dependencies = {
@@ -1123,6 +1132,9 @@ require("lazy").setup({
                 })
             end
         },
+        -- {
+        --     "jbyuki/venn.nvim",
+        -- },
         -- {
         --     'ojroques/nvim-osc52',
         --     config = function()

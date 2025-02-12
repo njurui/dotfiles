@@ -140,8 +140,11 @@ map("n", "gj", ":lua vim.diagnostic.goto_next()<CR>", opts)
 map("n", "<leader>f", ":lua vim.lsp.buf.format({async=true})<CR>", opts)
 --autosave
 map("n", "<leader>s", ":ASToggle<CR>", opts)
+
 --markdown-preview
-map("n", "<leader>mp", ":MarkdownPreview<CR>", opts)
+map("n", "<leader>pm", ":MarkdownPreview<CR>", opts)
+--typst-preview
+map("n", "<leader>pt", ":TypstPreview<CR>", opts)
 
 map("n", "<leader>rf", ":RunFile<CR>", opts)
 map("n", "<leader>rs", ":RunCode<CR>", opts)
