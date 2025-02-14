@@ -81,6 +81,7 @@ require("lazy").setup({
                 -- Set CursorLine guibg (Used together with kitty)
                 vim.api.nvim_set_hl(0, "CursorLine", { bg = "#212121" })
                 vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#212121" })
+                vim.api.nvim_set_hl(0, "CursorLineNR", { bg = "#212121" })
             end,
         },
         {
