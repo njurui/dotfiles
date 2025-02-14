@@ -52,8 +52,8 @@ require("lazy").setup({
                             teal = "#47deb4",
                             sky = "#00d5ed",
                             sapphire = "#00dfce",
-                            blue = "#00baee",     -- function
-                            lavender = "#abbff3", -- member
+                            -- blue = "#00baee",     -- function
+                            lavender = "#a984bd", -- member
 
                             text = "#dddddd",
 
