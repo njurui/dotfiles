@@ -49,7 +49,7 @@ vim.o.backup = false
 vim.o.writebackup = false
 vim.o.swapfile = false
 -- updatetime control time to write to disk and cursorhold event
-vim.o.updatetime = 500
+vim.o.updatetime = 200
 -- 设置 timeoutlen 为等待键盘快捷键连击时间500毫秒，可根据需要设置
 vim.o.timeoutlen = 300
 -- split window 从下边和右边出现
