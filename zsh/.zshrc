@@ -189,48 +189,48 @@ zstyle '*' single-ignored show
 if type brew &>/dev/null; then
 
 # environment variable for clang
-export LIBRARY_PATH=/opt/homebrew/opt/llvm/lib/c++:/opt/homebrew/lib
-export CPATH="/opt/homebrew/include"
+export LIBRARY_PATH=$HOMEBREW_PREFIX/opt/llvm/lib/c++:$HOMEBREW_PREFIX/lib
+export CPATH="$HOMEBREW_PREFIX/include"
 # export C_INCLUDE_PATH=""
 # export OBJC_INCLUDE_PATH=""
 # export CPLUS_INCLUDE_PATH=""
 
 # export flags of llvm for build system
-export CC="/opt/homebrew/opt/llvm/bin/clang"
-export CXX="/opt/homebrew/opt/llvm/bin/clang++"
-export CPPFLAGS="-I/opt/homebrew/include -I/opt/homebrew/opt/llvm/include/c++/v1"
-export CXXFLAGS="-I/opt/homebrew/include -I/opt/homebrew/opt/llvm/include/c++/v1"
-export LDFLAGS="-L/opt/homebrew/lib -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
-export RUSTFLAGS="-L/opt/homebrew/lib -L/opt/homebrew/opt/llvm/lib/c++"
+export CC="$HOMEBREW_PREFIX/opt/llvm/bin/clang"
+export CXX="$HOMEBREW_PREFIX/opt/llvm/bin/clang++"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/include -I$HOMEBREW_PREFIX/opt/llvm/include/c++/v1"
+export CXXFLAGS="-I$HOMEBREW_PREFIX/include -I$HOMEBREW_PREFIX/opt/llvm/include/c++/v1"
+export LDFLAGS="-L$HOMEBREW_PREFIX/lib -L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -Wl,-rpath,$HOMEBREW_PREFIX/opt/llvm/lib/c++"
+export RUSTFLAGS="-L$HOMEBREW_PREFIX/lib -L$HOMEBREW_PREFIX/opt/llvm/lib/c++"
 
 # prevent tmux from loading $PATH twice
 typeset -aU path
-path=( /opt/homebrew/opt/llvm/bin /opt/homebrew/opt/postgresql@17/bin $path )
+path=( $HOMEBREW_PREFIX/opt/llvm/bin $HOMEBREW_PREFIX/opt/postgresql@17/bin $path )
 
 # zsh-completions
-FPATH="/opt/homebrew/share/zsh/site-functions:$FPATH"
+FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
 autoload -Uz compinit
 compinit
 
 # z
-. /opt/homebrew/etc/profile.d/z.sh
+. $HOMEBREW_PREFIX/etc/profile.d/z.sh
 
 # powerlevel10k
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+source $HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # zsh-fast-syntax-highlighting
-# source /opt/homebrew/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+# source $HOMEBREW_PREFIX/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 # zsh-syntax-highlighting
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # zsh-autosuggestions
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-vi-mode
 # Do the initialization when the script is sourced (i.e. Initialize instantly) to avoid conflict with fzf
 # export ZVM_INIT_MODE=sourcing
-# source /opt/homebrew/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# source $HOMEBREW_PREFIX/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # fzf
 source <(fzf --zsh)
