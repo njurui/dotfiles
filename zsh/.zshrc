@@ -208,7 +208,7 @@ typeset -aU path
 path=( $HOMEBREW_PREFIX/opt/llvm/bin $HOMEBREW_PREFIX/opt/postgresql@17/bin $path )
 
 # zsh-completions
-FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
+# FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
 autoload -Uz compinit
 compinit
 
