@@ -93,6 +93,7 @@ setopt inc_append_history      # write to the history file immediately, not when
 setopt share_history         # don't share history between all sessions
 
 # History size of zsh
+HISTFILE=~/.zsh_history
 HISTSIZE=100000000
 SAVEHIST=100000000
 
@@ -157,7 +158,7 @@ zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|=*' 'l:|=* r:|=*'
 
 # Complete . and .. special directories
-zstyle ':completion:*' special-dirs true
+# zstyle ':completion:*' special-dirs true
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
