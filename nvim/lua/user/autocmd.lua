@@ -22,3 +22,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
             + "r" -- But do continue when pressing enter.
     end,
 })
+
+vim.api.nvim_create_augroup("RestoreCursorShapeOnExit", { clear = true })
+vim.api.nvim_create_autocmd("VimLeave", {
+  group = "RestoreCursorShapeOnExit",
+  callback = function()
+    vim.opt.guicursor = "a:ver100"
+  end,
+})
