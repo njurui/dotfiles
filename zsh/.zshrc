@@ -189,6 +189,14 @@ zstyle '*' single-ignored show
 ## Brew related environment config
 if type brew &>/dev/null; then
 
+export KITTY_INSTALLATION_DIR="/Applications/kitty.app/Contents/Resources/kitty"
+if test -n "$KITTY_INSTALLATION_DIR"; then
+    export KITTY_SHELL_INTEGRATION="enabled"
+    autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
+    kitty-integration
+    unfunction kitty-integration
+fi
+
 # environment variable for clang
 export LIBRARY_PATH=$HOMEBREW_PREFIX/opt/llvm/lib/c++:$HOMEBREW_PREFIX/lib
 export CPATH="$HOMEBREW_PREFIX/include"
