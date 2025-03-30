@@ -23,11 +23,13 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
--- Replaced by config in tmux
--- vim.api.nvim_create_augroup("RestoreCursorShapeOnExit", { clear = true })
--- vim.api.nvim_create_autocmd("VimLeave", {
---   group = "RestoreCursorShapeOnExit",
---   callback = function()
---     vim.opt.guicursor = "a:ver100"
---   end,
--- })
+-- NOT Replaced by config in tmux
+vim.api.nvim_create_autocmd("VimLeave", {
+    callback = function()
+        local tty = vim.fn.getenv("TTY")
+        if tty and tty ~= "" then
+            vim.fn.system('printf "\\e[6 q" > ' .. tty)
+        end
+    end,
+})
+
