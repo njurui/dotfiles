@@ -91,6 +91,3 @@ vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
 vim.opt.fillchars = { eob = " " }
-
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions" -- Used by auto-session
-vim.opt_local.conceallevel = 2                                                  -- Used by obsidian.nvim

@@ -264,38 +264,38 @@ require("lazy").setup({
             opts = {},
         },
         -- lazy.nvim
-        {
-            "folke/noice.nvim",
-            event = "VeryLazy",
-            config = function()
-                require("noice").setup({
-                    lsp = {
-                        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-                        override = {
-                            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                            ["vim.lsp.util.stylize_markdown"] = true,
-                            ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-                        },
-                    },
-                    -- you can enable a preset for easier configuration
-                    presets = {
-                        bottom_search = true,         -- use a classic bottom cmdline for search
-                        command_palette = true,       -- position the cmdline and popupmenu together
-                        long_message_to_split = true, -- long messages will be sent to a split
-                        inc_rename = false,           -- enables an input dialog for inc-rename.nvim
-                        lsp_doc_border = true,        -- add a border to hover docs and signature help
-                    },
-                })
-            end,
-            dependencies = {
-                -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-                "MunifTanjim/nui.nvim",
-                -- OPTIONAL:
-                --   `nvim-notify` is only needed, if you want to use the notification view.
-                --   If not available, we use `mini` as the fallback
-                "rcarriga/nvim-notify",
-            }
-        },
+        -- {
+        --     "folke/noice.nvim",
+        --     event = "VeryLazy",
+        --     config = function()
+        --         require("noice").setup({
+        --             lsp = {
+        --                 -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+        --                 override = {
+        --                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+        --                     ["vim.lsp.util.stylize_markdown"] = true,
+        --                     ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+        --                 },
+        --             },
+        --             -- you can enable a preset for easier configuration
+        --             presets = {
+        --                 bottom_search = true,         -- use a classic bottom cmdline for search
+        --                 command_palette = true,       -- position the cmdline and popupmenu together
+        --                 long_message_to_split = true, -- long messages will be sent to a split
+        --                 inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+        --                 lsp_doc_border = true,        -- add a border to hover docs and signature help
+        --             },
+        --         })
+        --     end,
+        --     dependencies = {
+        --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+        --         "MunifTanjim/nui.nvim",
+        --         -- OPTIONAL:
+        --         --   `nvim-notify` is only needed, if you want to use the notification view.
+        --         --   If not available, we use `mini` as the fallback
+        --         "rcarriga/nvim-notify",
+        --     }
+        -- },
 
         -- Insert Enhance
         {
@@ -419,7 +419,7 @@ require("lazy").setup({
                         }),
                     },
                     mapping = {
-                        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+                        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "s", "c" }),
                         ['<C-e>'] = cmp.mapping.abort(),
                         ["<C-p>"] = cmp.mapping.select_prev_item(),
                         ["<C-n>"] = cmp.mapping.select_next_item(),
@@ -427,8 +427,8 @@ require("lazy").setup({
                             select = true,
                             behavior = cmp.ConfirmBehavior.Insert,
                         }),
-                        ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-                        ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+                        ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "s", "c" }),
+                        ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "s", "c" }),
 
                         ["<Tab>"] = cmp.mapping(function(fallback)
                             -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
@@ -1120,28 +1120,28 @@ require("lazy").setup({
             ft = 'typst',
             opts = {}, -- lazy.nvim will implicitly calls `setup {}`
         },
-        {
-            "rmagatti/auto-session",
-            lazy = false,
-            dependencies = {
-                'nvim-telescope/telescope.nvim', -- Only needed if you want to use session lens
-            },
-            config = function()
-                require("auto-session").setup({
-                    auto_session_enabled = true,
-                    auto_session_root_dir = vim.fn.stdpath('data') .. "/sessions/",
-                    auto_save_enabled = true,
-                    auto_restore_enabled = false,
-                    pre_save_cmds = { "NvimTreeClose", "OutlineClose", },
-                    bypass_session_save_file_types = { 'alpha', 'dashboard' },
-                    session_lens = {
-                        load_on_setup = true,
-                        theme_conf = { border = true },
-                        previewer = false,
-                    },
-                })
-            end,
-        },
+        -- {
+        --     "rmagatti/auto-session",
+        --     lazy = false,
+        --     dependencies = {
+        --         'nvim-telescope/telescope.nvim', -- Only needed if you want to use session lens
+        --     },
+        --     config = function()
+        --         require("auto-session").setup({
+        --             auto_session_enabled = true,
+        --             auto_session_root_dir = vim.fn.stdpath('data') .. "/sessions/",
+        --             auto_save_enabled = true,
+        --             auto_restore_enabled = false,
+        --             pre_save_cmds = { "NvimTreeClose", "OutlineClose", },
+        --             bypass_session_save_file_types = { 'alpha', 'dashboard' },
+        --             session_lens = {
+        --                 load_on_setup = true,
+        --                 theme_conf = { border = true },
+        --                 previewer = false,
+        --             },
+        --         })
+        --     end,
+        -- },
         {
             "karb94/neoscroll.nvim",
             config = function()
