@@ -142,9 +142,9 @@ map("n", "<leader>f", ":lua vim.lsp.buf.format({async=true})<CR>", opts)
 map("n", "<leader>s", ":ASToggle<CR>", opts)
 
 --markdown-preview
-map("n", "<leader>pm", ":MarkdownPreview<CR>", opts)
+map("n", "<leader>mp", ":MarkdownPreview<CR>", opts)
 --typst-preview
-map("n", "<leader>pt", ":TypstPreview<CR>", opts)
+map("n", "<leader>tp", ":TypstPreview<CR>", opts)
 
 map("n", "<leader>rf", ":RunFile<CR>", opts)
 map("n", "<leader>rs", ":RunCode<CR>", opts)

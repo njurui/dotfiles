@@ -59,9 +59,11 @@ require("lazy").setup({
 
                             subtext1 = "#bbbbbb",
                             subtext0 = "#aaaaaa",
+
                             overlay2 = "#999999",
                             overlay1 = "#888888",
                             overlay0 = "#777777",
+
                             surface2 = "#666666",
                             surface1 = "#555555",
                             surface0 = "#444444",
@@ -76,6 +78,12 @@ require("lazy").setup({
                         },
                     },
                 })
+                -- Fix which-key and LSP highlight problem
+                vim.cmd [[
+                    autocmd ColorScheme * highlight NormalFloat guifg=none guibg=none
+                    autocmd ColorScheme * highlight FloatBorder guifg=none guibg=none
+                ]]
+
                 vim.cmd.colorscheme("catppuccin")
 
                 -- Set CursorLine guibg (Used together with kitty)
@@ -211,58 +219,19 @@ require("lazy").setup({
             end
         },
         {
+
             "HiPhish/rainbow-delimiters.nvim",
             config = function()
-                -- This module contains a number of default definitions
-                local rainbow_delimiters = require("rainbow-delimiters")
-
-                vim.g.rainbow_delimiters = {
-                    strategy = {
-                        [''] = rainbow_delimiters.strategy['global'],
-                        vim = rainbow_delimiters.strategy['local'],
-                    },
-                    query = {
-                        [''] = 'rainbow-delimiters',
-                        lua = 'rainbow-blocks',
-                    },
-                    priority = {
-                        [''] = 110,
-                        lua = 210,
-                    },
-                    highlight = {
-                        'RainbowDelimiterRed',
-                        'RainbowDelimiterYellow',
-                        'RainbowDelimiterBlue',
-                        'RainbowDelimiterOrange',
-                        'RainbowDelimiterGreen',
-                        'RainbowDelimiterViolet',
-                        'RainbowDelimiterCyan',
-                    },
-                }
-            end,
-        },
-        {
-            "utilyre/barbecue.nvim",
-            dependencies = {
-                "SmiteshP/nvim-navic",
-                "nvim-tree/nvim-web-devicons",
-            },
-            config = function()
-                require("barbecue").setup({
-                    exclude_filetypes = { "toggleterm" },
-                })
-            end,
+                require('rainbow-delimiters.setup').setup()
+            end
         },
         {
             "j-hui/fidget.nvim",
             config = function()
-                require("fidget").setup({})
+                require("fidget").setup()
             end,
         },
-        {
-            'stevearc/dressing.nvim',
-            opts = {},
-        },
+
         -- lazy.nvim
         -- {
         --     "folke/noice.nvim",
@@ -309,7 +278,7 @@ require("lazy").setup({
             "kylechui/nvim-surround",
             event = "VeryLazy",
             config = function()
-                require("nvim-surround").setup({})
+                require("nvim-surround").setup()
             end,
         },
         {
@@ -677,13 +646,17 @@ require("lazy").setup({
                         clangdFileStatus = true,
                         usePlaceholders = true,
                         completeUnimported = true,
-                        -- fallbackFlags = { '--std=c++2b' },
+                        -- fallbackFlags = { '--std=c++23' },
                     },
                     capabilities = capabilities,
                     on_attach = on_attach,
                     flags = { allow_incremental_sync = false },
                 })
                 lspconfig.pyright.setup({
+                    capabilities = capabilities,
+                    on_attach = on_attach,
+                })
+                lspconfig.ty.setup({
                     capabilities = capabilities,
                     on_attach = on_attach,
                 })
@@ -721,7 +694,7 @@ require("lazy").setup({
                             build = {
                                 args = {
                                     "-pdf",
-                                    "-xelatex",
+                                    "-pdflatex",
                                     "-shell-escape",
                                     "-interaction=nonstopmode",
                                     "-synctex=1",
@@ -791,6 +764,7 @@ require("lazy").setup({
                 require("lsp-file-operations").setup()
             end,
         },
+
         {
             "hedyhli/outline.nvim",
             config = function()
@@ -916,6 +890,16 @@ require("lazy").setup({
                 })
             end,
         },
+        {
+            'stevearc/oil.nvim',
+            opts = {},
+            -- Optional dependencies
+            -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
+            dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+            -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+            lazy = false,
+        },
+
 
         -- Other Functions
         {
@@ -1113,7 +1097,9 @@ require("lazy").setup({
             "iamcco/markdown-preview.nvim",
             cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
             ft = { "markdown" },
-            build = function() vim.fn["mkdp#util#install"]() end,
+            build = function()
+                vim.fn["mkdp#util#install"]()
+            end,
         },
         {
             'chomosuke/typst-preview.nvim',
