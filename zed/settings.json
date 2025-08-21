@@ -10,6 +10,7 @@
     "light": "Ayu Light",
     "dark": "Ayu Dark"
   },
+  "icon_theme": "Material Icon Theme",
 
   // Features that can be globally enabled or disabled
   "features": {
