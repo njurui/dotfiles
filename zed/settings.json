@@ -1,0 +1,60 @@
+{
+  // The name of the Zed theme to use for the UI.
+  //
+  // `mode` is one of:
+  // - "system": Use the theme that corresponds to the system's appearance
+  // - "light": Use the theme indicated by the "light" field
+  // - "dark": Use the theme indicated by the "dark" field
+  "theme": {
+    "mode": "system",
+    "light": "Ayu Light",
+    "dark": "Ayu Dark"
+  },
+
+  // Features that can be globally enabled or disabled
+  "features": {
+    // Which edit prediction provider to use.
+    "edit_prediction_provider": "copilot"
+  },
+
+  // Whether to enable vim modes and key bindings.
+  "vim_mode": true,
+
+  // Show method signatures in the editor, when inside parentheses.
+  "auto_signature_help": true,
+
+  // Minimap related settings
+  "minimap": {
+    // When to show the minimap in the editor.
+    // This setting can take three values:
+    // 1. Show the minimap if the editor's scrollbar is visible:
+    //    "auto"
+    // 2. Always show the minimap:
+    //    "always"
+    // 3. Never show the minimap:
+    //    "never" (default)
+    "show": "always",
+    // Where to show the minimap in the editor.
+    // This setting can take two values:
+    // 1. Show the minimap on the focused editor only:
+    //    "active_editor" (default)
+    // 2. Show the minimap on all open editors:
+    //    "all_editors"
+    "display_in": "all_editors"
+  },
+
+  // Inlay hint related settings
+  "inlay_hints": {
+    // Global switch to toggle hints on and off, switched off by default.
+    "enabled": true
+  },
+
+  // Diagnostics configuration.
+  "diagnostics": {
+    // Settings for inline diagnostics
+    "inline": {
+      // Whether to show diagnostics inline or not
+      "enabled": true
+    }
+  }
+}
