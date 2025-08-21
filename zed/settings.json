@@ -23,6 +23,24 @@
   // Show method signatures in the editor, when inside parentheses.
   "auto_signature_help": true,
 
+  // When to automatically save edited buffers. This setting can
+  // take four values.
+  //
+  // 1. Never automatically save:
+  //     "autosave": "off",
+  // 2. Save when changing focus away from the Zed window:
+  //     "autosave": "on_window_change",
+  // 3. Save when changing focus away from a specific buffer:
+  //     "autosave": "on_focus_change",
+  // 4. Save when idle for a certain amount of time:
+  //     "autosave": { "after_delay": {"milliseconds": 500} },
+  "autosave": { "after_delay": { "milliseconds": 200 } },
+
+  "tabs": {
+    // Show git status colors in the editor tabs.
+    "git_status": true
+  },
+
   // Minimap related settings
   "minimap": {
     // When to show the minimap in the editor.
@@ -56,5 +74,26 @@
       // Whether to show diagnostics inline or not
       "enabled": true
     }
+  },
+
+  // Settings specific to the terminal
+  "terminal": {
+    // Default cursor shape for the terminal.
+    //  1. A block that surrounds the following character
+    //     "block"
+    //  2. A vertical bar
+    //     "bar"
+    //  3. An underline / underscore that runs along the following character
+    //     "underline"
+    //  4. A box drawn around the following character
+    //     "hollow"
+    //
+    // Default: not set, defaults to "block"
+    "cursor_shape": "bar",
+    // Whether or not selecting text in the terminal will automatically
+    // copy to the system clipboard.
+    "copy_on_select": true,
+    // Whether to keep the text selection after copying it to the clipboard
+    "keep_selection_on_copy": true
   }
 }
