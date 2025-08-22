@@ -12,6 +12,11 @@
   },
   "icon_theme": "Material Icon Theme",
 
+  // The name of a font to use for rendering text in the editor
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  // The default font size for text in the editor
+  "buffer_font_size": 14,
+
   // Features that can be globally enabled or disabled
   "features": {
     // Which edit prediction provider to use.
