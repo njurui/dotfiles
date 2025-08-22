@@ -130,6 +130,39 @@
   "auto_install_extensions": {
     "material-icon-theme": true,
     "html": true,
-    "ruff": true
+    "ruff": true,
+    "java": true,
+    "latex": true
+  },
+
+  // Different settings for specific languages.
+  "languages": {
+    "Markdown": {
+      "format_on_save": "off",
+      "use_on_type_format": false,
+      "allow_rewrap": "anywhere",
+      "soft_wrap": "editor_width",
+      "completions": {
+        "words": "enabled"
+      },
+      "prettier": {
+        "allowed": true
+      }
+    },
+    "Plain Text": {
+      "completions": {
+        "words": "enabled"
+      },
+      "allow_rewrap": "anywhere"
+    },
+    "Python": {
+      "debuggers": ["Debugpy"],
+      "formatter": {
+        "external": {
+          "command": "black",
+          "arguments": ["-"]
+        }
+      }
+    }
   }
 }
