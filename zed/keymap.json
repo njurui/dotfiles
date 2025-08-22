@@ -1,0 +1,10 @@
+[
+  {
+    "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
+    "bindings": {
+      "space f": "editor::Format",
+      "space c a": "editor::ToggleCodeActions",
+      "space f f": "file_finder::Toggle"
+    }
+  }
+]
