@@ -5,6 +5,13 @@
   // - "system": Use the theme that corresponds to the system's appearance
   // - "light": Use the theme indicated by the "light" field
   // - "dark": Use the theme indicated by the "dark" field
+  "agent": {
+    "default_profile": "minimal",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    }
+  },
   "theme": {
     "mode": "system",
     "light": "Ayu Light",
@@ -25,9 +32,6 @@
 
   // Whether to enable vim modes and key bindings.
   "vim_mode": true,
-
-  // Show method signatures in the editor, when inside parentheses.
-  "auto_signature_help": true,
 
   // When to automatically save edited buffers. This setting can
   // take four values.

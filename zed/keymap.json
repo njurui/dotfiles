@@ -2,8 +2,18 @@
   {
     "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
     "bindings": {
-      "space f": "editor::Format",
+      "s v": "pane::SplitVertical",
+      "s h": "pane::SplitHorizontal",
+      "g d": "editor::GoToDefinition",
+      "g r": "editor::FindAllReferences",
+      "g I": "editor::GoToImplementation",
+      "g y": "editor::GoToTypeDefinition",
+      "g D": "editor::GoToDeclaration",
+      "K": "editor::Hover",
+      "g K": "editor::ShowSignatureHelp",
+      "space c f": "editor::Format",
       "space c a": "editor::ToggleCodeActions",
+      "space c r": "editor::Rename",
       "space f f": "file_finder::Toggle"
     }
   }
