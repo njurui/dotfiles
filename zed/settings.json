@@ -5,13 +5,6 @@
   // - "system": Use the theme that corresponds to the system's appearance
   // - "light": Use the theme indicated by the "light" field
   // - "dark": Use the theme indicated by the "dark" field
-  "agent": {
-    "default_profile": "minimal",
-    "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4o"
-    }
-  },
   "theme": {
     "mode": "system",
     "light": "Ayu Light",
@@ -156,13 +149,20 @@
       "allow_rewrap": "anywhere"
     },
     "Python": {
-      "debuggers": ["Debugpy"],
-      "formatter": {
-        "external": {
-          "command": "black",
-          "arguments": ["-"]
+      "language_servers": ["pyright", "ruff"],
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
         }
-      }
+      ]
     }
   }
 }
