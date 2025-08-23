@@ -29,7 +29,7 @@
   {
     "context": "(ProjectPanel && not_editing)",
     "bindings": {
-      "space e": "workspace::CloseActiveDock",
+      "space e": "workspace::ToggleLeftDock",
       "a": "project_panel::NewFile",
       "r": "project_panel::Rename",
       "d": "project_panel::Delete",
