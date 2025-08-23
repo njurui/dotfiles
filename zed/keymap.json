@@ -29,7 +29,7 @@
       "[ c": "editor::GoToPreviousHunk",
       "] c": "editor::GoToHunk",
       "space h d": "editor::ExpandAllDiffHunks",
-      "ctrl-`": "workspace::OpenTerminal"
+      "ctrl-`": "terminal_panel::ToggleFocus"
     }
   },
   {
