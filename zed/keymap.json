@@ -25,7 +25,10 @@
       "space c a": "editor::ToggleCodeActions",
       "space r n": "editor::Rename",
       "space f f": "file_finder::Toggle",
-      "space f g": "pane::DeploySearch"
+      "space f g": "pane::DeploySearch",
+      "[ c": "editor::GoToPreviousHunk",
+      "] c": "editor::GoToHunk",
+      "space h d": "editor::ExpandAllDiffHunks"
     }
   },
   {
