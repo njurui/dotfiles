@@ -1,6 +1,6 @@
 [
   {
-    "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
+    "context": "(Editor && vim_mode == normal && vim_operator == none && !VimWaiting)",
     "bindings": {
       "s v": "pane::SplitVertical",
       "s h": "pane::SplitHorizontal",
@@ -18,12 +18,24 @@
       "K": "editor::Hover",
       "g K": "editor::ShowSignatureHelp",
       "space f": "editor::Format",
-      "space o": "outline_panel::ToggleFocus",
+      "space o": "outline::Toggle",
       "space e": "pane::RevealInProjectPanel",
       "space c a": "editor::ToggleCodeActions",
       "space r n": "editor::Rename",
       "space f f": "file_finder::Toggle",
       "space f g": "pane::DeploySearch"
+    }
+  },
+  {
+    "context": "(ProjectPanel && not_editing)",
+    "bindings": {
+      "space e": "workspace::CloseActiveDock",
+      "a": "project_panel::NewFile",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "D": "project_panel::Trash",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste"
     }
   }
 ]

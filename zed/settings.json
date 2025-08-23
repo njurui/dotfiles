@@ -55,14 +55,7 @@
     //    "always"
     // 3. Never show the minimap:
     //    "never" (default)
-    "show": "always",
-    // Where to show the minimap in the editor.
-    // This setting can take two values:
-    // 1. Show the minimap on the focused editor only:
-    //    "active_editor" (default)
-    // 2. Show the minimap on all open editors:
-    //    "all_editors"
-    "display_in": "all_editors"
+    "show": "auto"
   },
 
   // Inlay hint related settings
