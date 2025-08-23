@@ -4,6 +4,8 @@
     "bindings": {
       "s v": "pane::SplitVertical",
       "s h": "pane::SplitHorizontal",
+      "s c": "pane::CloseActiveItem",
+      "s o": "pane::CloseOtherItems",
       "ctrl-j": "workspace::ActivatePaneDown",
       "ctrl-k": "workspace::ActivatePaneUp",
       "ctrl-h": "workspace::ActivatePaneLeft",
