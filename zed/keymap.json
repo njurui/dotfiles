@@ -1,6 +1,6 @@
 [
   {
-    "context": "(Editor && vim_mode == normal && vim_operator == none && !VimWaiting)",
+    "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
     "bindings": {
       "s v": "pane::SplitVertical",
       "s h": "pane::SplitHorizontal",
@@ -28,11 +28,12 @@
       "space f g": "pane::DeploySearch",
       "[ c": "editor::GoToPreviousHunk",
       "] c": "editor::GoToHunk",
-      "space h d": "editor::ExpandAllDiffHunks"
+      "space h d": "editor::ExpandAllDiffHunks",
+      "ctrl-`": "workspace::OpenTerminal"
     }
   },
   {
-    "context": "(ProjectPanel && not_editing)",
+    "context": "ProjectPanel && not_editing",
     "bindings": {
       "space e": "workspace::ToggleLeftDock",
       "a": "project_panel::NewFile",
@@ -41,6 +42,12 @@
       "D": "project_panel::Trash",
       "c": "project_panel::Copy",
       "p": "project_panel::Paste"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-`": "workspace::ToggleBottomDock"
     }
   }
 ]
