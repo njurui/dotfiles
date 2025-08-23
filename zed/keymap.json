@@ -17,6 +17,8 @@
       "g D": "editor::GoToDeclaration",
       "K": "editor::Hover",
       "g K": "editor::ShowSignatureHelp",
+      "[ d": "project_panel::SelectPrevDiagnostic",
+      "] d": "project_panel::SelectNextDiagnostic",
       "space f": "editor::Format",
       "space o": "outline::Toggle",
       "space e": "pane::RevealInProjectPanel",
