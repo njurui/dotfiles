@@ -70,7 +70,7 @@ map("n", "zc", ":foldclose<CR>", opts)
 map("n", "zo", ":foldopen<CR>", opts)
 
 -- nvim-tree
-map("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
+map("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 map("n", "<leader>u", ":Telescope undo<cr>", opts)
 
@@ -134,7 +134,7 @@ map("n", "gr", ":lua require('telescope.builtin').lsp_references()<CR>", opts)
 map("n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
 -- map("n", "<C-k>", ":lua vim.lsp.buf.signature_help<CR>", opts)
 -- -- diagnostic
-map("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>", opts)
+-- map("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>", opts)
 map("n", "gk", ":lua vim.diagnostic.goto_prev()<CR>", opts)
 map("n", "gj", ":lua vim.diagnostic.goto_next()<CR>", opts)
 map("n", "<leader>f", ":lua vim.lsp.buf.format({async=true})<CR>", opts)
