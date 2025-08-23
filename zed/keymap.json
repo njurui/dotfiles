@@ -11,10 +11,12 @@
       "g D": "editor::GoToDeclaration",
       "K": "editor::Hover",
       "g K": "editor::ShowSignatureHelp",
-      "space c f": "editor::Format",
+      "space f": "editor::Format",
+      "space o": "outline::Toggle",
       "space c a": "editor::ToggleCodeActions",
-      "space c r": "editor::Rename",
-      "space f f": "file_finder::Toggle"
+      "space r n": "editor::Rename",
+      "space f f": "file_finder::Toggle",
+      "space f g": "pane::DeploySearch"
     }
   }
 ]

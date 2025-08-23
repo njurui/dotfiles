@@ -130,6 +130,12 @@
 
   // Different settings for specific languages.
   "languages": {
+    "C": {
+      "format_on_save": "on"
+    },
+    "C++": {
+      "format_on_save": "on"
+    },
     "Markdown": {
       "format_on_save": "off",
       "use_on_type_format": false,
@@ -150,6 +156,7 @@
     },
     "Python": {
       "language_servers": ["pyright", "ruff"],
+      "format_on_save": "on",
       "formatter": [
         {
           "code_actions": {
