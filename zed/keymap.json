@@ -2,6 +2,7 @@
   {
     "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
     "bindings": {
+      "space w": "workspace::Save",
       "s v": "pane::SplitVertical",
       "s h": "pane::SplitHorizontal",
       "s c": "pane::CloseActiveItem",

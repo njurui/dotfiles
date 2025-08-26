@@ -640,7 +640,7 @@ require("lazy").setup({
                         "--header-insertion=iwyu",
                         "--completion-style=detailed",
                         "--function-arg-placeholders",
-                        "--fallback-style=chromium",
+                        "--fallback-style=google",
                     },
                     init_options = {
                         clangdFileStatus = true,
@@ -653,10 +653,6 @@ require("lazy").setup({
                     flags = { allow_incremental_sync = false },
                 })
                 lspconfig.pyright.setup({
-                    capabilities = capabilities,
-                    on_attach = on_attach,
-                })
-                lspconfig.ty.setup({
                     capabilities = capabilities,
                     on_attach = on_attach,
                 })
