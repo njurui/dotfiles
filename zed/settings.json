@@ -61,7 +61,13 @@
   // Inlay hint related settings
   "inlay_hints": {
     // Global switch to toggle hints on and off, switched off by default.
-    "enabled": true
+    "enabled": true,
+    // Time to wait after editing the buffer, before requesting the hints,
+    // set to 0 to disable debouncing.
+    "edit_debounce_ms": 0,
+    // Time to wait after scrolling the buffer, before requesting the hints,
+    // set to 0 to disable debouncing.
+    "scroll_debounce_ms": 0
   },
 
   // Diagnostics configuration.
@@ -172,7 +178,8 @@
       "settings": {
         "texlab": {
           "build": {
-            "onSave": true
+            "onSave": true,
+            "forwardSearchAfter": true
           },
           "forwardSearch": {
             "executable": "/Applications/Skim.app/Contents/SharedSupport/displayline",
