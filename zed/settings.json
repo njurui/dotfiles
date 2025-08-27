@@ -164,5 +164,25 @@
         }
       ]
     }
+  },
+
+  // LSP Specific settings.
+  "lsp": {
+    "texlab": {
+      "settings": {
+        "texlab": {
+          "build": {
+            "onSave": true
+          },
+          "forwardSearch": {
+            "executable": "/Applications/Skim.app/Contents/SharedSupport/displayline",
+            "args": ["-g", "%l", "%p", "%f"]
+          },
+          "latexindent": {
+            "modifyLineBreaks": true
+          }
+        }
+      }
+    }
   }
 }
