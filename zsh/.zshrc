@@ -198,6 +198,11 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
     alias ssh="kitten ssh"
 fi
 
+export KITTY_REMOTE_DIR="$HOME/.local/share/kitty-ssh-kitten"
+if test -n "$KITTY_REMOTE_DIR"; then
+    path=( $KITTY_REMOTE_DIR/kitty/bin $path )
+fi
+
 # environment variable for clang
 export LIBRARY_PATH=$HOMEBREW_PREFIX/opt/llvm/lib/c++:$HOMEBREW_PREFIX/lib
 export CPATH="$HOMEBREW_PREFIX/include"
