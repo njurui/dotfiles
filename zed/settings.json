@@ -13,14 +13,19 @@
   "icon_theme": "Material Icon Theme",
 
   "experimental.theme_overrides": {
-    "hint": "#878a90",
+    "hint": "#959595",
     "hint.background": "#1b1c20",
+    "terminal.ansi.bright_black": "#6e7681",
     "syntax": {
       "comment": {
+        "color": "#909090",
         "font_style": "italic"
       },
       "comment.doc": {
         "font_style": "italic"
+      },
+      "variable": {
+        "color": "#e6edf3"
       }
     }
   },
