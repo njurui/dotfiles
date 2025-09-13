@@ -211,6 +211,15 @@
       "settings": {
         "texlab": {
           "build": {
+            "executable": "latexmk",
+            "args": [
+              "-pdf",
+              "-xelatex",
+              "-shell-escape",
+              "-interaction=nonstopmode",
+              "-synctex=1",
+              "%f"
+            ],
             "onSave": true,
             "forwardSearchAfter": true
           },
@@ -218,6 +227,10 @@
             "executable": "/Applications/Skim.app/Contents/SharedSupport/displayline",
             "args": ["-g", "%l", "%p", "%f"]
           },
+          // "chktex": {
+          //   "onEdit": true,
+          //   "onOpenAndSave": true
+          // },
           "latexindent": {
             "modifyLineBreaks": true
           }
