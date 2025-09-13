@@ -147,7 +147,8 @@
     "html": true,
     "ruff": true,
     "java": true,
-    "latex": true
+    "latex": true,
+    "typst": true
   },
 
   // Different settings for specific languages.
@@ -176,6 +177,14 @@
       },
       "allow_rewrap": "anywhere"
     },
+    "Typst": {
+      "formatter": {
+        "external": {
+          "command": "typstyle",
+          "arguments": []
+        }
+      }
+    },
     "Python": {
       "language_servers": ["pyright", "ruff"],
       "format_on_save": "on",
@@ -197,6 +206,7 @@
 
   // LSP Specific settings.
   "lsp": {
+    // Latex
     "texlab": {
       "settings": {
         "texlab": {
@@ -212,6 +222,14 @@
             "modifyLineBreaks": true
           }
         }
+      }
+    },
+
+    // Typst
+    "tinymist": {
+      "settings": {
+        "exportPdf": "onSave",
+        "outputPath": "$name"
       }
     }
   }
