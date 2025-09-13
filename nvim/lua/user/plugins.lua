@@ -688,6 +688,7 @@ require("lazy").setup({
                     settings = {
                         texlab = {
                             build = {
+                                executable = "latexmk",
                                 args = {
                                     "-pdf",
                                     "-pdflatex",
@@ -696,7 +697,6 @@ require("lazy").setup({
                                     "-synctex=1",
                                     "%f",
                                 },
-                                executable = "latexmk",
                                 forwardSearchAfter = true,
                                 onSave = true,
                             },
@@ -704,10 +704,10 @@ require("lazy").setup({
                                 executable = "/Applications/Skim.app/Contents/SharedSupport/displayline",
                                 args = { "-g", "%l", "%p", "%f" },
                             },
-                            chktex = {
-                                onEdit = true,
-                                onOpenAndSave = true,
-                            },
+                            -- chktex = {
+                            --     onEdit = true,
+                            --     onOpenAndSave = true,
+                            -- },
                             latexindent = {
                                 modifyLineBreaks = true,
                             },
