@@ -30,7 +30,6 @@
       "[ c": "editor::GoToPreviousHunk",
       "] c": "editor::GoToHunk",
       "space h d": "editor::ExpandAllDiffHunks",
-      "ctrl-`": "terminal_panel::ToggleFocus"
     }
   },
   {
