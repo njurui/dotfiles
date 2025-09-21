@@ -141,6 +141,7 @@
     "git-firefly": true,
     "html": true,
     "ruff": true,
+    "ty": true,
     "java": true,
     "latex": true,
     "typst": true
@@ -183,7 +184,7 @@
       }
     },
     "Python": {
-      "language_servers": ["pyright", "ruff"],
+      "language_servers": ["ty", "ruff"],
       "format_on_save": "on",
       "formatter": [
         {
