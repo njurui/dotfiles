@@ -21,16 +21,26 @@ zinit snippet $HOME/.config/zsh/llvm.zsh
 
 # plugins loaded before compinit
 zinit ice depth=1; zinit light romkatv/powerlevel10k
-zinit ice depth=1; zinit light zsh-users/zsh-completions
-zinit ice depth=1; zinit light zsh-users/zsh-autosuggestions
-zinit ice depth=1; zinit light zdharma/fast-syntax-highlighting
-zinit ice depth=1; zinit light agkozak/zsh-z
+
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
+
+zinit ice wait"2" as"command" from"gh-r" lucid \
+  mv"zoxide*/zoxide -> zoxide" \
+  atclone"./zoxide init zsh > init.zsh" \
+  atpull"%atclone" src"init.zsh" nocompile'!'
+zinit light ajeetdsouza/zoxide
 
 # Zsh completion
 autoload -Uz compinit && compinit
 
 # plugins loaded after compinit
-zinit ice depth=1; zinit light Aloxaf/fzf-tab
+zinit light Aloxaf/fzf-tab
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
