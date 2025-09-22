@@ -16,6 +16,9 @@ vim.opt.signcolumn = "yes"
 -- Right-side reference line
 vim.opt.colorcolumn = "160"
 
+-- Mouse support
+vim.opt.mouse = "a"
+
 -- Tab and indent
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
