@@ -141,6 +141,7 @@
     "git-firefly": true,
     "html": true,
     "ruff": true,
+    "lua": true,
     "ty": true,
     "java": true,
     "latex": true,
