@@ -17,5 +17,5 @@ if [[ -d "$HOMEBREW_PREFIX" ]]; then
 
     # prevent tmux from loading $PATH twice
     typeset -aU path
-    path=( $HOMEBREW_PREFIX/opt/llvm/bin $path )
+    path=($HOMEBREW_PREFIX/opt/llvm/bin $path)
 fi

@@ -23,8 +23,3 @@ unsetopt hup                  # don't kill jobs on shell exit
 setopt long_list_jobs         # list jobs in the long format by default
 setopt notify                 # report status of background jobs immediately
 
-# fzf
-if (( $+commands[fzf] )); then
-  source <(fzf --zsh)
-fi
-

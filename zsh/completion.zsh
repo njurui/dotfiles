@@ -13,8 +13,8 @@ setopt always_to_end     # move cursor to the end of a completed word
 
 # should this be in keybindings?
 bindkey -M menuselect '^o' accept-and-infer-next-history
-bindkey -M menuselect '/' history-incremental-search-forward
-bindkey -M menuselect '?' history-incremental-search-forward
+# bindkey -M menuselect '/' history-incremental-search-forward
+# bindkey -M menuselect '?' history-incremental-search-backward
 zstyle ':completion:*:*:*:*:*' menu select
 
 CASE_SENSITIVE=true

@@ -5,42 +5,71 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# zinit
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
+source $HOME/.config/zsh/directories.zsh
+source $HOME/.config/zsh/completion.zsh
+source $HOME/.config/zsh/history.zsh
+source $HOME/.config/zsh/misc.zsh
+source $HOME/.config/zsh/kitty.zsh
+source $HOME/.config/zsh/llvm.zsh
 
-# snippets
-zinit snippet $HOME/.config/zsh/directories.zsh
-zinit snippet $HOME/.config/zsh/completion.zsh
-zinit snippet $HOME/.config/zsh/history.zsh
-zinit snippet $HOME/.config/zsh/misc.zsh
-zinit snippet $HOME/.config/zsh/kitty.zsh
-zinit snippet $HOME/.config/zsh/llvm.zsh
+ZSH_DATA_HOME="${HOME}/.local/share/zsh"
+if ! [[ -d "$ZSH_DATA_HOME" ]]; then
+  mkdir -p "$ZSH_DATA_HOME"
+fi
 
-# plugins loaded before compinit
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+# powerlevel10k
+if ! [[ -d "$ZSH_DATA_HOME/powerlevel10k" ]]; then
+  git clone --depth=1 "https://github.com/romkatv/powerlevel10k.git" "$ZSH_DATA_HOME/powerlevel10k"
+fi
+source $ZSH_DATA_HOME/powerlevel10k/powerlevel10k.zsh-theme
 
-zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma-continuum/fast-syntax-highlighting \
- blockf \
-    zsh-users/zsh-completions \
- atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions
+# zsh-completions
+if ! [[ -d "$ZSH_DATA_HOME/zsh-completions" ]]; then
+  git clone --depth=1 "https://github.com/zsh-users/zsh-completions.git" "$ZSH_DATA_HOME/zsh-completions"
+fi
+fpath=($ZSH_DATA_HOME/zsh-completions/src $fpath)
 
-zinit ice wait"2" as"command" from"gh-r" lucid \
-  mv"zoxide*/zoxide -> zoxide" \
-  atclone"./zoxide init zsh > init.zsh" \
-  atpull"%atclone" src"init.zsh" nocompile'!'
-zinit light ajeetdsouza/zoxide
-
-# Zsh completion
+# compinit
 autoload -Uz compinit && compinit
 
-# plugins loaded after compinit
-zinit light Aloxaf/fzf-tab
+# zsh-syntax-highlighting
+if ! [[ -d "$ZSH_DATA_HOME/zsh-syntax-highlighting" ]]; then
+  git clone --depth=1 "https://github.com/zsh-users/zsh-syntax-highlighting" "$ZSH_DATA_HOME/zsh-syntax-highlighting"
+fi
+source $ZSH_DATA_HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# zsh-autosuggestions
+if ! [[ -d "$ZSH_DATA_HOME/zsh-autosuggestions" ]]; then
+  git clone --depth=1 "https://github.com/marlonrichert/zsh-autosuggestions.git" "$ZSH_DATA_HOME/zsh-autosuggestions"
+fi
+source $ZSH_DATA_HOME/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+
+# zsh-history-substring-search
+if ! [[ -d "$ZSH_DATA_HOME/zsh-history-substring-search" ]]; then
+  git clone --depth=1 "https://github.com/zsh-users/zsh-history-substring-search.git" "$ZSH_DATA_HOME/zsh-history-substring-search"
+fi
+source $ZSH_DATA_HOME/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
+# fzf
+if (( $+commands[fzf] )); then
+  source <(fzf --zsh)
+
+  # fzf-tab
+  if ! [[ -d "$ZSH_DATA_HOME/fzf-tab" ]]; then
+      git clone --depth=1 "https://github.com/Aloxaf/fzf-tab" "$ZSH_DATA_HOME/fzf-tab"
+  fi
+  source $ZSH_DATA_HOME/fzf-tab/fzf-tab.plugin.zsh
+fi
+
+# zoxide
+if ! (( $+commands[zoxide] )); then
+    curl -sSfL "https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh" | sh
+fi
+eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
