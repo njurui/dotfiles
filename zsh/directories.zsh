@@ -34,3 +34,8 @@ alias l='gls --color=auto -lah'
 alias ls='gls --color=auto'
 alias ll='gls --color=auto -lh'
 alias la='gls --color=auto -lAh'
+
+# alias for grep
+alias egrep='grep -E --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+alias fgrep='grep -F --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
+alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}'
