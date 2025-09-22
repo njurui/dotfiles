@@ -5,17 +5,18 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+ZSH_DATA_HOME="${HOME}/.local/share/zsh"
+if ! [[ -d "$ZSH_DATA_HOME" ]]; then
+  mkdir -p "$ZSH_DATA_HOME"
+fi
+
+# configs
 source $HOME/.config/zsh/directories.zsh
 source $HOME/.config/zsh/completion.zsh
 source $HOME/.config/zsh/history.zsh
 source $HOME/.config/zsh/misc.zsh
 source $HOME/.config/zsh/kitty.zsh
 source $HOME/.config/zsh/llvm.zsh
-
-ZSH_DATA_HOME="${HOME}/.local/share/zsh"
-if ! [[ -d "$ZSH_DATA_HOME" ]]; then
-  mkdir -p "$ZSH_DATA_HOME"
-fi
 
 # powerlevel10k
 if ! [[ -d "$ZSH_DATA_HOME/powerlevel10k" ]]; then
