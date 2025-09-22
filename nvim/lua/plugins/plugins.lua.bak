@@ -1,0 +1,296 @@
+
+     
+        
+        
+
+
+
+      
+        -- Lsp Utility
+        -- {
+        --     "hrsh7th/nvim-cmp",
+        --     dependencies = {
+        --         -- "rafamadriz/friendly-snippets",
+        --         "hrsh7th/cmp-nvim-lsp",
+        --         "hrsh7th/cmp-buffer",
+        --         "hrsh7th/cmp-path",
+        --         "hrsh7th/cmp-cmdline",
+        --         "L3MON4D3/LuaSnip",
+        --         "saadparwaiz1/cmp_luasnip", -- required by LuaSnip
+        --         "onsails/lspkind.nvim",
+        --         "rcarriga/cmp-dap",
+        --     },
+        --     config = function()
+        --         local cmp = require("cmp")
+        --         local lspkind = require("lspkind")
+        --         local compare = require("cmp.config.compare")
+        --
+        --         local luasnip = require("luasnip")
+        --         -- require("luasnip.loaders.from_vscode").lazy_load()
+        --         -- local has_words_before = function()
+        --         --     unpack = unpack or table.unpack
+        --         --     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        --         --     return col ~= 0 and
+        --         --         vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+        --         -- end
+        --
+        --         lspkind.init({
+        --             symbol_map = {
+        --                 -- Copilot = "",
+        --             },
+        --         })
+        --
+        --         cmp.setup({
+        --             snippet = {
+        --                 expand = function(args)
+        --                     luasnip.lsp_expand(args.body)
+        --                 end,
+        --             },
+        --
+        --             enabled = function()
+        --                 return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+        --                     or require("cmp_dap").is_dap_buffer()
+        --             end,
+        --             sorting = {
+        --                 priority_weight = 2,
+        --                 comparators = {
+        --                     compare.offset,
+        --                     compare.exact,
+        --                     compare.score,
+        --                     compare.recently_used,
+        --                     compare.kind,
+        --                     compare.sort_text,
+        --                     compare.length,
+        --                     compare.order,
+        --                 },
+        --             },
+        --             window = {
+        --                 completion = {
+        --                     border = "rounded",
+        --                     -- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+        --                     -- col_offset = -3,
+        --                     -- side_padding = 0,
+        --                 },
+        --                 documentation = {
+        --                     border = "rounded",
+        --                 },
+        --             },
+        --
+        --             -- Ignore preselect requests from LSP
+        --             -- preselect = cmp.PreselectMode.None,
+        --
+        --             preselect = cmp.PreselectMode.Item,
+        --             completion = {
+        --                 completeopt = 'menu,menuone,noinsert',
+        --             },
+        --
+        --             sources = {
+        --                 { name = "nvim_lsp" },
+        --                 -- { name = "luasnip" },
+        --                 { name = "buffer" },
+        --                 { name = "path" },
+        --             },
+        --             formatting = {
+        --                 format = lspkind.cmp_format({
+        --                     mode = "symbol_text",
+        --                     maxwidth = 50,
+        --                     ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+        --                     menu = {
+        --                         buffer = "[Buffer]",
+        --                         nvim_lsp = "[LSP]",
+        --                         -- luasnip = "[LuaSnip]",
+        --                         path = "[Path]",
+        --                         cmdline = "[Command]",
+        --                         dap = "[DAP]",
+        --                     },
+        --                 }),
+        --             },
+        --             mapping = {
+        --                 ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "s", "c" }),
+        --                 ['<C-e>'] = cmp.mapping.abort(),
+        --                 ["<C-p>"] = cmp.mapping.select_prev_item(),
+        --                 ["<C-n>"] = cmp.mapping.select_next_item(),
+        --                 ["<CR>"] = cmp.mapping.confirm({
+        --                     select = true,
+        --                     behavior = cmp.ConfirmBehavior.Insert,
+        --                 }),
+        --                 ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "s", "c" }),
+        --                 ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "s", "c" }),
+        --
+        --                 ["<Tab>"] = cmp.mapping(function(fallback)
+        --                     -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
+        --                     if cmp.visible() then
+        --                         local entry = cmp.get_selected_entry()
+        --                         if not entry then
+        --                             cmp.select_next_item({
+        --                                 behavior = cmp.SelectBehavior.Select,
+        --                             })
+        --                         end
+        --                         cmp.confirm({
+        --                             behavior = cmp.ConfirmBehavior.Replace,
+        --                         })
+        --                     elseif luasnip.locally_jumpable(1) then
+        --                         luasnip.jump(1)
+        --                     else
+        --                         fallback()
+        --                     end
+        --                 end, { "i", "s", "c", }),
+        --
+        --                 -- Super-Tab like mapping
+        --
+        --                 -- ['<Tab>'] = cmp.mapping(function(fallback)
+        --                 --     if cmp.visible() then
+        --                 --         if #cmp.get_entries() == 1 then
+        --                 --             cmp.confirm({ select = true })
+        --                 --         else
+        --                 --             cmp.select_next_item()
+        --                 --         end
+        --                 --     elseif luasnip.expand_or_jumpable() then
+        --                 --         luasnip.expand_or_jump()
+        --                 --     elseif has_words_before() then
+        --                 --         cmp.complete()
+        --                 --         if #cmp.get_entries() == 1 then
+        --                 --             cmp.confirm({ select = true })
+        --                 --         end
+        --                 --     else
+        --                 --         fallback()
+        --                 --     end
+        --                 -- end, { "i", "s" }),
+        --                 --
+        --                 -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+        --                 --     if cmp.visible() then
+        --                 --         cmp.select_prev_item()
+        --                 --     elseif luasnip.locally_jumpable(-1) then
+        --                 --         luasnip.jump(-1)
+        --                 --     else
+        --                 --         fallback()
+        --                 --     end
+        --                 -- end, { "i", "s" }),
+        --             },
+        --         })
+        --
+        --         cmp.setup.cmdline({ "/", "?" }, {
+        --             mapping = cmp.mapping.preset.cmdline(),
+        --             sources = {
+        --                 { name = "buffer" },
+        --             },
+        --         })
+        --
+        --         cmp.setup.cmdline(":", {
+        --             mapping = cmp.mapping.preset.cmdline(),
+        --             sources = {
+        --                 { name = "path" },
+        --                 { name = "cmdline" },
+        --             },
+        --         })
+        --
+        --         cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+        --             sources = {
+        --                 { name = "dap" },
+        --             },
+        --         })
+        --
+        --         local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+        --         cmp.event:on(
+        --             'confirm_done',
+        --             cmp_autopairs.on_confirm_done()
+        --         )
+        --
+        --         -- -- gray
+        --         -- vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { bg = 'NONE', strikethrough = true, fg = '#808080' })
+        --         -- -- blue
+        --         -- vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { bg = 'NONE', fg = '#569CD6' })
+        --         -- vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', { link = 'CmpIntemAbbrMatch' })
+        --         -- -- cyan
+        --         -- vim.api.nvim_set_hl(0, 'CmpItemKindVariable', { bg = 'NONE', fg = '#29C0DA' })
+        --         -- vim.api.nvim_set_hl(0, 'CmpItemKindInterface', { link = 'CmpItemKindVariable' })
+        --         -- -- pink
+        --         vim.api.nvim_set_hl(0, 'CmpItemKindFunction', { bg = 'NONE', fg = '#C586C0' })
+        --         vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { link = 'CmpItemKindFunction' })
+        --         -- -- front
+        --         -- vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg = 'NONE', fg = '#D4D4D4' })
+        --         -- vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { link = 'CmpItemKindKeyword' })
+        --         -- vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link = 'CmpItemKindKeyword' })
+        --         -- -- light blue
+        --         -- vim.api.nvim_set_hl(0, 'CmpItemKindText', { bg = 'NONE', fg = '#9CDCFE' })
+        --
+        --         -- Customization for Pmenu
+        --         vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#282C34", fg = "NONE" })
+        --         vim.api.nvim_set_hl(0, "Pmenu", { fg = "#C5CDD9", bg = "NONE" })
+        --
+        --         vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { fg = "#7E8294", bg = "NONE", strikethrough = true })
+        --         vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#538AF7", bg = "NONE", bold = true })
+        --         vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = "#538AF7", bg = "NONE", bold = true })
+        --         vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "#6D717A", bg = "NONE", italic = true })
+        --         --
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindField", { fg = "#EED8DA", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindProperty", { fg = "#EED8DA", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindEvent", { fg = "#EED8DA", bg = "NONE" })
+        --         --
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindText", { fg = "#C3E88D", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindEnum", { fg = "#C3E88D", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { fg = "#C3E88D", bg = "NONE" })
+        --         --
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindConstant", { fg = "#FFE082", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindConstructor", { fg = "#FFE082", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindReference", { fg = "#FFE082", bg = "NONE" })
+        --         --
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindFunction", { fg = "#C586C0", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindModule", { fg = "#C586C0", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindOperator", { fg = "#C586C0", bg = "NONE" })
+        --         --
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindStruct", { fg = "#89B4FB", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindClass", { fg = "#89B4FB", bg = "NONE" })
+        --         --
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindVariable", { fg = "#C5CDD9", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindFile", { fg = "#C5CDD9", bg = "NONE" })
+        --         --
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindUnit", { fg = "#F5EBD9", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { fg = "#F5EBD9", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindFolder", { fg = "#F5EBD9", bg = "NONE" })
+        --         --
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindMethod", { fg = "#DDE5F5", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindValue", { fg = "#DDE5F5", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindEnumMember", { fg = "#DDE5F5", bg = "NONE" })
+        --         --
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindInterface", { fg = "#D8EEEB", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindColor", { fg = "#D8EEEB", bg = "NONE" })
+        --         -- vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { fg = "#D8EEEB", bg = "NONE" })
+        --     end,
+        -- },
+        -- {
+        --
+        --     "williamboman/mason.nvim",
+        --     config = function()
+        --         require("mason").setup()
+        --     end
+        -- },
+        -- {
+        --     "williamboman/mason-lspconfig.nvim",
+        --     dependencies = {
+        --         "williamboman/mason.nvim",
+        --     },
+        --     config = function()
+        --         require("mason-lspconfig").setup({
+        --             -- ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "pyright" },
+        --         })
+        --     end
+        -- },
+        -- {
+        --     "antosha417/nvim-lsp-file-operations",
+        --     dependencies = {
+        --         "nvim-lua/plenary.nvim",
+        --         "nvim-tree/nvim-tree.lua",
+        --     },
+        --     config = function()
+        --         require("lsp-file-operations").setup()
+        --     end,
+        -- },
+
+
+        -- Debug
+
+        -- File Manager
+
+
+        -- Other Functions
