@@ -19,9 +19,9 @@ return {
                     yellow    = "#E7C547",
                     green     = "#B3EA54",
                     teal      = "#95E5CB",
-                    sky       = "#6FEFFF",
+                    sky       = "#6FDFFF",
                     sapphire  = "#2C6DA0",
-                    blue      = "#5CAFFF",
+                    blue      = "#90C4FA",
                     lavender  = "#B7E2F8",
 
                     text      = "#E0DED8",
@@ -49,7 +49,6 @@ return {
         ]]
 
         vim.cmd.colorscheme("catppuccin")
-
 
         -- Set CursorLine guibg (Used together with kitty)
         vim.api.nvim_set_hl(0, "CursorLine", { bg = "#212121" })
