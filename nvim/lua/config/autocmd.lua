@@ -46,7 +46,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
             { buffer = bufnr, desc = "vim.lsp.buf.signature_help()" })
 
         vim.keymap.set("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", { buffer = bufnr })
-        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = "vim.lsp.buf.rename()" })
+        -- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = "vim.lsp.buf.rename()" })
+        vim.keymap.set("n", "<leader>rn", function()
+            return ":IncRename " .. vim.fn.expand("<cword>")
+        end, { expr = true, buffer = bufnr, desc = "vim.lsp.buf.rename()" })
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "vim.lsp.buf.code_action()" })
 
         -- Highlight symbol under cursor
