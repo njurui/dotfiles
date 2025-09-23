@@ -24,21 +24,22 @@ return {
                     blue      = "#90C4FA",
                     lavender  = "#B7E2F8",
 
-                    text      = "#E0DED8",
-                    subtext1  = "#BBB8B1",
-                    subtext0  = "#96938E",
+                    text      = "#dddddd",
 
-                    overlay2  = "#7F7F7A",
-                    overlay1  = "#686965",
-                    overlay0  = "#51524F",
+                    subtext1  = "#bbbbbb",
+                    subtext0  = "#aaaaaa",
 
-                    surface2  = "#2B2D33",
-                    surface1  = "#1F2127",
-                    surface0  = "#181B20",
+                    overlay2  = "#999999",
+                    overlay1  = "#888888",
+                    overlay0  = "#777777",
 
-                    base      = "#14161A",
-                    mantle    = "#0B0E12",
-                    crust     = "#000000",
+                    surface2  = "#666666",
+                    surface1  = "#555555",
+                    surface0  = "#444444",
+
+                    base      = "#202020",
+                    mantle    = "#222222",
+                    crust     = "#333333",
                 },
             },
         })

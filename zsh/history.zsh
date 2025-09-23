@@ -1,11 +1,12 @@
+# https://zsh.sourceforge.io/Doc/Release/Options.html#History
 ## History file configuration
-[ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
+HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000000
 SAVEHIST=100000000
 
 ## History command configuration
 setopt append_history         # append to history file
-setopt inc_append_history     # write to the history file immediately, not when the shell exits
+unsetopt inc_append_history     # write to the history file immediately, not when the shell exits
 setopt extended_history       # record timestamp of command in HISTFILE
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups       # don't record an event that was just recorded again
