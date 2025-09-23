@@ -1,10 +1,4 @@
 vim.diagnostic.config({
-    virtual_text = {
-        source = "always", -- Or "if_many"
-    },
-    float = {
-        source = "always", -- Or "if_many"
-    },
     signs = {
         text = {
             [vim.diagnostic.severity.ERROR] = '󰅚 ',
@@ -13,10 +7,16 @@ vim.diagnostic.config({
             [vim.diagnostic.severity.HINT] = '󰌶 ',
         },
     },
+    virtual_lines = true,
     underline = true,
     update_in_insert = false,
     severity_sort = true,
 })
+
+vim.keymap.set('n', 'gK', function()
+    local new_config = not vim.diagnostic.config().virtual_lines
+    vim.diagnostic.config({ virtual_lines = new_config })
+end, { desc = 'Toggle diagnostic virtual_lines' })
 
 vim.lsp.config("clangd", {
     -- root_dir = function(fname)
