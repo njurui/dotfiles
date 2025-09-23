@@ -64,13 +64,13 @@ if (( $+commands[fzf] )); then
       git clone --depth=1 "https://github.com/Aloxaf/fzf-tab" "$ZSH_DATA_HOME/fzf-tab"
   fi
   source $ZSH_DATA_HOME/fzf-tab/fzf-tab.plugin.zsh
-fi
 
-# zoxide
-if ! (( $+commands[zoxide] )); then
-    curl -sSfL "https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh" | sh
+    # zoxide
+    if ! (( $+commands[zoxide] )); then
+        curl -sSfL "https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh" | sh
+    fi
+    eval "$(zoxide init zsh)"
 fi
-eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

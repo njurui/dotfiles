@@ -1,7 +1,9 @@
 return {
     'saghen/blink.cmp',
     dependencies = { 'rafamadriz/friendly-snippets', "copilotlsp-nvim/copilot-lsp", "fang2hou/blink-copilot" },
-    build = 'RUSTFLAGS="-C link-arg=-undefined -C link-arg=dynamic_lookup" cargo build --release',
+    build = vim.loop.os_uname().sysname == "Darwin"
+        and 'RUSTFLAGS="-C link-arg=-undefined -C link-arg=dynamic_lookup" cargo build --release'
+        or 'cargo build --release',
     opts = {
         keymap = {
             preset = 'super-tab',
