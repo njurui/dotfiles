@@ -4,49 +4,41 @@ return {
     priority = 1000,
     config = function()
         require("catppuccin").setup({
-            flavour = "mocha",    -- latte, frappe, macchiato, mocha
-            no_italic = false,    -- Force no italic
-            no_bold = false,      -- Force no bold
-            no_underline = false, -- Force no underline
+            flavour = "mocha",
             transparent_background = true,
             auto_integrations = true,
             color_overrides = {
                 mocha = {
-                    rosewater = "#ffc0b9",
-                    flamingo = "#f5aba3",
-                    pink = "#f592d6",
-                    -- mauve = "#c0afff",
-                    red = "#ea746c",
-                    maroon = "#ff8595",
-                    peach = "#fa9a6d",
-                    yellow = "#ffe081",
-                    green = "#99d783", -- include
-                    teal = "#47deb4",
-                    sky = "#00d5ed",
-                    sapphire = "#00dfce",
-                    -- blue = "#00baee",     -- function
-                    lavender = "#a984bd", -- member
+                    rosewater = "#F0C06A",
+                    flamingo  = "#FFC1C6",
+                    pink      = "#D9B0FF",
+                    mauve     = "#E39AF2",
+                    red       = "#FF6E78",
+                    maroon    = "#F28B97",
+                    peach     = "#FE8F40",
+                    yellow    = "#E7C547",
+                    green     = "#B3EA54",
+                    teal      = "#95E5CB",
+                    sky       = "#6FEFFF",
+                    sapphire  = "#2C6DA0",
+                    blue      = "#5CAFFF",
+                    lavender  = "#B7E2F8",
 
-                    text = "#dddddd",
+                    text      = "#E0DED8",
+                    subtext1  = "#BBB8B1",
+                    subtext0  = "#96938E",
 
-                    subtext1 = "#bbbbbb",
-                    subtext0 = "#aaaaaa",
+                    overlay2  = "#7F7F7A",
+                    overlay1  = "#686965",
+                    overlay0  = "#51524F",
 
-                    overlay2 = "#999999",
-                    overlay1 = "#888888",
-                    overlay0 = "#777777",
+                    surface2  = "#2B2D33",
+                    surface1  = "#1F2127",
+                    surface0  = "#181B20",
 
-                    surface2 = "#666666",
-                    surface1 = "#555555",
-                    surface0 = "#444444",
-
-                    base = "#202020",
-                    mantle = "#222222",
-                    crust = "#333333",
-
-                    -- base = "#000000",
-                    -- mantle = "#000000",
-                    -- crust = "#000000",
+                    base      = "#14161A",
+                    mantle    = "#0B0E12",
+                    crust     = "#000000",
                 },
             },
         })
@@ -57,6 +49,7 @@ return {
         ]]
 
         vim.cmd.colorscheme("catppuccin")
+
 
         -- Set CursorLine guibg (Used together with kitty)
         vim.api.nvim_set_hl(0, "CursorLine", { bg = "#212121" })
