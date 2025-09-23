@@ -1,8 +1,7 @@
 return {
     "CRAG666/code_runner.nvim",
     dependencies = { 'akinsho/toggleterm.nvim' },
-    keys = {
-        { "<leader>rf", "<cmd>RunFile<cr>" } },
+    keys = { { "<leader>rf", "<cmd>RunFile<cr>", desc = "run file" } },
     opts = {
         mode = "toggleterm",
         filetype = {

@@ -9,15 +9,7 @@ return {
             no_bold = false,      -- Force no bold
             no_underline = false, -- Force no underline
             transparent_background = true,
-            integrations = {
-                cmp = true,
-                gitsigns = true,
-                nvimtree = true,
-                telescope = true,
-                which_key = true,
-                notify = true,
-                mini = false,
-            },
+            auto_integrations = true,
             color_overrides = {
                 mocha = {
                     rosewater = "#ffc0b9",
@@ -60,9 +52,9 @@ return {
         })
         -- Fix which-key and LSP highlight problem
         vim.cmd [[
-                    autocmd ColorScheme * highlight NormalFloat guifg=none guibg=none
-                    autocmd ColorScheme * highlight FloatBorder guifg=none guibg=none
-                ]]
+            autocmd ColorScheme * highlight NormalFloat guifg=none guibg=none
+            autocmd ColorScheme * highlight FloatBorder guifg=none guibg=none
+        ]]
 
         vim.cmd.colorscheme("catppuccin")
 

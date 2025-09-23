@@ -1,6 +1,6 @@
 return {
     "nvim-tree/nvim-tree.lua",
-    keys = { { "<leader>e", "<cmd>NvimTreeToggle<cr>" } },
+    keys = { { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle NvimTree" } },
     config = function()
         vim.g.loaded_netrw = 1
         vim.g.loaded_netrwPlugin = 1

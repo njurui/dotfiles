@@ -14,6 +14,17 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+-- Treesitter highlight
+vim.api.nvim_create_autocmd('FileType', {
+    group = vim.api.nvim_create_augroup("treesitter-highlight", { clear = true }),
+    callback = function()
+        local excluded_pattern = [[\v^(notify|noice|fidget|NvimTree|Outline|blink-cmp.*|Telescope.*)$]]
+        if vim.fn.match(vim.bo.filetype, excluded_pattern) == -1 then
+            vim.treesitter.start()
+        end
+    end,
+})
+
 -- Lsp on_attach
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
