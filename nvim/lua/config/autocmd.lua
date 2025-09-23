@@ -18,8 +18,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.api.nvim_create_autocmd('FileType', {
     group = vim.api.nvim_create_augroup("treesitter-highlight", { clear = true }),
     callback = function()
-        local excluded_pattern = [[\v^(notify|noice|fidget|NvimTree|Outline|blink-cmp.*|Telescope.*)$]]
-        if vim.fn.match(vim.bo.filetype, excluded_pattern) == -1 then
+        local fts = require("nvim-treesitter").get_installed()
+        if vim.tbl_contains(fts, vim.bo.filetype) then
             vim.treesitter.start()
         end
     end,
