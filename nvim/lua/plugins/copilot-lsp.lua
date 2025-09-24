@@ -1,7 +1,7 @@
 return {
     "copilotlsp-nvim/copilot-lsp",
     init = function()
-        vim.g.copilot_nes_debounce = 200
+        vim.g.copilot_nes_debounce = 500
         vim.lsp.enable("copilot_ls")
         vim.keymap.set("n", "<tab>", function()
             local bufnr = vim.api.nvim_get_current_buf()

@@ -33,17 +33,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local bufnr = args.buf
 
         -- Keymap
-        vim.keymap.set("n", "gd", require('telescope.builtin').lsp_definitions,
-            { buffer = bufnr, desc = "vim.lsp.buf.definition()" })
-        vim.keymap.set("n", "gi", require('telescope.builtin').lsp_implementations,
-            { buffer = bufnr, desc = "vim.lsp.buf.implementation()" })
-        vim.keymap.set("n", "gr", require('telescope.builtin').lsp_references,
-            { buffer = bufnr, desc = "vim.lsp.buf.references()" })
-        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "vim.lsp.buf.declaration()" })
+        -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "vim.lsp.buf.definition()" })
+        -- vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr, desc = "vim.lsp.buf.implementation()" })
+        -- vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr, desc = "vim.lsp.buf.references()" })
+        -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "vim.lsp.buf.declaration()" })
 
         vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "vim.lsp.buf.hover()" })
-        vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help,
-            { buffer = bufnr, desc = "vim.lsp.buf.signature_help()" })
+        -- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help,
+        --     { buffer = bufnr, desc = "vim.lsp.buf.signature_help()" })
 
         vim.keymap.set("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", { buffer = bufnr })
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = "vim.lsp.buf.rename()" })

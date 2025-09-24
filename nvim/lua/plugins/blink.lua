@@ -43,9 +43,21 @@ return {
                     columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 1 }, { "source_name" } },
                 },
             },
+            ghost_text = {
+                enabled = true,
+                -- Show the ghost text when an item has been selected
+                show_with_selection = true,
+                -- Show the ghost text when no item has been selected, defaulting to the first item
+                show_without_selection = false,
+                -- Show the ghost text when the menu is open
+                show_with_menu = true,
+                -- Show the ghost text when the menu is closed
+                show_without_menu = true,
+            },
         },
 
         signature = {
+            enable = true,
             window = {
                 border = 'rounded',
             },
@@ -61,6 +73,11 @@ return {
                     async = true,
                 },
             },
+        },
+
+        cmdline = {
+            keymap = { preset = 'inherit' },
+            completion = { menu = { auto_show = true } },
         },
     },
 }

@@ -1,29 +1,29 @@
 return {
-    'akinsho/toggleterm.nvim',
-    opts = {
-        winbar = {
-            enabled = false,
-            name_formatter = function(term) --  term: Terminal
-                return term.name
-            end
-        },
-        open_mapping = '<C-\\>',
-        direction = 'float',
-        shade_terminals = true,
-        close_on_exit = true,    -- close the terminal window when the process exits
-        start_in_insert = true,
-        insert_mappings = false, -- whether or not the open mapping applies in insert mode
-
-        float_opts = {
-            border = 'rounded',
-            winblend = 25,
-            width = function()
-                return math.floor(vim.o.columns * 0.6)
-            end,
-            height = function()
-                return math.floor(vim.o.lines * 0.6)
-            end,
-            title_pos = 'left',
-        },
-    }
+    -- 'akinsho/toggleterm.nvim',
+    -- opts = {
+    --     winbar = {
+    --         enabled = false,
+    --         name_formatter = function(term) --  term: Terminal
+    --             return term.name
+    --         end
+    --     },
+    --     open_mapping = '<C-\\>',
+    --     direction = 'float',
+    --     shade_terminals = true,
+    --     close_on_exit = true,    -- close the terminal window when the process exits
+    --     start_in_insert = true,
+    --     insert_mappings = false, -- whether or not the open mapping applies in insert mode
+    --
+    --     float_opts = {
+    --         border = 'rounded',
+    --         winblend = 25,
+    --         width = function()
+    --             return math.floor(vim.o.columns * 0.6)
+    --         end,
+    --         height = function()
+    --             return math.floor(vim.o.lines * 0.6)
+    --         end,
+    --         title_pos = 'left',
+    --     },
+    -- }
 }

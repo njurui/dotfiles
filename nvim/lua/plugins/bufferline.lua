@@ -1,9 +1,8 @@
 return {
     "akinsho/bufferline.nvim",
-    dependencies = { 'famiu/bufdelete.nvim', 'nvim-tree/nvim-web-devicons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     lazy = false,
     keys = {
-        { "<leader>bc", "<cmd>Bdelete!<cr>",              desc = "Close current buffer" },
         { "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Close other buffers" },
     },
     opts = {

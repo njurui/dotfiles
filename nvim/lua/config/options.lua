@@ -43,6 +43,9 @@ vim.opt.wrap = false
 -- Allow <Left> and <Right> to jump to the previous/next line when at the beginning / end of a line
 vim.opt.whichwrap = "<,>,[,]"
 
+-- Horizental separate line
+vim.opt.laststatus = 3
+
 -- Disable backup file
 vim.opt.backup = false
 vim.opt.writebackup = false
@@ -82,3 +85,6 @@ vim.opt.undofile = true
 
 -- Hide additional tilde at the end of buffer
 vim.opt.fillchars = { eob = " " }
+
+-- Set all default border to rounded
+vim.opt.winborder = "rounded"
