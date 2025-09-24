@@ -19,6 +19,7 @@ return {
         statuscolumn = { enabled = false }, -- conflict with folding column
         words = { enabled = true },
         terminal = {
+            shell = { "zsh", "-li" },
             win = {
                 type = "split",
                 position = "bottom",
