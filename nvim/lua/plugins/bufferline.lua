@@ -1,13 +1,15 @@
 return {
     "akinsho/bufferline.nvim",
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons', "folke/snacks.nvim" },
     lazy = false,
     keys = {
         { "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Close other buffers" },
+        { "<C-b>",      "<cmd>BufferLineCyclePrev<cr>",   desc = "Previous buffer" },
+        { "<C-f>",      "<cmd>BufferLineCycleNext<cr>",   desc = "Next buffer" },
     },
     opts = {
         options = {
-            close_command = "Bdelete! %d",
+            close_command = "lua Snacks.bufdelete(%d)",
             separator_style = "thin",
             offsets = {
                 {
