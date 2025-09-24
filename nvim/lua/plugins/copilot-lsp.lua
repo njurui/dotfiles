@@ -26,4 +26,9 @@ return {
             end
         end, { desc = "Clear Copilot suggestion or fallback" })
     end,
+    opts = {
+        nes = {
+            move_count_threshold = 3, -- Clear after 3 cursor movements
+        },
+    },
 }
