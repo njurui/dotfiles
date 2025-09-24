@@ -8,10 +8,24 @@ return {
         -- refer to the configuration section below
         bigfile = { enabled = true },
         dashboard = { enabled = true },
-        explorer = { enabled = true },
+        explorer = {
+            enabled = true,
+            hidden = true,
+            ignored = true,
+        },
         indent = { enabled = true },
         input = { enabled = true },
-        picker = { enabled = true },
+        picker = {
+            enabled = true,
+            hidden = true,
+            ignored = true,
+            sources = {
+                files = {
+                    hidden = true,
+                    ignored = true,
+                },
+            },
+        },
         notifier = { enabled = true },
         quickfile = { enabled = true },
         scope = { enabled = true },
@@ -26,7 +40,7 @@ return {
                 height = 0.25,
                 style = "terminal",
             },
-        }
+        },
     },
     keys = {
         -- Top Pickers & Explorer
