@@ -17,20 +17,22 @@ bindkey -M menuselect '^o' accept-and-infer-next-history
 # bindkey -M menuselect '?' history-incremental-search-backward
 zstyle ':completion:*:*:*:*:*' menu select
 
-CASE_SENSITIVE=true
-HYPHEN_INSENSITIVE=false
-
 # case insensitive (all), partial-word and substring completion
-if [[ "$CASE_SENSITIVE" = true ]]; then
-  zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
-else
-  if [[ "$HYPHEN_INSENSITIVE" = true ]]; then
-    zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}' 'r:|=*' 'l:|=* r:|=*'
-  else
-    zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|=*' 'l:|=* r:|=*'
-  fi
-fi
-unset CASE_SENSITIVE HYPHEN_INSENSITIVE
+# CASE_SENSITIVE=true
+# HYPHEN_INSENSITIVE=false
+# if [[ "$CASE_SENSITIVE" = true ]]; then
+#   zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'
+# else
+#   if [[ "$HYPHEN_INSENSITIVE" = true ]]; then
+#     zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]-_}={[:upper:][:lower:]_-}' 'r:|=*' 'l:|=* r:|=*'
+#   else
+#     zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|=*' 'l:|=* r:|=*'
+#   fi
+# fi
+# unset CASE_SENSITIVE HYPHEN_INSENSITIVE
+
+# Use following non-anchor based matching for the sake of kitty
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 
 # Complete . and .. special directories
 zstyle ':completion:*' special-dirs true
