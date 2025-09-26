@@ -16,9 +16,9 @@ vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { noremap = true, silent = true 
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
--- magic search
-vim.keymap.set("n", "/", "/\\m", { noremap = true, silent = false })
-vim.keymap.set("v", "/", "/\\m", { noremap = true, silent = false })
+-- magic search (default is :set magic)
+-- vim.keymap.set("n", "/", "/\\m", { noremap = true, silent = false })
+-- vim.keymap.set("v", "/", "/\\m", { noremap = true, silent = false })
 
 -- indent
 vim.keymap.set("v", "<", "<gv", { noremap = true, silent = true })
