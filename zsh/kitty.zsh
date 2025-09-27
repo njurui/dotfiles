@@ -4,7 +4,7 @@ if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
     autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
     kitty-integration
     unfunction kitty-integration
-    alias ssh="kitten ssh"
+    alias ssh="kitten ssh -o ServerAliveInterval=5 -o ServerAliveCountMax=999"
 fi
 
 # kitten config
