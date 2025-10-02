@@ -27,8 +27,8 @@ vim.keymap.set("v", ">", ">gv", { noremap = true, silent = true })
 vim.keymap.set("v", "J", "<cmd>move '>+1<cr>gv-gv", { noremap = true, silent = true })
 vim.keymap.set("v", "K", "<cmd>move '<-2<cr>gv-gv", { noremap = true, silent = true })
 
--- paste in visual mode won't change the clipboard
-vim.keymap.set("v", "p", '"_dP', { noremap = true, silent = true })
+-- paste in visual mode won't change the clipboard (disabled due to conflict with cmp)
+-- vim.keymap.set("v", "p", '"_dP', { noremap = true, silent = true })
 
 -- erase q mapping
 vim.keymap.set("n", "q", "", { noremap = true, silent = true })
