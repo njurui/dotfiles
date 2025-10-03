@@ -31,7 +31,7 @@ vim.lsp.config("clangd", {
         completeUnimported = true,
         -- fallbackFlags = { '--std=c++20' },
     },
-    flags = { allow_incremental_sync = false },
+    -- flags = { allow_incremental_sync = false },
 })
 
 vim.lsp.config("ruff", {
@@ -49,7 +49,7 @@ vim.lsp.config("texlab", {
                 executable = "latexmk",
                 args = {
                     "-pdf",
-                    "-pdflatex",
+                    "-lualatex",
                     "-shell-escape",
                     "-interaction=nonstopmode",
                     "-synctex=1",
