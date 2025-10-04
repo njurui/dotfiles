@@ -9,7 +9,7 @@ return {
             "texlab",
             "superhtml",
             "lua_ls",
-            "copilot",
+            -- "copilot",
         },
     },
     dependencies = {
