@@ -34,8 +34,8 @@ zstyle ':completion:*:*:*:*:*' menu select
 # Use following non-anchor based matching for the sake of kitty
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 
-# Complete . and .. special directories
-zstyle ':completion:*' special-dirs true
+# Disable completion for . and .. special directories
+zstyle ':completion:*' special-dirs false
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
