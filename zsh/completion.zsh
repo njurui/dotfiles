@@ -10,6 +10,7 @@ setopt auto_list         # automatically list choices on ambiguous completion
 setopt auto_param_slash  # if completed parameter is a directory, add a trailing slash
 setopt complete_in_word
 setopt always_to_end     # move cursor to the end of a completed word
+setopt nocaseglob
 
 # should this be in keybindings?
 bindkey -M menuselect '^o' accept-and-infer-next-history

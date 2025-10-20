@@ -64,6 +64,7 @@ if (( $+commands[fzf] )); then
       git clone --depth=1 "https://github.com/Aloxaf/fzf-tab" "$ZSH_DATA_HOME/fzf-tab"
   fi
   source $ZSH_DATA_HOME/fzf-tab/fzf-tab.plugin.zsh
+  zstyle ':fzf-tab:*' fzf-flags --ignore-case
 
     # zoxide
     if ! (( $+commands[zoxide] )); then
