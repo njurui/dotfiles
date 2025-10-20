@@ -1,8 +1,8 @@
 # Changing/making/removing directory
-setopt auto_cd                 # if a command isn't valid, but is a directory, cd to that dir
-setopt auto_pushd              # make cd push the old directory onto the directory stack
-setopt pushd_ignore_dups       # don’t push multiple copies of the same directory onto the directory stack
-setopt pushd_minus             # exchanges the meanings of ‘+’ and ‘-’ when specifying a directory in the stack
+setopt auto_cd           # if a command isn't valid, but is a directory, cd to that dir
+setopt auto_pushd        # make cd push the old directory onto the directory stack
+setopt pushd_ignore_dups # don’t push multiple copies of the same directory onto the directory stack
+setopt pushd_minus       # exchanges the meanings of ‘+’ and ‘-’ when specifying a directory in the stack
 
 # export LSCOLORS for FreeBSD / MacOS ls
 # export LSCOLORS="Gxfxcxdxbxegedabagacad"
@@ -32,17 +32,17 @@ alias rd=rmdir
 
 # List directory contents
 if [[ "$OSTYPE" = darwin* ]]; then
-  alias l='ls -G -lah'
-  alias lsa='ls -G -lah'
-  alias ls='ls -G'
-  alias ll='ls -G -lh'
-  alias la='ls -G -lAh'
+    alias l='ls -G -lah'
+    alias lsa='ls -G -lah'
+    alias ls='ls -G'
+    alias ll='ls -G -lh'
+    alias la='ls -G -lAh'
 else
-  alias l='ls --color=auto -lah'
-  alias lsa='ls --color=auto -lah'
-  alias ls='ls --color=auto'
-  alias ll='ls --color=auto -lh'
-  alias la='ls --color=auto -lAh'
+    alias l='ls --color=auto -lah'
+    alias lsa='ls --color=auto -lah'
+    alias ls='ls --color=auto'
+    alias ll='ls --color=auto -lh'
+    alias la='ls --color=auto -lAh'
 fi
 
 # alias for grep
