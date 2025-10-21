@@ -42,6 +42,8 @@ vim.lsp.config("ruff", {
     }
 })
 
+vim.lsp.enable("ty")
+
 vim.lsp.config("bashls", {
     filetypes = { "bash", "zsh", "sh" },
 })

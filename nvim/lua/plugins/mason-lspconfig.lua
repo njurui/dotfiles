@@ -14,7 +14,7 @@ return {
     opts = {
         ensure_installed = {
             "clangd",
-            "pyright",
+            -- "pyright",
             "ruff",
             "rust_analyzer",
             "texlab",
