@@ -8,21 +8,23 @@ return {
         -- refer to the configuration section below
         bigfile = { enabled = true },
         dashboard = { enabled = true },
-        explorer = {
-            enabled = true,
-            hidden = true,
-            ignored = true,
-        },
+        explorer = { enabled = true },
         indent = { enabled = true },
         input = { enabled = true },
         picker = {
             enabled = true,
-            hidden = true,
-            ignored = true,
             sources = {
+                explorer = {
+                    hidden = true,
+                    ignored = true,
+                },
                 files = {
                     hidden = true,
                     ignored = true,
+                },
+                grep = {
+                    hidden = false,
+                    ignored = false,
                 },
             },
         },
