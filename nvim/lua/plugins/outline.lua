@@ -3,5 +3,12 @@ return {
     lazy = true,
     cmd = { "Outline", "OutlineOpen" },
     keys = { { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" } },
-    opts = {},
+    dependencies = {
+        "onsails/lspkind.nvim",
+    },
+    opts = {
+        symbols = {
+            icon_source = "lspkind",
+        },
+    },
 }
