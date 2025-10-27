@@ -2,6 +2,7 @@ return {
     "CRAG666/code_runner.nvim",
     keys = { { "<leader>rf", "<cmd>RunFile<cr>", desc = "run file" } },
     opts = {
+        focus = false,
         filetype = {
             javascript = "node",
             java = "cd $dir && javac $fileName && time java $fileNameWithoutExt",

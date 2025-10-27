@@ -25,6 +25,18 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI", "FocusGained" }, {
+    group = vim.api.nvim_create_augroup("image-reload", { clear = true }),
+    callback = function()
+        require("snacks.image.image").clear()
+        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+            if vim.bo[buf].filetype == "image" then
+                vim.api.nvim_buf_call(buf, function() vim.cmd.checktime() end)
+            end
+        end
+    end,
+})
+
 -- Lsp on_attach
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
