@@ -25,6 +25,7 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
+-- Reload image automatically
 vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI", "FocusGained" }, {
     group = vim.api.nvim_create_augroup("image-reload", { clear = true }),
     callback = function()
@@ -34,6 +35,15 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI", "FocusGained" }, {
                 vim.api.nvim_buf_call(buf, function() vim.cmd.checktime() end)
             end
         end
+    end,
+})
+
+-- Close image buffer automatically
+vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("image-auto-close", { clear = true }),
+    pattern = "image",
+    callback = function(ev)
+        vim.bo[ev.buf].bufhidden = "wipe"
     end,
 })
 
