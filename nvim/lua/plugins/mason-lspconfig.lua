@@ -22,6 +22,8 @@ return {
             "lua_ls",
             "bashls",
             -- "copilot",
+            -- "shfmt",
+            -- "tectonic"
         },
     },
 }
