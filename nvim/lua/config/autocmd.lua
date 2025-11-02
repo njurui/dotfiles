@@ -1,12 +1,22 @@
+-- Stop insert when enter an existing terminal from other buffer
+-- vim.api.nvim_create_autocmd({ 'BufEnter', 'WinEnter' }, {
+--     group = vim.api.nvim_create_augroup('NoAutoTerminalInsert', { clear = true }),
+--     pattern = 'term://*',
+--     callback = function()
+--         local keys = vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true)
+--         vim.api.nvim_feedkeys(keys, "n", false)
+--     end,
+-- })
+
 -- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
-    group = vim.api.nvim_create_augroup("yank", { clear = true }),
+    group = vim.api.nvim_create_augroup("HighlightYankText", { clear = true }),
     command = "silent! lua vim.highlight.on_yank()",
 })
 
 -- Disable comment when enter the newline using 'o'
 vim.api.nvim_create_autocmd("BufEnter", {
-    group = vim.api.nvim_create_augroup("comment", { clear = true }),
+    group = vim.api.nvim_create_augroup("NoAutoComment", { clear = true }),
     callback = function()
         vim.opt.formatoptions = vim.opt.formatoptions
             - "o" -- O and o, don't continue comments
@@ -16,7 +26,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 -- Treesitter highlight
 vim.api.nvim_create_autocmd('FileType', {
-    group = vim.api.nvim_create_augroup("treesitter-highlight", { clear = true }),
+    group = vim.api.nvim_create_augroup("TreesitterHighlight", { clear = true }),
     callback = function()
         local fts = require("nvim-treesitter").get_installed()
         if vim.tbl_contains(fts, vim.bo.filetype) then
@@ -27,12 +37,13 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Reload image automatically
 vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI", "FocusGained" }, {
-    group = vim.api.nvim_create_augroup("image-reload", { clear = true }),
+    group = vim.api.nvim_create_augroup("AutoReloadImage", { clear = true }),
     callback = function()
         require("snacks.image.image").clear()
         for _, buf in ipairs(vim.api.nvim_list_bufs()) do
             if vim.bo[buf].filetype == "image" then
                 vim.api.nvim_buf_call(buf, function() vim.cmd.checktime() end)
+                vim.bo[buf].modified = false -- Fix modified image bug in snacks.nvim
             end
         end
     end,
@@ -40,16 +51,17 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI", "FocusGained" }, {
 
 -- Close image buffer automatically
 vim.api.nvim_create_autocmd("FileType", {
-    group = vim.api.nvim_create_augroup("image-auto-close", { clear = true }),
+    group = vim.api.nvim_create_augroup("AutoCloseImage", { clear = true }),
     pattern = "image",
     callback = function(ev)
-        vim.bo[ev.buf].bufhidden = "wipe"
+        local buf = ev.buf
+        vim.bo[buf].bufhidden = "wipe"
     end,
 })
 
 -- Lsp on_attach
 vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+    group = vim.api.nvim_create_augroup("OnLspAttach", { clear = true }),
     callback = function(args)
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
         local bufnr = args.buf

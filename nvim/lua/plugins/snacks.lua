@@ -47,6 +47,7 @@ return {
         words = { enabled = true },
         terminal = {
             shell = { "zsh", "-li" },
+            auto_insert = false,
             win = {
                 type = "split",
                 position = "bottom",
