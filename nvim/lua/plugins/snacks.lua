@@ -30,8 +30,8 @@ return {
                     ignored = true,
                 },
                 files = {
-                    hidden = true,
-                    ignored = true,
+                    hidden = false,
+                    ignored = false,
                 },
                 grep = {
                     hidden = false,
