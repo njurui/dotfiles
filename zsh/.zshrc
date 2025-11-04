@@ -16,7 +16,7 @@ source $HOME/.config/zsh/completion.zsh
 source $HOME/.config/zsh/history.zsh
 source $HOME/.config/zsh/misc.zsh
 source $HOME/.config/zsh/kitty.zsh
-source $HOME/.config/zsh/llvm.zsh
+source $HOME/.config/zsh/toolchain.zsh
 
 # powerlevel10k
 if [[ ! -d "$ZSH_DATA_HOME/powerlevel10k" ]]; then

@@ -29,7 +29,7 @@ vim.lsp.config("clangd", {
         clangdFileStatus = true,
         usePlaceholders = true,
         completeUnimported = true,
-        -- fallbackFlags = { '--std=c++20' },
+        -- fallbackFlags = { '-std=gnu++23' },
     },
     -- flags = { allow_incremental_sync = false },
 })
