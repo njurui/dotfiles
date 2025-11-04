@@ -21,6 +21,7 @@ return {
             "superhtml",
             "lua_ls",
             "bashls",
+            "neocmake",
             -- "copilot",
             -- "shfmt",
             -- "tectonic"
