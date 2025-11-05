@@ -39,9 +39,9 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI", "FocusGained" }, {
     group = vim.api.nvim_create_augroup("AutoReloadImage", { clear = true }),
     callback = function()
-        require("snacks.image.image").clear()
         for _, buf in ipairs(vim.api.nvim_list_bufs()) do
             if vim.bo[buf].filetype == "image" then
+                require("snacks.image.image").clear()
                 vim.api.nvim_buf_call(buf, function() vim.cmd.checktime() end)
                 vim.bo[buf].modified = false -- Fix modified image bug in snacks.nvim
             end
