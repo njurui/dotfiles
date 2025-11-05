@@ -4,7 +4,7 @@ return {
     opts = {
         options = {
             disabled_filetypes = {
-                statusline = { "alpha" },
+                -- statusline = { "snacks_dashboard" },
                 winbar = { "*" },
             },
         },
@@ -22,6 +22,6 @@ return {
                 "filetype",
             },
         },
-        extensions = { "nvim-tree", "toggleterm", "symbols-outline", "lazy", "mason" },
+        extensions = { "symbols-outline", "lazy", "mason" },
     }
 }
