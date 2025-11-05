@@ -4,7 +4,7 @@ return {
     opts = {
         options = {
             disabled_filetypes = {
-                -- statusline = { "snacks_dashboard" },
+                statusline = { "snacks_dashboard" },
                 winbar = { "*" },
             },
         },
