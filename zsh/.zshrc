@@ -18,6 +18,15 @@ source $HOME/.config/zsh/misc.zsh
 source $HOME/.config/zsh/kitty.zsh
 source $HOME/.config/zsh/toolchain.zsh
 
+# clear
+ctrl_l() {
+    builtin print -rn -- $'\r\e[0J\e[H\e[3J' >"$TTY"
+    builtin zle .reset-prompt
+    builtin zle -R
+}
+zle -N ctrl_l
+bindkey '^l' ctrl_l
+
 # powerlevel10k
 if [[ ! -d "$ZSH_DATA_HOME/powerlevel10k" ]]; then
     git clone --depth=1 "https://github.com/romkatv/powerlevel10k.git" "$ZSH_DATA_HOME/powerlevel10k"
