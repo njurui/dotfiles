@@ -89,8 +89,8 @@ vim.lsp.config("texlab", {
     },
 })
 
--- Use system bundled texlab to support inverse search
+-- Use Mason bundled texlab to support inverse search
 -- Skim config:
--- Commands: texlab
+-- Commands: $HOME/.local/share/nvim/mason/bin/texlab
 -- Arguments: inverse-search -i "%file" -l %line
-vim.lsp.enable("texlab")
+-- vim.lsp.enable("texlab")
