@@ -78,3 +78,9 @@ vim.lsp.config("texlab", {
         },
     },
 })
+
+-- Use system bundled texlab to support inverse search
+-- Skim config:
+-- Commands: texlab
+-- Arguments: inverse-search -i "%file" -l %line
+vim.lsp.enable("texlab")

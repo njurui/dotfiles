@@ -17,7 +17,7 @@ return {
             -- "pyright",
             "ruff",
             "rust_analyzer",
-            "texlab",
+            -- "texlab",
             "superhtml",
             "lua_ls",
             "bashls",
