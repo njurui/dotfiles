@@ -25,6 +25,7 @@ return {
             -- "copilot",
             -- "shfmt",
             -- "tectonic"
+            -- "latexindent"
         },
     },
 }
