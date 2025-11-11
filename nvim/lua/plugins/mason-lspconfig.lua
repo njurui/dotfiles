@@ -15,6 +15,7 @@ return {
         ensure_installed = {
             "clangd",
             -- "pyright",
+            "ty",
             "ruff",
             "rust_analyzer",
             "texlab",
