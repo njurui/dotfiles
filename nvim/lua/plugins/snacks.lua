@@ -16,9 +16,9 @@ return {
             convert = {
                 magick = {
                     default = { "{src}[0]", "-scale", "1920x1080>" }, -- default for raster images
-                    vector = { "-density", 600, "{src}[{page}]" },    -- used by vector images like svg
-                    math = { "-density", 600, "{src}[{page}]", "-trim" },
-                    pdf = { "-density", 600, "{src}[{page}]", "-background", "white", "-alpha", "remove", "-trim" },
+                    vector = { "-density", 300, "{src}[{page}]" },    -- used by vector images like svg
+                    math = { "-density", 300, "{src}[{page}]", "-trim" },
+                    pdf = { "-density", 300, "{src}[{page}]", "-background", "white", "-alpha", "remove", "-trim" },
                 },
             },
         },
