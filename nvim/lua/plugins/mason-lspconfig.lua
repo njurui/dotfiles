@@ -25,8 +25,8 @@ return {
             "neocmake",
             -- "copilot",
             -- "shfmt",
-            -- "tectonic"
-            -- "latexindent"
+            -- "tectonic",
+            -- "latexindent",
         },
     },
 }
