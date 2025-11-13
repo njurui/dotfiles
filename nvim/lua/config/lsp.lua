@@ -46,6 +46,14 @@ vim.lsp.config("bashls", {
     filetypes = { "bash", "zsh", "sh" },
 })
 
+vim.lsp.config("tinymist", {
+    settings = {
+        formatterMode = "typstyle",
+        -- Execute the command to generate database: tinymist compile --save-lock main.typ
+        projectResolution = "lockDatabase",
+    },
+})
+
 vim.lsp.config("texlab", {
     settings = {
         texlab = {

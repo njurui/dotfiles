@@ -23,6 +23,7 @@ return {
             "lua_ls",
             "bashls",
             "neocmake",
+            "tinymist",
             -- "copilot",
             -- "shfmt",
             -- "tectonic",
