@@ -49,6 +49,7 @@ vim.lsp.config("bashls", {
 vim.lsp.config("tinymist", {
     settings = {
         formatterMode = "typstyle",
+        exportPdf = "onType",
         -- Execute the command to generate database: tinymist compile --save-lock main.typ
         projectResolution = "lockDatabase",
     },
