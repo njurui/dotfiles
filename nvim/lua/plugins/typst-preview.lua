@@ -6,5 +6,8 @@ return {
         dependencies_bin = {
             ['tinymist'] = 'tinymist',
         },
+        get_main_file = function(path_of_buffer)
+            return vim.fn.findfile("main.typ", vim.fn.fnamemodify(path_of_buffer, ":p:h") .. ";")
+        end,
     },
 }
