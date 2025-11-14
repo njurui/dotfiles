@@ -12,7 +12,7 @@ vim.keymap.set("n", "g_", "$", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>w", "<cmd>wa<cr>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { noremap = true, silent = true })
 
--- Enable j,k to move correctly in wrapped text
+-- Enable j,k to move correctly in wrapped text (no number prefix)
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("v", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -25,9 +25,13 @@ vim.keymap.set("v", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 -- indent
 vim.keymap.set("v", "<", "<gv", { noremap = true, silent = true })
 vim.keymap.set("v", ">", ">gv", { noremap = true, silent = true })
+
+-- erase J mapping
+vim.keymap.set("n", "J", "", { noremap = true, silent = true })
+
 -- move up and down
-vim.keymap.set("v", "J", "<cmd>move '>+1<cr>gv-gv", { noremap = true, silent = true })
-vim.keymap.set("v", "K", "<cmd>move '<-2<cr>gv-gv", { noremap = true, silent = true })
+vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv", { noremap = true, silent = true })
+vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv", { noremap = true, silent = true })
 
 -- paste in visual mode won't change the clipboard (disabled due to conflict with cmp)
 -- vim.keymap.set("v", "p", '"_dP', { noremap = true, silent = true })
