@@ -59,25 +59,25 @@ vim.lsp.config("texlab", {
     settings = {
         texlab = {
             build = {
-                -- executable = "latexmk",
-                -- args = {
-                --     "-pdf",
-                --     "-lualatex",
-                --     "-shell-escape",
-                --     "-interaction=nonstopmode",
-                --     "-synctex=1",
-                --     "%f",
-                -- },
-
-                executable = "tectonic",
+                executable = "latexmk",
                 args = {
-                    "-X",
-                    "compile",
+                    "-pdf",
+                    "-lualatex",
+                    "-shell-escape",
+                    "-interaction=nonstopmode",
+                    "-synctex=1",
                     "%f",
-                    "--synctex",
-                    "--keep-logs",
-                    "--keep-intermediates"
                 },
+
+                -- executable = "tectonic",
+                -- args = {
+                --     "-X",
+                --     "compile",
+                --     "%f",
+                --     "--synctex",
+                --     "--keep-logs",
+                --     "--keep-intermediates"
+                -- },
                 forwardSearchAfter = true,
                 onSave = true,
             },
