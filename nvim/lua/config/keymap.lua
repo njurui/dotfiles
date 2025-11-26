@@ -29,7 +29,11 @@ vim.keymap.set("v", ">", ">gv", { noremap = true, silent = true })
 -- erase J mapping
 vim.keymap.set("n", "J", "", { noremap = true, silent = true })
 
--- move up and down
+-- erase u, U mapping in visual
+vim.keymap.set("v", "u", "", { noremap = true, silent = true })
+vim.keymap.set("v", "U", "", { noremap = true, silent = true })
+
+-- move up and down (cannot use <cmd>...<cr> here)
 vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv", { noremap = true, silent = true })
 vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv", { noremap = true, silent = true })
 
