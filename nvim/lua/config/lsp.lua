@@ -42,6 +42,17 @@ vim.lsp.config("ruff", {
     }
 })
 
+vim.lsp.config('ty', {
+    settings = {
+        ty = {
+            experimental = {
+                rename = true,
+                autoImport = true,
+            },
+        },
+    },
+})
+
 vim.lsp.config("bashls", {
     filetypes = { "bash", "zsh", "sh" },
 })
