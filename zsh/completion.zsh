@@ -3,14 +3,14 @@ zmodload -i zsh/complist
 
 WORDCHARS='*?.[]~-_=&;!#$%^(){}<>'
 
-unsetopt menu_complete # do not autoselect the first completion entry
+unsetopt menu_complete  # do not autoselect the first completion entry
 unsetopt flowcontrol
 setopt auto_menu        # show completion menu on successive tab press
 setopt auto_list        # automatically list choices on ambiguous completion
 setopt auto_param_slash # if completed parameter is a directory, add a trailing slash
 setopt complete_in_word
-setopt always_to_end # move cursor to the end of a completed word
-setopt nocaseglob
+setopt always_to_end    # move cursor to the end of a completed word
+unsetopt nocaseglob     # used with matcher-list to avoid case mismatch
 
 # should this be in keybindings?
 bindkey -M menuselect '^o' accept-and-infer-next-history
@@ -33,7 +33,7 @@ zstyle ':completion:*:*:*:*:*' menu select
 # unset CASE_SENSITIVE HYPHEN_INSENSITIVE
 
 # Use following non-anchor based matching for the sake of kitty
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z-_}={A-Za-z_-}'
 
 # Disable completion for . and .. special directories
 zstyle ':completion:*' special-dirs false
