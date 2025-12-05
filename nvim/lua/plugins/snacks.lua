@@ -13,6 +13,9 @@ return {
         input = { enabled = true },
         image = {
             enabled = true,
+            math = {
+                enabled = false,
+            },
             convert = {
                 magick = {
                     default = { "{src}[0]", "-scale", "1920x1080>" }, -- default for raster images
