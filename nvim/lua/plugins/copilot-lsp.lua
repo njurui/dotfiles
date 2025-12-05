@@ -28,7 +28,8 @@ return {
     end,
     opts = {
         nes = {
-            move_count_threshold = 2, -- Clear after 2 cursor movements
+            move_count_threshold = 3, -- Clear after 3 cursor movements
+            distance_threshold = 4,   -- Clear if distance > 4 lines
         },
     },
 }
