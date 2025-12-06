@@ -12,7 +12,7 @@ return {
         indent = { enabled = true },
         input = { enabled = true },
         image = {
-            enabled = true,
+            enabled = false,
             math = {
                 enabled = false,
             },

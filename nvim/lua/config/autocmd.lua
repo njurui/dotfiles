@@ -35,30 +35,6 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
--- Reload image automatically
-vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI", "FocusGained" }, {
-    group = vim.api.nvim_create_augroup("AutoReloadImage", { clear = true }),
-    callback = function()
-        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-            if vim.bo[buf].filetype == "image" then
-                require("snacks.image.image").clear()
-                vim.api.nvim_buf_call(buf, function() vim.cmd.checktime() end)
-                vim.bo[buf].modified = false -- Fix modified image bug in snacks.nvim
-            end
-        end
-    end,
-})
-
--- Close image buffer automatically
-vim.api.nvim_create_autocmd("FileType", {
-    group = vim.api.nvim_create_augroup("AutoCloseImage", { clear = true }),
-    pattern = "image",
-    callback = function(ev)
-        local buf = ev.buf
-        vim.bo[buf].bufhidden = "wipe"
-    end,
-})
-
 -- JSON Formatter
 vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("AutoCloseImage", { clear = true }),
@@ -96,20 +72,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 hi! LspReferenceText cterm=bold ctermbg=Grey guibg='#5C5C5C'
                 hi! LspReferenceWrite cterm=bold ctermbg=Grey guibg='#5C5C5C'
             ]]
-            vim.api.nvim_create_augroup('lsp_document_highlight', {
+            vim.api.nvim_create_augroup('LspDocumentHighlight', {
                 clear = false
             })
             vim.api.nvim_clear_autocmds({
                 buffer = bufnr,
-                group = 'lsp_document_highlight',
+                group = 'LspDocumentHighlight',
             })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-                group = 'lsp_document_highlight',
+                group = 'LspDocumentHighlight',
                 buffer = bufnr,
                 callback = vim.lsp.buf.document_highlight,
             })
             vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-                group = 'lsp_document_highlight',
+                group = 'LspDocumentHighlight',
                 buffer = bufnr,
                 callback = vim.lsp.buf.clear_references,
             })
