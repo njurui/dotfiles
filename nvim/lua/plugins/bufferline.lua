@@ -26,7 +26,7 @@ return {
                     local sym = e == "error" and "  " or (e == "warning" and " 󰀪 " or "  ")
                     s = s .. sym .. n
                 end
-                return s
+                return s:sub(2)
             end,
         },
     }

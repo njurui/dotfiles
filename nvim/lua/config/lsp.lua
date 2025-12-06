@@ -7,7 +7,7 @@ vim.diagnostic.config({
             [vim.diagnostic.severity.HINT] = '󰌶 ',
         },
     },
-    virtual_lines = true,
+    virtual_lines = false,
     underline = true,
     update_in_insert = false,
     severity_sort = true,
