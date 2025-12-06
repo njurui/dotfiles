@@ -5,6 +5,7 @@ if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
     kitty-integration
     unfunction kitty-integration
     alias ssh="kitten ssh -o ServerAliveInterval=5 -o ServerAliveCountMax=999"
+    alias icat="kitten icat"
 fi
 
 # kitten config
@@ -15,4 +16,5 @@ if [[ -d "$KITTY_REMOTE_DIR" ]]; then
     autoload -Uz -- "$KITTY_REMOTE_DIR"/shell-integration/zsh/kitty-integration
     kitty-integration
     unfunction kitty-integration
+    alias icat="kitten icat"
 fi
