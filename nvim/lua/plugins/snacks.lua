@@ -50,7 +50,7 @@ return {
         words = { enabled = true },
         terminal = {
             shell = { "zsh", "-li" },
-            auto_insert = false,
+            auto_insert = true,
             win = {
                 type = "split",
                 position = "bottom",

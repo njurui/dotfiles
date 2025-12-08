@@ -66,5 +66,5 @@ vim.keymap.set('t', '<C-k>', '<cmd>wincmd k<cr>', { noremap = true, silent = tru
 vim.keymap.set('t', '<C-l>', '<cmd>wincmd l<cr>', { noremap = true, silent = true })
 
 -- open file in terminal
-vim.keymap.set('n', '<C-LeftMouse>', '<LeftMouse>gF', { noremap = true, silent = true })
-vim.keymap.set('t', '<C-LeftMouse>', '<LeftMouse>gF', { noremap = true, silent = true })
+-- vim.keymap.set('n', '<C-LeftMouse>', '<LeftMouse>gF', { noremap = true, silent = true })
+-- vim.keymap.set('t', '<C-LeftMouse>', '<LeftMouse>gF', { noremap = true, silent = true })
