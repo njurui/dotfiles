@@ -1,30 +1,12 @@
 return {
     'saghen/blink.cmp',
-    dependencies = { 'rafamadriz/friendly-snippets', "copilotlsp-nvim/copilot-lsp", "fang2hou/blink-copilot" },
+    dependencies = { 'rafamadriz/friendly-snippets', "zbirenbaum/copilot.lua" },
     build = vim.loop.os_uname().sysname == "Darwin"
         and 'RUSTFLAGS="-C link-arg=-undefined -C link-arg=dynamic_lookup" cargo build --release'
         or 'cargo build --release',
     opts = {
         keymap = {
             preset = 'super-tab',
-            ["<Tab>"] = {
-                function(cmp)
-                    -- if vim.b[vim.api.nvim_get_current_buf()].nes_state then
-                    --     cmp.hide()
-                    --     return (
-                    --         require("copilot-lsp.nes").apply_pending_nes()
-                    --         and require("copilot-lsp.nes").walk_cursor_end_edit()
-                    --     )
-                    -- end
-                    if cmp.snippet_active() then
-                        return cmp.accept()
-                    else
-                        return cmp.select_and_accept()
-                    end
-                end,
-                "snippet_forward",
-                "fallback",
-            },
             ['<CR>'] = { 'accept', 'fallback' }
         },
 
@@ -45,13 +27,13 @@ return {
                 },
             },
             ghost_text = {
-                enabled = true,
+                enabled = false,
                 -- Show the ghost text when an item has been selected
                 show_with_selection = true,
                 -- Show the ghost text when no item has been selected, defaulting to the first item
                 show_without_selection = false,
                 -- Show the ghost text when the menu is open
-                show_with_menu = true,
+                show_with_menu = false,
                 -- Show the ghost text when the menu is closed
                 show_without_menu = true,
             },
@@ -79,15 +61,7 @@ return {
         },
 
         sources = {
-            default = { "copilot", 'lsp', 'path', 'snippets', 'buffer' },
-            providers = {
-                copilot = {
-                    name = "Copilot",
-                    module = "blink-copilot",
-                    score_offset = 100,
-                    async = true,
-                },
-            },
+            default = { 'lsp', 'path', 'snippets', 'buffer' },
         },
 
         cmdline = {
