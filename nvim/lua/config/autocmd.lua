@@ -61,7 +61,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help,
         --     { buffer = bufnr, desc = "vim.lsp.buf.signature_help()" })
 
-        vim.keymap.set("n", "<leader>f", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", { buffer = bufnr })
+        vim.keymap.set("n", "<leader>f", function()
+            vim.lsp.buf.format({ async = true })
+            for _, client in pairs(vim.lsp.get_clients({ bufnr })) do
+                if client.name == 'ruff' then
+                    vim.lsp.buf.code_action({
+                        context = {
+                            only = { 'source.organizeImports' },
+                            diagnostics = {},
+                        },
+                        apply = true,
+                    })
+                    break
+                end
+            end
+        end, { buffer = bufnr })
+
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = "vim.lsp.buf.rename()" })
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "vim.lsp.buf.code_action()" })
 
