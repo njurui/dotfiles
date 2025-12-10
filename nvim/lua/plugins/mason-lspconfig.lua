@@ -14,7 +14,7 @@ return {
     opts = {
         ensure_installed = {
             "clangd",
-            -- "pyright",
+            -- "pyrefly",
             "ty",
             "ruff",
             "rust_analyzer",
@@ -24,6 +24,7 @@ return {
             "bashls",
             "neocmake",
             "tinymist",
+            -- "jq",
             -- "copilot",
             -- "shfmt",
             -- "tectonic",
