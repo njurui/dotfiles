@@ -7,6 +7,9 @@ curl -fsSL https://pixi.sh/install.sh | sh
 # install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain nightly
 
+# install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # setup config files
 ~/.pixi/bin/git clone https://github.com/njurui/dotfiles.git ~/.config/dotfiles
 ln -s ~/.config/dotfiles/zsh ~/.config/zsh
