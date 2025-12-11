@@ -76,7 +76,7 @@ if command -v fzf &>/dev/null; then
     zstyle ':fzf-tab:*' fzf-flags --ignore-case
 
     # zoxide
-    if ! command -v fzf &>/dev/null; then
+    if ! command -v zoxide &>/dev/null; then
         curl -sSfL "https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh" | sh
     fi
     eval "$(zoxide init zsh)"
