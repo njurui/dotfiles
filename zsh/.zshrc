@@ -65,7 +65,7 @@ bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
 # zoxide
-if command -v zoxide &>/dev/null; then
+if ! command -v zoxide &>/dev/null; then
     curl -sSfL "https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh" | sh
 fi
 if [[ -d $HOME/.local/bin/ ]]; then
