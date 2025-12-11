@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 ZSH_DATA_HOME="${HOME}/.local/share/zsh"
 if [[ ! -d "$ZSH_DATA_HOME" ]]; then
@@ -78,6 +78,10 @@ if command -v fzf &>/dev/null; then
     # zoxide
     if ! command -v zoxide &>/dev/null; then
         curl -sSfL "https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh" | sh
+    fi
+    if [[ -d $HOME/.local/bin/ ]]; then
+        typeset -aU path
+        path=($HOME/.local/bin/ $path)
     fi
     eval "$(zoxide init zsh)"
 fi
