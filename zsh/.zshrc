@@ -64,6 +64,16 @@ bindkey '^[[B' history-substring-search-down
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
+# zoxide
+if command -v zoxide &>/dev/null; then
+    curl -sSfL "https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh" | sh
+fi
+if [[ -d $HOME/.local/bin/ ]]; then
+    typeset -aU path
+    path=($HOME/.local/bin/ $path)
+fi
+eval "$(zoxide init zsh)"
+
 # fzf
 if command -v fzf &>/dev/null; then
     source <(fzf --zsh)
@@ -74,16 +84,6 @@ if command -v fzf &>/dev/null; then
     fi
     source $ZSH_DATA_HOME/fzf-tab/fzf-tab.plugin.zsh
     zstyle ':fzf-tab:*' fzf-flags --ignore-case
-
-    # zoxide
-    if ! command -v zoxide &>/dev/null; then
-        curl -sSfL "https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh" | sh
-    fi
-    if [[ -d $HOME/.local/bin/ ]]; then
-        typeset -aU path
-        path=($HOME/.local/bin/ $path)
-    fi
-    eval "$(zoxide init zsh)"
 fi
 
 if command -v entr &>/dev/null; then
