@@ -51,6 +51,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
         local bufnr = args.buf
 
+        -- Exclude copilot
+        if client.name == "copilot" then
+            return
+        end
+
         -- Keymap
         -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr, desc = "vim.lsp.buf.definition()" })
         -- vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr, desc = "vim.lsp.buf.implementation()" })
