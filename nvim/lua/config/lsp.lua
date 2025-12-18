@@ -42,16 +42,6 @@ vim.lsp.config("ruff", {
     }
 })
 
-vim.lsp.config('ty', {
-    settings = {
-        ty = {
-            experimental = {
-                rename = true,
-            },
-        },
-    },
-})
-
 vim.lsp.config("bashls", {
     filetypes = { "bash", "zsh", "sh" },
 })
@@ -72,7 +62,7 @@ vim.lsp.config("texlab", {
                 executable = "latexmk",
                 args = {
                     "-pdf",
-                    "-lualatex",
+                    "-pdflatex",
                     "-shell-escape",
                     "-interaction=nonstopmode",
                     "-synctex=1",

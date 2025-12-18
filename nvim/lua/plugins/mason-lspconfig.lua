@@ -17,7 +17,7 @@ return {
             -- "pyrefly",
             "ty",
             "ruff",
-            "rust_analyzer",
+            -- "rust_analyzer",
             "texlab",
             "superhtml",
             "lua_ls",
