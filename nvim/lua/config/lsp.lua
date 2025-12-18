@@ -96,6 +96,9 @@ vim.lsp.config("texlab", {
     },
 })
 
+-- Used system rust-analyzer
+vim.lsp.enable("rust_analyzer")
+
 -- Use Mason bundled texlab to support inverse search
 -- Skim config:
 -- Commands: $HOME/.local/share/nvim/mason/bin/texlab
