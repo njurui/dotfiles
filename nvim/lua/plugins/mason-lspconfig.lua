@@ -14,10 +14,9 @@ return {
     opts = {
         ensure_installed = {
             "clangd",
-            -- "pyrefly",
             "ty",
             "ruff",
-            -- "rust_analyzer",
+            "rust_analyzer",
             "texlab",
             "superhtml",
             "lua_ls",
