@@ -3,8 +3,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- $ jump to line end without space
-vim.keymap.set("v", "$", "g_", { noremap = true, silent = true })
-vim.keymap.set("v", "g_", "$", { noremap = true, silent = true })
+vim.keymap.set("x", "$", "g_", { noremap = true, silent = true })
+vim.keymap.set("x", "g_", "$", { noremap = true, silent = true })
 vim.keymap.set("n", "$", "g_", { noremap = true, silent = true })
 vim.keymap.set("n", "g_", "$", { noremap = true, silent = true })
 
@@ -15,34 +15,34 @@ vim.keymap.set("n", "<leader>q", "<cmd>qa<cr>", { noremap = true, silent = true 
 -- Enable j,k to move correctly in wrapped text (no number prefix)
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set("v", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set("v", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set("x", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set("x", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- magic search (default is :set magic)
 -- vim.keymap.set("n", "/", "/\\m", { noremap = true, silent = false })
--- vim.keymap.set("v", "/", "/\\m", { noremap = true, silent = false })
+-- vim.keymap.set("x", "/", "/\\m", { noremap = true, silent = false })
 
 -- indent
-vim.keymap.set("v", "<", "<gv", { noremap = true, silent = true })
-vim.keymap.set("v", ">", ">gv", { noremap = true, silent = true })
+vim.keymap.set("x", "<", "<gv", { noremap = true, silent = true })
+vim.keymap.set("x", ">", ">gv", { noremap = true, silent = true })
 
 -- erase J mapping
 vim.keymap.set("n", "J", "", { noremap = true, silent = true })
 
 -- erase u, U mapping in visual
-vim.keymap.set("v", "u", "", { noremap = true, silent = true })
-vim.keymap.set("v", "U", "", { noremap = true, silent = true })
+vim.keymap.set("x", "u", "", { noremap = true, silent = true })
+vim.keymap.set("x", "U", "", { noremap = true, silent = true })
 
 -- move up and down (cannot use <cmd>...<cr> here)
-vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv", { noremap = true, silent = true })
-vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv", { noremap = true, silent = true })
+vim.keymap.set("x", "J", ":m '>+1<cr>gv=gv", { noremap = true, silent = true })
+vim.keymap.set("x", "K", ":m '<-2<cr>gv=gv", { noremap = true, silent = true })
 
--- paste in visual mode won't change the clipboard (disabled due to conflict with cmp)
--- vim.keymap.set("v", "p", '"_dP', { noremap = true, silent = true })
+-- paste in visual mode won't change the clipboard
+vim.keymap.set("x", "p", '"_dP', { noremap = true, silent = true })
 
 -- erase q mapping
 vim.keymap.set("n", "q", "", { noremap = true, silent = true })
-vim.keymap.set("v", "q", "", { noremap = true, silent = true })
+vim.keymap.set("x", "q", "", { noremap = true, silent = true })
 
 -- split
 vim.keymap.set("n", "s", "", { noremap = true, silent = true })
