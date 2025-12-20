@@ -12,9 +12,9 @@ return {
                 enabled = true,
                 auto_trigger = true,
                 keymap = {
-                    accept = "<C-l>",
+                    accept = "<C-f>",
                     accept_word = "<C-w>",
-                    accept_line = false,
+                    accept_line = "<C-l>",
                 },
             },
             filetypes = {
