@@ -60,10 +60,10 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 -- terminal
 vim.keymap.set('t', '<esc><esc>', '<C-\\><C-n>', { noremap = true, silent = true })
 vim.keymap.set('t', '<C-\\>', '<C-\\><C-n><C-w>c', { noremap = true, silent = true })
-vim.keymap.set('t', '<C-h>', '<cmd>wincmd h<cr>', { noremap = true, silent = true })
-vim.keymap.set('t', '<C-j>', '<cmd>wincmd j<cr>', { noremap = true, silent = true })
-vim.keymap.set('t', '<C-k>', '<cmd>wincmd k<cr>', { noremap = true, silent = true })
-vim.keymap.set('t', '<C-l>', '<cmd>wincmd l<cr>', { noremap = true, silent = true })
+-- vim.keymap.set('t', '<C-h>', '<cmd>wincmd h<cr>', { noremap = true, silent = true })
+-- vim.keymap.set('t', '<C-j>', '<cmd>wincmd j<cr>', { noremap = true, silent = true })
+-- vim.keymap.set('t', '<C-k>', '<cmd>wincmd k<cr>', { noremap = true, silent = true })
+-- vim.keymap.set('t', '<C-l>', '<cmd>wincmd l<cr>', { noremap = true, silent = true }) -- conflict with ctrl-l in terminal
 
 -- open file in terminal
 -- vim.keymap.set('n', '<C-LeftMouse>', '<LeftMouse>gF', { noremap = true, silent = true })
