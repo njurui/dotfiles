@@ -62,6 +62,17 @@ return {
 
         sources = {
             default = { 'lsp', 'path', 'snippets', 'buffer' },
+            providers = {
+                snippets = {
+                    opts = {
+                        friendly_snippets = true,
+                        filter_snippets = function(filetype, file)
+                            local snippet_name = vim.fn.fnamemodify(file, ':t:r')
+                            return snippet_name ~= 'global'
+                        end,
+                    }
+                }
+            }
         },
 
         cmdline = {
