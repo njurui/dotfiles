@@ -12,10 +12,10 @@ return {
                 enabled = true,
                 auto_trigger = true,
                 keymap = {
-                    accept = false,
-                    accept_word = "<C-l>",
+                    accept = "<C-y>",
                     accept_line = "<C-j>",
-                    dismiss = false,
+                    accept_word = "<C-l>",
+                    dismiss = "<C-]>",
                 },
             },
             filetypes = {
