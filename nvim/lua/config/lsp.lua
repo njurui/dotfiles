@@ -82,8 +82,22 @@ vim.lsp.config("texlab", {
                 onSave = true,
             },
             forwardSearch = {
-                executable = "/Applications/Skim.app/Contents/SharedSupport/displayline",
-                args = { "-g", "%l", "%p", "%f" },
+                -- executable = "/Applications/Skim.app/Contents/SharedSupport/displayline",
+                -- args = { "-g", "%l", "%p", "%f" },
+
+                executable = "sioyek",
+                args = {
+                    "--reuse-window",
+                    "--execute-command",
+                    "toggle_synctex",
+                    "--inverse-search",
+                    "texlab inverse-search -i \"%%1\" -l %%2",
+                    "--forward-search-file",
+                    "%f",
+                    "--forward-search-line",
+                    "%l",
+                    "%p",
+                }
             },
             -- chktex = {
             --     onEdit = true,

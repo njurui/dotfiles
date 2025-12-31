@@ -8,6 +8,16 @@
 --     end,
 -- })
 
+-- Auto Save
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "CursorHoldI" }, {
+    group = vim.api.nvim_create_augroup("AutoSave", { clear = true }),
+    callback = function()
+        vim.schedule(function() -- Must use vim.schedule to complete write
+            vim.cmd("silent! write")
+        end)
+    end,
+})
+
 -- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = vim.api.nvim_create_augroup("HighlightYankText", { clear = true }),
@@ -37,7 +47,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- JSON Formatter
 vim.api.nvim_create_autocmd("FileType", {
-    group = vim.api.nvim_create_augroup("AutoCloseImage", { clear = true }),
+    group = vim.api.nvim_create_augroup("JsonFormatter", { clear = true }),
     pattern = "json",
     callback = function()
         vim.keymap.set("n", "<leader>f", "<cmd>%!jq '.'<cr>", { buffer = bufnr })

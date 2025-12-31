@@ -65,6 +65,9 @@ vim.opt.splitright = true
 -- vim.opt.list = true
 -- vim.opt.listchars = "space:·"
 
+-- Enable auto save
+vim.opt.autowriteall = true
+
 -- Commandline completion mode
 vim.opt.wildmode = "longest:full,full"
 
