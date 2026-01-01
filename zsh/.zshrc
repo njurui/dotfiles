@@ -65,6 +65,7 @@ bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='underline'
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='fg=1,bold'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT=999999999
 
 # zoxide
 if ! command -v zoxide &>/dev/null; then
