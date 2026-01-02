@@ -29,7 +29,7 @@ return {
                     subtext1  = "#bbbbbb",
                     subtext0  = "#aaaaaa",
 
-                    overlay2  = "#999999",
+                    overlay2  = "#888888",
                     overlay1  = "#888888",
                     overlay0  = "#777777",
 
