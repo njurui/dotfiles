@@ -33,11 +33,11 @@ alias rd=rmdir
 # List directory contents
 if [[ "$OSTYPE" = darwin* ]]; then
     if command -v gls &>/dev/null; then
-        alias l='gls --color=auto --hyperlink=auto -lah'
-        alias lsa='gls --color=auto --hyperlink=auto -lah'
-        alias ls='gls --color=auto --hyperlink=auto'
-        alias ll='gls --color=auto --hyperlink=auto -lh'
-        alias la='gls --color=auto --hyperlink=auto -lAh'
+        alias l='gls --color=auto -lah'
+        alias lsa='gls --color=auto -lah'
+        alias ls='gls --color=auto'
+        alias ll='gls --color=auto -lh'
+        alias la='gls --color=auto -lAh'
     else
         alias l='ls -G -lah'
         alias lsa='ls -G -lah'
