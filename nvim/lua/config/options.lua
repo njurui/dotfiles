@@ -1,6 +1,9 @@
 -- Scrolloff
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 4
 vim.opt.sidescrolloff = 8
+
+-- Enable smoothscroll
+vim.opt.smoothscroll = true
 
 -- Line number
 vim.opt.number = true
@@ -93,7 +96,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.undofile = true
 
 -- Hide additional tilde at the end of buffer
--- vim.opt.fillchars = { eob = " " }
+vim.opt.fillchars = { eob = " " }
 
 -- Set all default border to rounded
 vim.opt.winborder = "rounded"

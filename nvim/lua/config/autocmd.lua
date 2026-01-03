@@ -8,16 +8,6 @@
 --     end,
 -- })
 
--- Auto Save
-vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "CursorHoldI" }, {
-    group = vim.api.nvim_create_augroup("AutoSave", { clear = true }),
-    callback = function()
-        vim.schedule(function() -- Must use vim.schedule to complete write
-            vim.cmd("silent! write")
-        end)
-    end,
-})
-
 -- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = vim.api.nvim_create_augroup("HighlightYankText", { clear = true }),
@@ -31,6 +21,16 @@ vim.api.nvim_create_autocmd("BufEnter", {
         vim.opt.formatoptions = vim.opt.formatoptions
             - "o" -- O and o, don't continue comments
             + "r" -- But do continue when pressing enter.
+    end,
+})
+
+-- Auto Save
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "CursorHoldI" }, {
+    group = vim.api.nvim_create_augroup("AutoSave", { clear = true }),
+    callback = function()
+        vim.schedule(function() -- Must use vim.schedule to complete write
+            vim.cmd("silent! write")
+        end)
     end,
 })
 

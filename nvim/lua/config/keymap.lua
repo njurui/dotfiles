@@ -22,6 +22,10 @@ vim.keymap.set("x", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 -- vim.keymap.set("n", "/", "/\\m", { noremap = true, silent = false })
 -- vim.keymap.set("x", "/", "/\\m", { noremap = true, silent = false })
 
+-- Remap <C-d> and <C-u>
+vim.keymap.set("n", "<C-d>", "10j", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-u>", "10k", { noremap = true, silent = true })
+
 -- indent
 vim.keymap.set("x", "<", "<gv", { noremap = true, silent = true })
 vim.keymap.set("x", ">", ">gv", { noremap = true, silent = true })
