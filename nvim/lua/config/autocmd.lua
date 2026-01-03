@@ -127,10 +127,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end
 
         -- Use LSP-provided folding
-        if client.server_capabilities.foldingRangeProvider then
-            vim.wo.foldmethod = "expr"
-            vim.wo.foldexpr = "v:lua.vim.lsp.foldexpr()"
-        end
+        -- if client.server_capabilities.foldingRangeProvider then
+        --     vim.wo.foldmethod = "expr"
+        --     vim.wo.foldexpr = "v:lua.vim.lsp.foldexpr()"
+        -- end
 
         -- Show line diagnostics automatically in hover window
         vim.api.nvim_create_autocmd("CursorHold", {

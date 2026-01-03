@@ -4,8 +4,8 @@ return {
     lazy = false,
     keys = {
         { "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", desc = "Close other buffers" },
-        -- { "<C-b>",      "<cmd>BufferLineCyclePrev<cr>",   desc = "Previous buffer" },
-        -- { "<C-f>",      "<cmd>BufferLineCycleNext<cr>",   desc = "Next buffer" },
+        { "[b",         "<cmd>BufferLineCyclePrev<cr>",   desc = "Previous buffer" },
+        { "]b",         "<cmd>BufferLineCycleNext<cr>",   desc = "Next buffer" },
     },
     opts = {
         options = {
