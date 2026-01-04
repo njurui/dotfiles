@@ -6,18 +6,30 @@ if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
     kitty-integration
     unfunction kitty-integration
 
+    # kitten alias
     alias ssh="kitten ssh"
     alias icat="kitten icat"
+
+    # entr integration
+    if command -v entr &>/dev/null; then
+        entr() {
+            echo "$1" | command entr -s "kitten icat $1"
+        }
+        compdef _files entr
+    fi
 fi
 
 # kitten remote config
 export KITTY_REMOTE_DIR="$HOME/.local/share/kitty-ssh-kitten"
 if [[ -d "$KITTY_REMOTE_DIR" ]]; then
+    # load kitty shell integration
     path=($KITTY_REMOTE_DIR/kitty/bin $path)
     export KITTY_SHELL_INTEGRATION="enabled"
     autoload -Uz -- "$KITTY_REMOTE_DIR"/shell-integration/zsh/kitty-integration
     kitty-integration
     unfunction kitty-integration
+
+    # kitten alias
     alias icat="kitten icat"
 
     # entr integration
