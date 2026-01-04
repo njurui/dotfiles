@@ -1,5 +1,11 @@
 # kitty shell integration
 if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
+    # Must reload shell integration to keep tmux cursor beam
+    export KITTY_SHELL_INTEGRATION="enabled"
+    autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
+    kitty-integration
+    unfunction kitty-integration
+
     alias ssh="kitten ssh"
     alias icat="kitten icat"
 fi
