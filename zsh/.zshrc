@@ -16,6 +16,9 @@ zstyle ':z4h:bindkey' keyboard  'mac'
 # Don't start tmux.
 zstyle ':z4h:' start-tmux       no
 
+# Whether to move prompt to the bottom when zsh starts and on Ctrl+L.
+zstyle ':z4h:' prompt-at-bottom 'no'
+
 # Mark up shell's output with semantic information.
 zstyle ':z4h:' term-shell-integration 'yes'
 
