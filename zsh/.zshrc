@@ -13,6 +13,9 @@ zstyle ':z4h:' auto-update-days '28'
 # Keyboard type: 'mac' or 'pc'.
 zstyle ':z4h:bindkey' keyboard  'mac'
 
+# Start tmux if not already in tmux.
+# zstyle ':z4h:' start-tmux command tmux -u new -A -D -t z4h
+
 # Don't start tmux.
 zstyle ':z4h:' start-tmux       no
 
