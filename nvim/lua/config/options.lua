@@ -17,10 +17,10 @@ vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 
 -- Folding
--- vim.opt.foldcolumn = '1'
+vim.opt.foldcolumn = '0'
 -- vim.opt.fillchars = { eob = " ", fold = " ", foldopen = "", foldsep = " ", foldclose = "", foldinner = " " }
--- vim.opt.foldlevel = 99
--- vim.opt.foldlevelstart = 99
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
 
 -- Right-side reference line
 vim.opt.colorcolumn = "160"

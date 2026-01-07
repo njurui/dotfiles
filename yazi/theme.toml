@@ -1,0 +1,167 @@
+# yaml-language-server: $schema=https://yazi-rs.github.io/schemas/theme.json
+"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+
+# -------------------------------------------------------------------
+# Catppuccin Mocha (custom overrides from your Neovim config)
+#   rosewater = #F0C06A
+#   flamingo  = #FFC1C6
+#   pink      = #D9B0FF
+#   mauve     = #E39AF2
+#   red       = #FF6E78
+#   maroon    = #F28B97
+#   peach     = #FE8F40
+#   yellow    = #E7C547
+#   green     = #B3EA54
+#   teal      = #95E5CB
+#   sky       = #6FDFFF
+#   sapphire  = #2C6DA0
+#   blue      = #90C4FA
+#   lavender  = #B7E2F8
+#
+#   text      = #dddddd
+#   subtext1  = #bbbbbb
+#   subtext0  = #aaaaaa
+#   overlay2  = #888888
+#   overlay1  = #888888
+#   overlay0  = #777777
+#   surface2  = #666666
+#   surface1  = #555555
+#   surface0  = #444444
+#   base      = #202020
+#   mantle    = #222222
+#   crust     = #333333
+# -------------------------------------------------------------------
+
+[app]
+overall = { fg = "#dddddd", bg = "reset" }
+
+[mgr]
+cwd = { fg = "#90C4FA", bold = true }
+find_keyword = { fg = "#202020", bg = "#E7C547", bold = true }
+find_position = { fg = "#202020", bg = "#6FDFFF", bold = true }
+symlink_target = { fg = "#95E5CB", italic = true }
+
+marker_copied = { fg = "#B3EA54", bold = true }
+marker_cut = { fg = "#FF6E78", bold = true }
+marker_marked = { fg = "#E7C547", bold = true }
+marker_selected = { fg = "#90C4FA", bold = true }
+
+count_copied = { fg = "#B3EA54", bold = true }
+count_cut = { fg = "#FF6E78", bold = true }
+count_selected = { fg = "#90C4FA", bold = true }
+
+border_symbol = "│"
+border_style = { fg = "#555555" }
+
+syntect_theme = "~/.config/yazi/syntect.tmTheme"
+
+[tabs]
+active = { fg = "#202020", bg = "#B7E2F8", bold = true }
+inactive = { fg = "#bbbbbb", bg = "#333333" }
+
+[mode]
+normal_main = { fg = "#202020", bg = "#90C4FA", bold = true }
+normal_alt = { fg = "#90C4FA", bg = "#444444" }
+
+select_main = { fg = "#202020", bg = "#E7C547", bold = true }
+select_alt = { fg = "#E7C547", bg = "#444444" }
+
+unset_main = { fg = "#202020", bg = "#FF6E78", bold = true }
+unset_alt = { fg = "#FF6E78", bg = "#444444" }
+
+# [indicator]
+# parent = { fg = "#777777" }
+# current = { reversed = true}
+# preview = { fg = "#95E5CB" }
+# padding = { open = " ", close = " " }
+
+[status]
+overall = { fg = "#dddddd", bg = "reset" }
+sep_left = { open = " ", close = " " }
+sep_right = { open = " ", close = " " }
+
+perm_sep = { fg = "#666666" }
+perm_type = { fg = "#2C6DA0", bold = true }
+perm_read = { fg = "#B3EA54" }
+perm_write = { fg = "#E7C547" }
+perm_exec = { fg = "#FF6E78" }
+
+progress_label = { fg = "#bbbbbb" }
+progress_normal = { fg = "#B3EA54" }
+progress_error = { fg = "#FF6E78" }
+
+[which]
+cols = 2
+mask = { bg = "#333333", dim = true }
+
+cand = { fg = "#90C4FA", bold = true }
+rest = { fg = "#bbbbbb" }
+desc = { fg = "#aaaaaa" }
+
+separator = " → "
+separator_style = { fg = "#555555" }
+
+[confirm]
+border = { fg = "#90C4FA" }
+title = { fg = "#B7E2F8", bold = true }
+body = { fg = "#dddddd" }
+list = { fg = "#bbbbbb" }
+
+btn_yes = { fg = "#202020", bg = "#B3EA54", bold = true }
+btn_no = { fg = "#202020", bg = "#FF6E78", bold = true }
+
+btn_labels = ["Yes", "No"]
+
+[spot]
+border = { fg = "#90C4FA" }
+title = { fg = "#B7E2F8", bold = true }
+tbl_col = { fg = "#E7C547", bold = true }
+tbl_cell = { fg = "#dddddd" }
+
+[notify]
+title_info = { fg = "#95E5CB", bold = true }
+title_warn = { fg = "#E7C547", bold = true }
+title_error = { fg = "#FF6E78", bold = true }
+
+[pick]
+border = { fg = "#90C4FA" }
+active = { fg = "#dddddd", bg = "#444444" }
+inactive = { fg = "#aaaaaa" }
+
+[input]
+border = { fg = "#90C4FA" }
+title = { fg = "#B7E2F8", bold = true }
+value = { fg = "#dddddd" }
+selected = { fg = "#202020", bg = "#90C4FA", bold = true }
+
+[cmp]
+border = { fg = "#90C4FA" }
+active = { fg = "#dddddd", bg = "#444444" }
+inactive = { fg = "#aaaaaa" }
+
+[tasks]
+border = { fg = "#90C4FA" }
+title = { fg = "#B7E2F8", bold = true }
+hovered = { fg = "#dddddd", bg = "#444444" }
+
+[help]
+on = { fg = "#B3EA54", bold = true }
+run = { fg = "#90C4FA", bold = true }
+desc = { fg = "#bbbbbb" }
+hovered = { fg = "#dddddd", bg = "#444444" }
+footer = { fg = "#888888" }
+
+[filetype]
+rules = [
+    { mime = "image/*", fg = "#E7C547" },
+    { mime = "{audio,video}/*", fg = "#E39AF2" },
+    { mime = "inode/empty", fg = "#777777" },
+    { url = "*", is = "orphan", fg = "#FF6E78" },
+    { url = "*", is = "exec", fg = "#B3EA54" },
+
+    # Fallback for normal files
+    { url = "*", fg = "#dddddd" },
+
+    # Directories (folders) — MUST be #90C4FA
+    { url = "*/", fg = "#90C4FA" },
+]

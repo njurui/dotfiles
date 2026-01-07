@@ -72,6 +72,10 @@ path=(~/bin $path)
 
 # Export environment variables.
 export GPG_TTY=$TTY
+if command -v nvim &>/dev/null; then
+    export VISUAL='nvim'
+    export EDITOR='nvim'
+fi
 
 # Source additional local files if they exist.
 z4h source ~/.env.zsh
@@ -107,6 +111,16 @@ autoload -Uz zmv
 # Define functions and completions.
 function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
 compdef _directories md
+
+if command -v yazi &>/dev/null; then
+    function y() {
+        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+        command yazi "$@" --cwd-file="$tmp"
+        IFS= read -r -d '' cwd < "$tmp"
+        [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+        rm -f -- "$tmp"
+    }
+fi
 
 # Define named directories: ~w <=> Windows home directory on WSL.
 [[ -z $z4h_win_home ]] || hash -d w=$z4h_win_home
