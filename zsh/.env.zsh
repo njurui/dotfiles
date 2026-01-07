@@ -41,7 +41,7 @@ if [[ -d "$KITTY_REMOTE_DIR" ]]; then
     fi
 fi
 
-# Toolchain config in Homebrew
+# toolchain config in Homebrew
 if [[ -d ${HOMEBREW_PREFIX-} ]]; then
     # environment for clang & clangd & gcc
     export CPATH="$HOMEBREW_PREFIX/include"
@@ -59,7 +59,8 @@ if [[ -d ${HOMEBREW_PREFIX-} ]]; then
 
     # LLVM config
     if [[ -d "$HOMEBREW_PREFIX/opt/llvm" ]]; then
-        typeset -aU path
+        # extend PATH
+        typeset -g -aU path
         path=($HOMEBREW_PREFIX/opt/llvm/bin $path)
 
         # environment for CMake & Autotools
