@@ -10,15 +10,10 @@ return {
     opts = {
         options = {
             close_command = "lua Snacks.bufdelete(%d)",
-            separator_style = "thin",
-            offsets = {
-                {
-                    filetype = "NvimTree",
-                    text = "File Explorer",
-                    highlight = "Directory",
-                    text_align = "center",
-                },
+            indicator = {
+                style = 'none',
             },
+            separator_style = { "", "" },
             diagnostics = "nvim_lsp",
             diagnostics_indicator = function(count, level, diagnostics_dict, context)
                 local s = ""

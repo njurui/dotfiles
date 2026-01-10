@@ -37,7 +37,7 @@ vim.lsp.config("clangd", {
 vim.lsp.config("ruff", {
     init_options = {
         settings = {
-            lineLength = 320
+            lineLength = 320,
         }
     }
 })

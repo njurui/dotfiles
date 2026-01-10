@@ -3,10 +3,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- $ jump to line end without space
-vim.keymap.set("x", "$", "g_", { noremap = true, silent = true })
-vim.keymap.set("x", "g_", "$", { noremap = true, silent = true })
 vim.keymap.set("n", "$", "g_", { noremap = true, silent = true })
 vim.keymap.set("n", "g_", "$", { noremap = true, silent = true })
+vim.keymap.set("x", "$", "g_", { noremap = true, silent = true })
+vim.keymap.set("x", "g_", "$", { noremap = true, silent = true })
 
 -- quick save and quit
 vim.keymap.set("n", "<leader>w", "<cmd>wa<cr>", { noremap = true, silent = true })
@@ -61,9 +61,11 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 
--- terminal
+-- toggle terminal
 vim.keymap.set('t', '<esc><esc>', '<C-\\><C-n>', { noremap = true, silent = true })
 vim.keymap.set('t', '<C-\\>', '<C-\\><C-n><C-w>c', { noremap = true, silent = true })
+
+-- terminal navigation
 -- vim.keymap.set('t', '<C-h>', '<cmd>wincmd h<cr>', { noremap = true, silent = true })
 -- vim.keymap.set('t', '<C-j>', '<cmd>wincmd j<cr>', { noremap = true, silent = true })
 -- vim.keymap.set('t', '<C-k>', '<cmd>wincmd k<cr>', { noremap = true, silent = true })
