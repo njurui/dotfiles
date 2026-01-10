@@ -1,4 +1,5 @@
-# yaml-language-server: $schema=https://yazi-rs.github.io/schemas/theme.json
+# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
+# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 "$schema" = "https://yazi-rs.github.io/schemas/theme.json"
 
 # -------------------------------------------------------------------
@@ -50,7 +51,6 @@ count_copied = { fg = "#B3EA54", bold = true }
 count_cut = { fg = "#FF6E78", bold = true }
 count_selected = { fg = "#90C4FA", bold = true }
 
-border_symbol = "│"
 border_style = { fg = "#555555" }
 
 syntect_theme = "~/.config/yazi/syntect.tmTheme"
@@ -69,16 +69,13 @@ select_alt = { fg = "#E7C547", bg = "#444444" }
 unset_main = { fg = "#202020", bg = "#FF6E78", bold = true }
 unset_alt = { fg = "#FF6E78", bg = "#444444" }
 
-# [indicator]
-# parent = { fg = "#777777" }
-# current = { reversed = true}
-# preview = { fg = "#95E5CB" }
-# padding = { open = " ", close = " " }
+[indicator]
+parent = { bg = "#212121" }
+current = { bg = "#212121" }
+preview = { bg = "#212121" }
 
 [status]
 overall = { fg = "#dddddd", bg = "reset" }
-sep_left = { open = " ", close = " " }
-sep_right = { open = " ", close = " " }
 
 perm_sep = { fg = "#666666" }
 perm_type = { fg = "#2C6DA0", bold = true }
@@ -91,15 +88,9 @@ progress_normal = { fg = "#B3EA54" }
 progress_error = { fg = "#FF6E78" }
 
 [which]
-cols = 2
-mask = { bg = "#333333", dim = true }
-
 cand = { fg = "#90C4FA", bold = true }
 rest = { fg = "#bbbbbb" }
 desc = { fg = "#aaaaaa" }
-
-separator = " → "
-separator_style = { fg = "#555555" }
 
 [confirm]
 border = { fg = "#90C4FA" }
@@ -158,10 +149,6 @@ rules = [
     { mime = "inode/empty", fg = "#777777" },
     { url = "*", is = "orphan", fg = "#FF6E78" },
     { url = "*", is = "exec", fg = "#B3EA54" },
-
-    # Fallback for normal files
     { url = "*", fg = "#dddddd" },
-
-    # Directories (folders) — MUST be #90C4FA
     { url = "*/", fg = "#90C4FA" },
 ]
