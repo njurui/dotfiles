@@ -86,6 +86,12 @@ z4h source ~/.env.zsh
 # z4h source ohmyzsh/ohmyzsh/lib/diagnostics.zsh  # source an individual file
 # z4h load   ohmyzsh/ohmyzsh/plugins/emoji-clock  # load a plugin
 z4h source ohmyzsh/ohmyzsh/lib/directories.zsh
+
+# Need to create the completions directory manually for uv and rust.
+[[ -d "$ZSH_CACHE_DIR/completions" ]] || mkdir -p "$ZSH_CACHE_DIR/completions"
+z4h load ohmyzsh/ohmyzsh/plugins/uv
+z4h load ohmyzsh/ohmyzsh/plugins/rust
+
 z4h load ohmyzsh/ohmyzsh/plugins/fzf
 z4h load ohmyzsh/ohmyzsh/plugins/sudo
 z4h load ohmyzsh/ohmyzsh/plugins/extract

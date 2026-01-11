@@ -7,7 +7,7 @@ if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
     unfunction kitty-integration
 
     # kitten alias
-    alias ssh="kitten ssh"
+    alias s="kitten ssh"
     alias icat="kitten icat"
 
     # entr integration
@@ -67,5 +67,8 @@ if [[ -d ${HOMEBREW_PREFIX-} ]]; then
         export CC="$HOMEBREW_PREFIX/opt/llvm/bin/clang"
         export CXX="$HOMEBREW_PREFIX/opt/llvm/bin/clang++"
         export LDFLAGS="$LDFLAGS -L$HOMEBREW_PREFIX/opt/llvm/lib/c++ -L$HOMEBREW_PREFIX/opt/llvm/lib/unwind -lunwind"
+
+        # environment for libc++ on macOS (Causing issues with gitstatusd)
+        # export DYLD_LIBRARY_PATH="$HOMEBREW_PREFIX/opt/llvm/lib/c++"
     fi
 fi
