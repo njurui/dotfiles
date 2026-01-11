@@ -2,7 +2,7 @@
 
 # install pixi package manager and essential tools
 curl -fsSL https://pixi.sh/install.sh | sh
-~/.pixi/bin/pixi global install zsh tmux==3.6a nvim fzf wget git unzip ninja ripgrep fd-find ffmpeg imagemagick tree-sitter-cli nodejs python zoxide yazi bat
+~/.pixi/bin/pixi global install zsh tmux==3.6a nvim fzf wget git unzip ninja ripgrep fd-find ffmpeg imagemagick tree-sitter-cli nodejs python zoxide yazi bat hexyl
 
 # install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain nightly
