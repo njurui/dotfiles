@@ -106,6 +106,9 @@ vim.opt.title = true
 vim.opt.titlelen = 0 -- do not shorten title
 vim.opt.titlestring = "nvim%{expand('%:t') != '' ? ' '.expand('%:t') : ''}"
 
+-- Confirm before exiting unsaved file
+-- vim.opt.confirm = true
+
 -- Use OSC52 if in ssh and not in tmux
 if vim.env.SSH_TTY ~= nil and vim.env.TMUX == nil then
     vim.g.clipboard = "osc52"

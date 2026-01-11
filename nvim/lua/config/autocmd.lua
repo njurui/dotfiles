@@ -27,7 +27,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
 -- Auto Save
 vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "CursorHoldI" }, {
     group = vim.api.nvim_create_augroup("AutoSave", { clear = true }),
-    callback = function()
+    callback = function(ev)
+        -- Exclude oil buffers
+        local buf = ev.buf
+        if vim.bo[buf].filetype == "oil" then return end
+
         vim.schedule(function() -- Must use vim.schedule to complete write
             vim.cmd("silent! write")
         end)
