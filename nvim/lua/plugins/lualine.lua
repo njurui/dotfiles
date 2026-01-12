@@ -22,6 +22,6 @@ return {
                 "filetype",
             },
         },
-        extensions = { "symbols-outline", "lazy", "mason" },
+        extensions = { "symbols-outline", "lazy", "mason", "oil" },
     }
 }
