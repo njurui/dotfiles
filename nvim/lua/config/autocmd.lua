@@ -11,7 +11,9 @@
 -- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = vim.api.nvim_create_augroup("HighlightYankText", { clear = true }),
-    command = "silent! lua vim.highlight.on_yank()",
+    callback = function()
+        vim.hl.on_yank()
+    end
 })
 
 -- Disable comment when enter the newline using 'o'
@@ -38,13 +40,38 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged", "CursorHoldI" }, {
     end,
 })
 
--- Treesitter highlight
+-- Wrap and check for spell in text filetypes
+vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("AutoWrap", { clear = true }),
+    pattern = { "text", "tex", "plaintex", "typst", "gitcommit", "markdown" },
+    callback = function()
+        vim.opt_local.wrap = true
+        -- vim.opt_local.spell = true
+    end,
+})
+
+-- Auto create dir when saving a file, in case some intermediate directory does not exist
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    group = vim.api.nvim_create_augroup("AutoCreateDir", { clear = true }),
+    callback = function(event)
+        if event.match:match("^%w%w+:[\\/][\\/]") then
+            return
+        end
+        local file = vim.uv.fs_realpath(event.match) or event.match
+        vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+    end,
+})
+
+-- Treesitter
 vim.api.nvim_create_autocmd('FileType', {
-    group = vim.api.nvim_create_augroup("TreesitterHighlight", { clear = true }),
+    group = vim.api.nvim_create_augroup("Treesitter", { clear = true }),
     callback = function()
         local fts = require("nvim-treesitter").get_installed()
         if vim.tbl_contains(fts, vim.bo.filetype) then
             vim.treesitter.start()
+            -- vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+            -- vim.wo[0][0].foldmethod = 'expr'
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end
     end,
 })

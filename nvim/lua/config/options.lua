@@ -18,9 +18,15 @@ vim.opt.signcolumn = "yes"
 
 -- Folding
 vim.opt.foldcolumn = '0'
--- vim.opt.fillchars = { eob = " ", fold = " ", foldopen = "", foldsep = " ", foldclose = "", foldinner = " " }
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
+vim.opt.fillchars:append({
+    fold = " ",
+    foldopen = "",
+    foldsep = " ",
+    foldclose = "",
+    -- foldinner = " ",
+})
 
 -- Right-side reference line
 vim.opt.colorcolumn = "160"
@@ -67,12 +73,18 @@ vim.opt.updatetime = 200
 vim.opt.timeoutlen = 300
 
 -- Split window
+vim.opt.splitkeep = "screen"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 -- Invisible char display style
--- vim.opt.list = true
--- vim.opt.listchars = "space:·"
+vim.opt.list = true
+vim.opt.listchars = {
+    tab = '» ',
+    trail = '·',
+    nbsp = '␣',
+    extends = '…',
+}
 
 -- Enable auto save
 vim.opt.autowriteall = true
@@ -94,12 +106,16 @@ vim.opt.clipboard = "unnamedplus"
 
 -- Enable persistent undo
 vim.opt.undofile = true
+vim.opt.undolevels = 10000
 
 -- Hide additional tilde at the end of buffer
-vim.opt.fillchars = { eob = " " }
+vim.opt.fillchars:append({ eob = " " })
 
 -- Set all default border to rounded
 vim.opt.winborder = "rounded"
+
+-- Allow cursor to move where there is no text in visual block mode
+vim.opt.virtualedit = "block"
 
 -- Set terminal title
 vim.opt.title = true
