@@ -54,6 +54,7 @@ vim.opt.autoread = true
 
 -- Wrap
 vim.opt.wrap = false
+vim.opt.linebreak = true
 
 -- Allow <Left> and <Right> to jump to the previous/next line when at the beginning / end of a line
 vim.opt.whichwrap = "<,>,[,]"
@@ -77,6 +78,9 @@ vim.opt.splitkeep = "screen"
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
+-- Jump option <C-o> and <C-i>
+vim.opt.jumpoptions = "view"
+
 -- Invisible char display style
 vim.opt.list = true
 vim.opt.listchars = {
@@ -91,6 +95,9 @@ vim.opt.autowriteall = true
 
 -- Commandline completion mode
 vim.opt.wildmode = "longest:full,full"
+
+-- Builtin completion options
+vim.opt.completeopt = "menu,menuone,noselect"
 
 -- Disable additional notification
 vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
