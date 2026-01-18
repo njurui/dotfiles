@@ -62,8 +62,8 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 
 -- toggle terminal
-vim.keymap.set('t', '<esc><esc>', '<C-\\><C-n>', { noremap = true, silent = true })
-vim.keymap.set('t', '<C-\\>', '<C-\\><C-n><C-w>c', { noremap = true, silent = true })
+vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { noremap = true, silent = true })
+vim.keymap.set("t", "<C-\\>", "<C-\\><C-n><C-w>c", { noremap = true, silent = true })
 
 -- terminal navigation
 -- vim.keymap.set('t', '<C-h>', '<cmd>wincmd h<cr>', { noremap = true, silent = true })
