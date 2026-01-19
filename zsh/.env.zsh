@@ -7,7 +7,7 @@ if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
     unfunction kitty-integration
 
     # kitten alias
-    alias s="kitten ssh"
+    alias s="kitten ssh -o ServerAliveInterval=15"
     alias icat="kitten icat"
 
     # entr integration
