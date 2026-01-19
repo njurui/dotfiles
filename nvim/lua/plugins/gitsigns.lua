@@ -9,36 +9,45 @@ return {
 			changedelete = { text = "D~" },
 			untracked = { text = "U┆" },
 		},
+		signs_staged = {
+			add = { text = "A┃" },
+			change = { text = "C┃" },
+			delete = { text = "D_" },
+			topdelete = { text = "D‾" },
+			changedelete = { text = "D~" },
+			untracked = { text = "U┆" },
+		},
 		signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
 		numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
 		linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
 		word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
+		current_line_blame = true,
+		current_line_blame_opts = {
+			delay = 200,
+			use_focus = false,
+		},
+		current_line_blame_formatter = "\t\t<author>, <author_time:%R> • <summary>",
+		current_line_blame_formatter_nc = "\t\tYou • Uncommitted changes",
 
 		on_attach = function(bufnr)
 			local gitsigns = require("gitsigns")
 
-			local function map(mode, l, r, opts)
-				opts = opts or {}
-				opts.buffer = bufnr
-				vim.keymap.set(mode, l, r, opts)
-			end
-
 			-- Navigation
-			map("n", "]c", function()
+			vim.keymap.set("n", "]c", function()
 				if vim.wo.diff then
 					vim.cmd.normal({ "]c", bang = true })
 				else
 					gitsigns.nav_hunk("next")
 				end
-			end, { desc = "Next hunk" })
+			end, { buffer = bufnr, desc = "Next hunk" })
 
-			map("n", "[c", function()
+			vim.keymap.set("n", "[c", function()
 				if vim.wo.diff then
 					vim.cmd.normal({ "[c", bang = true })
 				else
 					gitsigns.nav_hunk("prev")
 				end
-			end, { desc = "Previous hunk" })
+			end, { buffer = bufnr, desc = "Previous hunk" })
 		end,
 	},
 }

@@ -26,7 +26,7 @@ vim.keymap.set("x", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set("n", "<C-d>", "10j", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-u>", "10k", { noremap = true, silent = true })
 
--- indent
+-- better indenting
 vim.keymap.set("x", "<", "<gv", { noremap = true, silent = true })
 vim.keymap.set("x", ">", ">gv", { noremap = true, silent = true })
 
