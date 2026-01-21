@@ -26,8 +26,8 @@ return {
 			delay = 200,
 			use_focus = false,
 		},
-		current_line_blame_formatter = "\t\t<author>, <author_time:%R> • <summary>",
-		current_line_blame_formatter_nc = "\t\tYou • Uncommitted changes",
+		current_line_blame_formatter = "    <author>, <author_time:%R> • <summary>",
+		current_line_blame_formatter_nc = "    You • Uncommitted changes",
 
 		on_attach = function(bufnr)
 			local gitsigns = require("gitsigns")
