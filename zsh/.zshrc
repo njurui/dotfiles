@@ -89,7 +89,6 @@ z4h source ohmyzsh/ohmyzsh/lib/directories.zsh
 
 # Need to create the completions directory manually for uv and rust.
 [[ -d "$ZSH_CACHE_DIR/completions" ]] || mkdir -p "$ZSH_CACHE_DIR/completions"
-z4h load ohmyzsh/ohmyzsh/plugins/uv
 z4h load ohmyzsh/ohmyzsh/plugins/rust
 
 z4h load ohmyzsh/ohmyzsh/plugins/fzf
