@@ -127,7 +127,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 					break
 				end
 			end
-		end, { buffer = bufnr })
+		end, { buffer = bufnr, desc = "vim.lsp.buf.format()" })
 
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = "vim.lsp.buf.rename()" })
 		vim.keymap.set(
