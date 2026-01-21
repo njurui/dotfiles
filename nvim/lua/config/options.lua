@@ -62,6 +62,9 @@ vim.opt.whichwrap = "<,>,[,]"
 -- Horizental separate line
 vim.opt.laststatus = 3
 
+-- Disable the default ruler
+vim.opt.ruler = false
+
 -- Disable backup file
 vim.opt.backup = false
 vim.opt.writebackup = false
