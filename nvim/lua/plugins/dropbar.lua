@@ -28,7 +28,7 @@ return {
 					File = "󰈔 ",
 					Folder = "󰉋 ",
 					ForStatement = "󰑖 ",
-					Function = "󰊕 ",
+					Function = " ",
 					GotoStatement = "󰁔 ",
 					Identifier = " ",
 					IfStatement = "󰇉 ",
