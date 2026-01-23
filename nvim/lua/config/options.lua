@@ -33,6 +33,7 @@ vim.opt.colorcolumn = "160"
 
 -- Mouse support
 vim.opt.mouse = "a"
+vim.opt.mousemodel = "extend"
 
 -- Tab and indent
 vim.opt.tabstop = 4
