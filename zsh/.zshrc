@@ -153,5 +153,10 @@ ctrl_l() {
 zle -N ctrl_l
 bindkey '^l' ctrl_l
 
+# Edit the current command line in $VISUAL (or $EDITOR / `vi` if not set)
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
+
 # Remove command_not_found_handler.
 [[ ! -v functions[command_not_found_handler] ]] || unfunction command_not_found_handler
