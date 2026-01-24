@@ -9,6 +9,17 @@ return {
 			},
 		},
 		sections = {
+			lualine_b = {
+				{
+					"branch",
+					icon = "",
+				},
+				{
+					"diff",
+					symbols = { added = " ", modified = " ", removed = " " },
+					"diagnostics",
+				},
+			},
 			lualine_x = {
 				"encoding",
 				{
