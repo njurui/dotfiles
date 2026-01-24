@@ -1,6 +1,14 @@
 return {
 	"saghen/blink.cmp",
-	dependencies = { "rafamadriz/friendly-snippets" },
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		{
+			"onsails/lspkind.nvim",
+			opts = {
+				preset = "codicons",
+			},
+		},
+	},
 	build = vim.loop.os_uname().sysname == "Darwin"
 			and 'RUSTFLAGS="-C link-arg=-undefined -C link-arg=dynamic_lookup" cargo build --release'
 		or "cargo build --release",
@@ -18,17 +26,24 @@ return {
 			menu = {
 				border = "rounded",
 				draw = {
+					gap = 2,
 					components = {
-						source_name = {
+						kind_icon = {
 							text = function(ctx)
-								return "[" .. ctx.source_name .. "]"
+								local icon = ctx.kind_icon
+								if vim.tbl_contains({ "Path" }, ctx.source_name) then
+									local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
+									if dev_icon then
+										icon = dev_icon
+									end
+								else
+									icon = require("lspkind").symbolic(ctx.kind, {
+										mode = "symbol",
+									})
+								end
+								return icon .. ctx.icon_gap
 							end,
 						},
-					},
-					columns = {
-						{ "label", "label_description", gap = 1 },
-						{ "kind_icon", "kind", gap = 1 },
-						{ "source_name" },
 					},
 				},
 			},
