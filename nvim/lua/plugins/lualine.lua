@@ -17,8 +17,8 @@ return {
 				{
 					"diff",
 					symbols = { added = " ", modified = " ", removed = " " },
-					"diagnostics",
 				},
+				"diagnostics",
 			},
 			lualine_x = {
 				"encoding",
