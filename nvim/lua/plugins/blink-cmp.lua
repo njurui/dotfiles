@@ -37,6 +37,23 @@ return {
 					components = {
 						label = {
 							width = { max = 45 },
+							text = function(ctx)
+								local max_width = 45
+
+								local base = (ctx.label or "") .. (ctx.label_detail or "")
+								if #base >= max_width - 1 then
+									return base
+								end
+
+								local desc = ctx.label_description or ""
+								if desc == "" then
+									return base
+								end
+
+								local desc_width = math.min(#desc, max_width - #base - 1)
+								local spaces = max_width - #base - desc_width
+								return base .. string.rep(" ", spaces) .. desc
+							end,
 						},
 						kind_icon = {
 							text = function(ctx)
