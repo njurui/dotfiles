@@ -25,10 +25,19 @@ return {
 				},
 			},
 			menu = {
+				min_width = 45,
+				max_height = 12,
 				border = "rounded",
 				draw = {
 					gap = 2,
+					columns = {
+						{ "kind_icon" },
+						{ "label" },
+					},
 					components = {
+						label = {
+							width = { max = 45 },
+						},
 						kind_icon = {
 							text = function(ctx)
 								local icon = ctx.kind_icon
@@ -50,7 +59,12 @@ return {
 			},
 			documentation = {
 				auto_show = true,
-				window = { border = "rounded" },
+				auto_show_delay_ms = 0,
+				update_delay_ms = 50,
+				window = {
+					max_width = 50,
+					border = "rounded",
+				},
 			},
 			ghost_text = {
 				enabled = false,
@@ -75,6 +89,16 @@ return {
 			},
 			window = {
 				border = "rounded",
+			},
+		},
+
+		fuzzy = {
+			sorts = {
+				"exact",
+				"score",
+				"sort_text",
+				"kind",
+				"label",
 			},
 		},
 
