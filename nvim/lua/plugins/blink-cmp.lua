@@ -25,7 +25,7 @@ return {
 				},
 			},
 			menu = {
-				min_width = 45,
+				-- min_width = 45,
 				max_height = 12,
 				border = "rounded",
 				draw = {
@@ -36,9 +36,9 @@ return {
 					},
 					components = {
 						label = {
-							width = { max = 45 },
+							width = { max = 60 },
 							text = function(ctx)
-								local max_width = 45
+								local max_width = 60
 
 								local base = (ctx.label or "") .. (ctx.label_detail or "")
 								if #base >= max_width - 1 then
