@@ -91,6 +91,7 @@ vim.lsp.config("texlab", {
 
 				executable = "sioyek",
 				args = {
+					"--nofocus",
 					"--reuse-window",
 					"--execute-command",
 					"toggle_synctex",
