@@ -70,9 +70,14 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
 		local fts = require("nvim-treesitter").get_installed()
 		if vim.tbl_contains(fts, vim.bo.filetype) then
+			-- Treesitter Highlight
 			vim.treesitter.start()
-			-- vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-			-- vim.wo[0][0].foldmethod = 'expr'
+
+			-- Treesitter Folding
+			vim.wo.foldmethod = "expr"
+			vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+			-- Treesitter Indent
 			vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 		end
 	end,
@@ -169,10 +174,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 
 		-- Use LSP-provided folding
-		-- if client.server_capabilities.foldingRangeProvider then
-		--     vim.wo.foldmethod = "expr"
-		--     vim.wo.foldexpr = "v:lua.vim.lsp.foldexpr()"
-		-- end
+		if client.server_capabilities.foldingRangeProvider then
+			vim.wo.foldmethod = "expr"
+			vim.wo.foldexpr = "v:lua.vim.lsp.foldexpr()"
+		end
 
 		-- Show line diagnostics automatically in hover window
 		vim.api.nvim_create_autocmd("CursorHold", {
