@@ -31,6 +31,14 @@ return {
 				explorer = {
 					hidden = true,
 					ignored = true,
+					icons = {
+						diagnostics = {
+							Error = "󰅚 ",
+							Warn = "󰀪 ",
+							Info = " ",
+							Hint = "󰌶 ",
+						},
+					},
 				},
 				files = {
 					hidden = false,
