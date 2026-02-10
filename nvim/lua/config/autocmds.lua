@@ -88,7 +88,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = vim.api.nvim_create_augroup("JsonFormatter", { clear = true }),
 	pattern = "json",
 	callback = function()
-		vim.keymap.set("n", "<leader>f", "<cmd>%!jq '.'<cr>", { buffer = bufnr })
+		vim.keymap.set("n", "<leader>f", "<cmd>%!jq --indent 4 '.'<cr>", { buffer = bufnr })
 	end,
 })
 

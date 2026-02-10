@@ -33,6 +33,6 @@ return {
 				"filetype",
 			},
 		},
-		extensions = { "symbols-outline", "lazy", "mason", "oil" },
+		extensions = { "symbols-outline", "lazy", "mason", "oil", "nvim-dap-ui" },
 	},
 }
