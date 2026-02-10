@@ -28,6 +28,8 @@ return {
 			-- "shfmt",
 			-- "tectonic",
 			-- "latexindent",
+			-- "codelldb",
+			-- "cpptools",
 		},
 	},
 }
