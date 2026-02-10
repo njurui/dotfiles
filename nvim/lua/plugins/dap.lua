@@ -7,6 +7,7 @@ return {
 			"theHamsta/nvim-dap-virtual-text",
 			opts = {
 				highlight_new_as_changed = true,
+				all_frames = true,
 			},
 		},
 		{
@@ -49,6 +50,7 @@ return {
 					"breakpoint set -n main -o true", -- one shot breakpoint at main
 				},
 				args = {},
+				runInTerminal = true,
 			},
 			{
 				name = "Launch file (codelldb)",
@@ -76,7 +78,18 @@ return {
 			},
 		}
 		dap.configurations.c = dap.configurations.cpp
-		dap.configurations.rust = dap.configurations.cpp
+		dap.configurations.rust = {
+			{
+				name = "Launch file (codelldb)",
+				type = "codelldb",
+				request = "launch",
+				program = function()
+					return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				end,
+				cwd = "${workspaceFolder}",
+				stopOnEntry = false, -- do not stop at dyld_start / main for rust
+			},
+		}
 
 		-- DAP Signs
 		vim.api.nvim_set_hl(0, "DapStoppedLine", { bg = "#363222" })
