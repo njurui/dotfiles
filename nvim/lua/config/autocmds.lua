@@ -83,15 +83,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- JSON Formatter
-vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("JsonFormatter", { clear = true }),
-	pattern = "json",
-	callback = function()
-		vim.keymap.set("n", "<leader>f", "<cmd>%!jq --indent 4 '.'<cr>", { buffer = bufnr })
-	end,
-})
-
 -- Lsp on_attach
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("OnLspAttach", { clear = true }),

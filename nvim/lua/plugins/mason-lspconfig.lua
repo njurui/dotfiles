@@ -23,7 +23,7 @@ return {
 			"bashls",
 			"neocmake",
 			"tinymist",
-			-- "jq",
+			"jsonls",
 			-- "copilot",
 			-- "shfmt",
 			-- "tectonic",
