@@ -22,8 +22,7 @@ vim.lsp.config("clangd", {
 	cmd = {
 		"clangd",
 		"--completion-style=detailed",
-		"--function-arg-placeholders",
-		"--fallback-style=google",
+		"--fallback-style=Google",
 	},
 	init_options = {
 		clangdFileStatus = true,
@@ -59,6 +58,7 @@ vim.lsp.config("texlab", {
 	settings = {
 		texlab = {
 			build = {
+				-- Latexmk config:
 				executable = "latexmk",
 				args = {
 					"-pdf",
@@ -69,6 +69,7 @@ vim.lsp.config("texlab", {
 					"%f",
 				},
 
+				-- Tectonic config:
 				-- executable = "tectonic",
 				-- args = {
 				--     "-X",
@@ -78,31 +79,34 @@ vim.lsp.config("texlab", {
 				--     "--keep-logs",
 				--     "--keep-intermediates"
 				-- },
-				forwardSearchAfter = true,
+
 				onSave = true,
+				forwardSearchAfter = false,
 			},
 			forwardSearch = {
-				-- Use Mason bundled texlab to support inverse search
 				-- Skim config:
+				-- Use Mason bundled texlab to support inverse search
 				-- Commands: $HOME/.local/share/nvim/mason/bin/texlab
 				-- Arguments: inverse-search -i "%file" -l %line
+
 				-- executable = "/Applications/Skim.app/Contents/SharedSupport/displayline",
 				-- args = { "-g", "%l", "%p", "%f" },
 
-				executable = "sioyek",
-				args = {
-					"--nofocus",
-					"--reuse-window",
-					"--execute-command",
-					"toggle_synctex",
-					"--inverse-search",
-					'texlab inverse-search -i "%%1" -l %%2',
-					"--forward-search-file",
-					"%f",
-					"--forward-search-line",
-					"%l",
-					"%p",
-				},
+				-- Sioyek config:
+				-- executable = "sioyek",
+				-- args = {
+				-- 	"--nofocus",
+				-- 	"--reuse-window",
+				-- 	"--execute-command",
+				-- 	"toggle_synctex",
+				-- 	"--inverse-search",
+				-- 	'texlab inverse-search -i "%%1" -l %%2',
+				-- 	"--forward-search-file",
+				-- 	"%f",
+				-- 	"--forward-search-line",
+				-- 	"%l",
+				-- 	"%p",
+				-- },
 			},
 			-- chktex = {
 			--     onEdit = true,
