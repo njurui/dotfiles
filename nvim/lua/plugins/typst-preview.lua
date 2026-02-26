@@ -3,7 +3,7 @@ return {
 	ft = "typst",
 	keys = { { "<leader>tp", "<cmd>TypstPreview<cr>", desc = "Typst preview" } },
 	opts = {
-		port = 23635,
+		-- port = 23635,
 		dependencies_bin = {
 			["tinymist"] = "tinymist",
 		},
