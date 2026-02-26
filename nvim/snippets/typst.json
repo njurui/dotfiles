@@ -64,7 +64,7 @@
             "]",
             "",
             "#let theorem = thmenv(",
-            "  \"theorem\",",
+            "  \"Theorem\",",
             "  none,",
             "  none,",
             "  (name, number, body, ..args) => {",
@@ -83,7 +83,7 @@
             ").with(numbering: \"1\")",
             "",
             "#let definition = thmenv(",
-            "  \"definition\",",
+            "  \"Definition\",",
             "  none,",
             "  none,",
             "  (name, number, body, ..args) => {",
@@ -102,7 +102,7 @@
             ").with(numbering: \"1\")",
             "",
             "#let corollary = thmenv(",
-            "  \"corollary\",",
+            "  \"Corollary\",",
             "  none,",
             "  none,",
             "  (name, number, body, ..args) => {",
@@ -120,7 +120,7 @@
             "  },",
             ").with(numbering: \"1\")",
             "",
-            "#let proof = thmproof(\"proof\", \"Proof\")"
+            "#let proof = thmproof(\"Proof\", \"Proof\")"
         ]
     }
 }
