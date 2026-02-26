@@ -8,7 +8,8 @@ return {
 			["tinymist"] = "tinymist",
 		},
 		get_main_file = function(path_of_buffer)
-			return vim.fn.findfile("main.typ", vim.fn.fnamemodify(path_of_buffer, ":p:h") .. ";")
+			local main = vim.fn.findfile("main.typ", vim.fn.fnamemodify(path_of_buffer, ":p:h") .. ";")
+			return main ~= "" and main or path_of_buffer
 		end,
 	},
 }
