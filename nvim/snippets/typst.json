@@ -13,7 +13,7 @@
             "",
             "#import \"@preview/itemize:0.2.0\" as el",
             "#show: el.default-enum",
-            "#show: el.default-list.with(label-baseline: 0.02em)",
+            "#show: el.default-list.with(label-baseline: 0.05em)",
             "",
             "#show heading: it => {",
             "  it",
