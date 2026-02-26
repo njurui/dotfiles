@@ -120,7 +120,7 @@
             "  },",
             ").with(numbering: \"1\")",
             "",
-            "#let proof = thmproof(\"Proof\", \"Proof\")"
+            "#let proof = thmproof(\"proof\", \"Proof\")"
         ]
     }
 }
