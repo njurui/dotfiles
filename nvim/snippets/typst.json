@@ -1,0 +1,17 @@
+{
+    "typ": {
+        "prefix": "typ",
+        "body": [
+            "#set text(font: (",
+            "  (name: \"Charter\", covers: \"latin-in-cjk\"),",
+            "  \"Source Han Serif SC\",",
+            "))",
+            "",
+            "#set document(title: [${1}])",
+            "",
+            "#title()",
+            "",
+            "$0"
+        ]
+    }
+}

@@ -1,7 +1,6 @@
 return {
 	"saghen/blink.cmp",
 	dependencies = {
-		-- "rafamadriz/friendly-snippets",
 		{
 			"onsails/lspkind.nvim",
 			opts = {
@@ -120,18 +119,12 @@ return {
 		},
 
 		sources = {
-			-- default = { "lsp", "path", "snippets", "buffer" },
-			default = { "lsp", "path", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer" },
 			providers = {
 				snippets = {
-					enabled = false,
-					-- opts = {
-					-- 	friendly_snippets = true,
-					-- 	filter_snippets = function(filetype, file)
-					-- 		local snippet_name = vim.fn.fnamemodify(file, ":t:r")
-					-- 		return snippet_name ~= "global"
-					-- 	end,
-					-- },
+					opts = {
+						friendly_snippets = false,
+					},
 				},
 			},
 		},
