@@ -5,6 +5,10 @@
             {
                 "language": "typst",
                 "path": "./typst.json"
+            },
+            {
+                "language": "python",
+                "path": "./python.json"
             }
         ]
     }
