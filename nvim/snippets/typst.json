@@ -42,6 +42,8 @@
             "",
             "#set math.equation(numbering: \"(1)\")",
             "",
+            "#set figure(gap: 12pt)",
+            "",
             "#set page(numbering: \"1\")",
             "",
             "#set par(justify: true, linebreaks: \"optimized\", leading: 0.95em)",
@@ -51,6 +53,7 @@
             "#set document(title: [${1}])",
             "",
             "#title()",
+            "",
             "#outline()",
             "",
             "$0"
