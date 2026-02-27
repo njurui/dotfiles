@@ -23,7 +23,7 @@
             "  v(12pt, weak: true)",
             "}",
             "",
-            "#show raw.line: set text(font: \"JetBrainsMono NFP\")",
+            "#show raw: set text(font: \"JetBrainsMono NFP\")",
             "",
             "#set text(",
             "  10pt,",
