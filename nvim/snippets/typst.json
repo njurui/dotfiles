@@ -20,6 +20,8 @@
             "  v(12pt, weak: true)",
             "}",
             "",
+            "#show raw.line: set text(font: \"JetBrainsMono NFP\")",
+            "",
             "#set text(",
             "  10pt,",
             "  font: (",
