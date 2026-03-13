@@ -49,7 +49,7 @@ return {
             autocmd ColorScheme * highlight FloatBorder guifg=none guibg=none
         ]])
 
-		vim.cmd.colorscheme("catppuccin")
+		vim.cmd.colorscheme("catppuccin-nvim")
 
 		-- Set CursorLine guibg (Used together with kitty)
 		vim.api.nvim_set_hl(0, "CursorLine", { bg = "#212121" })
