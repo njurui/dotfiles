@@ -21,11 +21,11 @@ vim.opt.foldcolumn = "0"
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.fillchars:append({
-	fold = " ",
-	foldopen = "",
-	foldsep = " ",
-	foldclose = "",
-	-- foldinner = " ",
+    fold = " ",
+    foldopen = "",
+    foldsep = " ",
+    foldclose = "",
+    -- foldinner = " ",
 })
 
 -- Right-side reference line
@@ -88,10 +88,10 @@ vim.opt.jumpoptions = "view"
 -- Invisible char display style
 vim.opt.list = true
 vim.opt.listchars = {
-	tab = "» ",
-	trail = "·",
-	nbsp = "␣",
-	extends = "…",
+    tab = "» ",
+    trail = "·",
+    nbsp = "␣",
+    extends = "…",
 }
 
 -- Enable auto save
@@ -138,5 +138,5 @@ vim.opt.titlestring = "nvim%{expand('%:t') != '' ? ' '.expand('%:t') : ''}"
 
 -- Use OSC52 if in ssh and not in tmux
 if vim.env.SSH_TTY ~= nil and vim.env.TMUX == nil then
-	vim.g.clipboard = "osc52"
+    vim.g.clipboard = "osc52"
 end
