@@ -207,7 +207,7 @@ return {
             desc = "Rename File",
         },
         {
-            "<c-\\>",
+            "<c-`>",
             function()
                 Snacks.terminal()
             end,
