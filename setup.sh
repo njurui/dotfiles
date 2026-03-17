@@ -10,6 +10,11 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --defaul
 # install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
+# download vscode
+mkdir vscode
+curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output vscode/vscode_cli.tar.gz
+tar -xzf vscode/vscode_cli.tar.gz -C vscode
+
 # setup config files
 ~/.pixi/bin/git clone https://github.com/njurui/dotfiles.git ~/.config/dotfiles
 ln -sf ~/.config/dotfiles/zsh ~/.config/zsh
