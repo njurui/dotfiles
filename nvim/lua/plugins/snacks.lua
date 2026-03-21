@@ -19,7 +19,7 @@ return {
             convert = {
                 magick = {
                     default = { "{src}[0]", "-scale", "1920x1080>" }, -- default for raster images
-                    vector = { "-density", 300, "{src}[{page}]" }, -- used by vector images like svg
+                    vector = { "-density", 300, "{src}[{page}]" },    -- used by vector images like svg
                     math = { "-density", 300, "{src}[{page}]", "-trim" },
                     pdf = { "-density", 300, "{src}[{page}]", "-background", "white", "-alpha", "remove", "-trim" },
                 },
@@ -207,7 +207,7 @@ return {
             desc = "Rename File",
         },
         {
-            "<c-`>",
+            "<c-\\>",
             function()
                 Snacks.terminal()
             end,
