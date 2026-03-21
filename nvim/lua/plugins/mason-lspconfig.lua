@@ -24,6 +24,8 @@ return {
             "neocmake",
             "tinymist",
             "jsonls",
+            "yamlls",
+            "tombi",
             -- "shfmt",
             -- "tex-fmt"
             -- "codelldb",
