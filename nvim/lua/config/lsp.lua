@@ -46,10 +46,6 @@ vim.lsp.config("ruff", {
     },
 })
 
-vim.lsp.config("bashls", {
-    filetypes = { "bash", "zsh", "sh" },
-})
-
 vim.lsp.config("tinymist", {
     settings = {
         formatterMode = "typstyle",
