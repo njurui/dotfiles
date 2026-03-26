@@ -47,6 +47,7 @@ vim.lsp.config("ruff", {
 })
 
 vim.lsp.config("tinymist", {
+    root_markers = { "tinymist.lock" },
     settings = {
         formatterMode = "typstyle",
         exportPdf = "onType",

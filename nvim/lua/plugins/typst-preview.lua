@@ -4,7 +4,6 @@ return {
     keys = { { "<leader>tp", "<cmd>TypstPreview<cr>", desc = "Typst preview" } },
     opts = {
         -- port = 23635,
-        open_cmd = "open -a Firefox %s", -- Use Firefox to avoid lagging
         dependencies_bin = {
             ["tinymist"] = "tinymist",
         },
