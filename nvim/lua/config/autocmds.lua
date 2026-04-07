@@ -149,7 +149,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         -- Inlay Hint Enabled
         if client.server_capabilities.inlayHintProvider then
-            vim.lsp.inlay_hint.enable(true, { bufnr })
+            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
         end
 
         -- Use LSP-provided folding

@@ -31,6 +31,8 @@
             "",
             "#show raw: set text(font: \"JetBrainsMono NFP\")",
             "",
+            "#show math.equation: set block(breakable: true)",
+            "",
             "#set text(",
             "  10pt,",
             "  font: (",
@@ -136,7 +138,8 @@
             "  },",
             ").with(numbering: \"1\")",
             "",
-            "#let proof = thmproof(\"proof\", \"Proof\")"
+            "#let proof = thmproof(\"proof\", \"Proof\")",
+            "#let solution = thmplain(\"solution\", \"Solution\").with(numbering: none)"
         ]
     }
 }
