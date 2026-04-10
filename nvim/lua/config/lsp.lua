@@ -51,6 +51,7 @@ vim.lsp.config("tinymist", {
     settings = {
         formatterMode = "typstyle",
         exportPdf = "onType",
+        outputPath = "$root/build/$name",
         -- Execute the command to generate database: tinymist compile --save-lock main.typ
         projectResolution = "lockDatabase",
     },
@@ -68,22 +69,15 @@ vim.lsp.config("texlab", {
                     "-shell-escape",
                     "-interaction=nonstopmode",
                     "-synctex=1",
+                    "-outdir=build",
+                    "-auxdir=build",
                     "%f",
                 },
-
-                -- Tectonic config:
-                -- executable = "tectonic",
-                -- args = {
-                --     "-X",
-                --     "compile",
-                --     "%f",
-                --     "--synctex",
-                --     "--keep-logs",
-                --     "--keep-intermediates"
-                -- },
-
                 onSave = true,
                 forwardSearchAfter = false,
+                auxDirectory = "build",
+                logDirectory = "build",
+                pdfDirectory = "build",
             },
             forwardSearch = {
                 -- Skim config:

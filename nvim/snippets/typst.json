@@ -64,7 +64,7 @@
     "lib": {
         "prefix": "lib",
         "body": [
-            "#import \"@preview/ctheorems:1.1.3\": thmenv, thmproof",
+            "#import \"@preview/ctheorems:1.1.3\": thmenv, thmplain, thmproof",
             "#import \"@preview/showybox:2.0.4\": showybox",
             "",
             "#let blockquote(cite: none, body) = [",
