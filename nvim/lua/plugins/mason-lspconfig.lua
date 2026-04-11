@@ -26,6 +26,8 @@ return {
             "jsonls",
             "yamlls",
             "tombi",
+            "lemminx",
+            "vtsls",
             -- "shfmt",
             -- "tex-fmt"
             -- "codelldb",
