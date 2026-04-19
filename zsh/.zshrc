@@ -38,6 +38,9 @@ LSCOLORS="ExgxFxdacxDaDaabagacad"
 ## Zoxide
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 
+## fzf
+(( $+commands[fzf] )) && source <(fzf --zsh)
+
 ## kitty shell integration
 if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
     export KITTY_SHELL_INTEGRATION="enabled"
