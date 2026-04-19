@@ -104,7 +104,12 @@ vim.opt.wildmode = "longest:full,full"
 vim.opt.completeopt = "menu,menuone,noselect"
 
 -- Disable additional notification
-vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
+vim.opt.shortmess:append({
+    W = true,
+    I = true,
+    c = true,
+    C = true,
+})
 
 -- Maximum number of item in popup menu
 vim.opt.pumheight = 10
@@ -124,6 +129,7 @@ vim.opt.fillchars:append({ eob = " " })
 
 -- Set all default border to rounded
 vim.opt.winborder = "rounded"
+vim.opt.pumborder = "rounded"
 
 -- Allow cursor to move where there is no text in visual block mode
 vim.opt.virtualedit = "block"

@@ -2,6 +2,37 @@ return {
     "Bekaboo/dropbar.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
+        symbol = {
+            on_click = false,
+        },
+        bar = {
+            enable = function(buf, win, info)
+                if not vim.api.nvim_buf_is_valid(buf) or not vim.api.nvim_win_is_valid(win) then
+                    return false
+                end
+
+                if vim.api.nvim_win_get_config(win).relative ~= "" then
+                    return false
+                end
+
+                local bt = vim.bo[buf].buftype
+                local ft = vim.bo[buf].filetype
+
+                if bt == "nofile" or bt == "prompt" or bt == "quickfix" or bt == "terminal" then
+                    return false
+                end
+
+                if vim.wo[win].winbar ~= "" or ft == "help" then
+                    return false
+                end
+
+                return pcall(vim.treesitter.get_parser, buf)
+                    or not vim.tbl_isempty(vim.lsp.get_clients({
+                        bufnr = buf,
+                        method = "textDocument/documentSymbol",
+                    }))
+            end,
+        },
         icons = {
             kinds = {
                 symbols = {
