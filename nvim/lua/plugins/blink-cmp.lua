@@ -9,9 +9,7 @@ return {
         },
         "nvim-tree/nvim-web-devicons",
     },
-    build = vim.uv.os_uname().sysname == "Darwin"
-        and 'RUSTFLAGS="-C link-arg=-undefined -C link-arg=dynamic_lookup" cargo build --release'
-        or "cargo build --release",
+    build = "cargo build --release",
     opts = {
         keymap = {
             preset = "super-tab",
