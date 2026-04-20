@@ -101,7 +101,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr, desc = "vim.lsp.buf.references()" })
         -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "vim.lsp.buf.declaration()" })
 
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "vim.lsp.buf.hover()" })
+        -- vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "vim.lsp.buf.hover()" })
         vim.keymap.set(
             "n",
             "<C-k>",
@@ -109,9 +109,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
             { buffer = bufnr, desc = "vim.lsp.buf.signature_help()" }
         )
 
-        vim.keymap.set("n", "<leader>f", function()
-            vim.lsp.buf.format({ async = true })
-        end, { buffer = bufnr, desc = "vim.lsp.buf.format()" })
+        -- vim.keymap.set("n", "<leader>f", function()
+        --     vim.lsp.buf.format({ async = true })
+        -- end, { buffer = bufnr, desc = "vim.lsp.buf.format()" })
 
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = "vim.lsp.buf.rename()" })
         vim.keymap.set(

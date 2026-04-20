@@ -50,7 +50,14 @@ return {
                 },
             },
         },
-        notifier = { enabled = true },
+        notifier = {
+            enabled = true,
+            icons = {
+                error = "󰅚 ",
+                warn = "󰀪 ",
+                info = " ",
+            },
+        },
         quickfile = { enabled = true },
         scope = { enabled = true },
         scroll = { enabled = false },

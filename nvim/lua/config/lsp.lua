@@ -26,16 +26,13 @@ end, { desc = "Toggle diagnostic virtual_lines" })
 vim.lsp.config("clangd", {
     cmd = {
         "clangd",
-        "--completion-style=detailed",
+        -- "--completion-style=detailed",
         "--fallback-style=Google",
     },
     init_options = {
         clangdFileStatus = true,
-        usePlaceholders = true,
-        completeUnimported = true,
         -- fallbackFlags = { '-std=gnu++23' },
     },
-    -- flags = { allow_incremental_sync = false },
 })
 
 vim.lsp.config("ruff", {
@@ -61,7 +58,6 @@ vim.lsp.config("texlab", {
     settings = {
         texlab = {
             build = {
-                -- Latexmk config:
                 executable = "latexmk",
                 args = {
                     "-pdf",
@@ -80,14 +76,6 @@ vim.lsp.config("texlab", {
                 pdfDirectory = "build",
             },
             forwardSearch = {
-                -- Skim config:
-                -- Use Mason bundled texlab to support inverse search
-                -- Commands: $HOME/.local/share/nvim/mason/bin/texlab
-                -- Arguments: inverse-search -i "%file" -l %line
-
-                -- executable = "/Applications/Skim.app/Contents/SharedSupport/displayline",
-                -- args = { "-g", "%l", "%p", "%f" },
-
                 -- Sioyek config:
                 -- executable = "sioyek",
                 -- args = {
@@ -104,15 +92,8 @@ vim.lsp.config("texlab", {
                 -- 	"%p",
                 -- },
             },
-            -- chktex = {
-            --     onEdit = true,
-            --     onOpenAndSave = true,
-            -- },
             formatterLineLength = 255,
             latexFormatter = "tex-fmt",
-            -- latexindent = {
-            --     modifyLineBreaks = true,
-            -- },
         },
     },
 })
@@ -124,13 +105,9 @@ vim.lsp.enable("ty")
 vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("superhtml")
 vim.lsp.enable("lua_ls")
-vim.lsp.enable("bashls")
 vim.lsp.enable("neocmake")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("tombi")
 vim.lsp.enable("lemminx")
 vim.lsp.enable("vtsls")
--- "shfmt",
 -- "tex-fmt"
--- "codelldb",
--- "cpptools",

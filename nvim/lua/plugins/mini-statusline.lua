@@ -33,7 +33,7 @@ return {
                 })
 
                 return MiniStatusline.combine_groups({
-                    { hl = mode_hl,                 strings = { mode } },
+                    { hl = mode_hl,                 strings = { mode:upper() } },
                     { hl = 'MiniStatuslineDevinfo', strings = { git, diff, diagnostics } },
                     '%<',
                     { hl = 'MiniStatuslineFilename', strings = { filename } },

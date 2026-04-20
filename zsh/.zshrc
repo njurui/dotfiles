@@ -7,7 +7,7 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # Lazy-load (autoload) Zsh function files from a directory.
@@ -19,7 +19,7 @@ fpath=($ZFUNCDIR $fpath)
 
 # Clone antidote if necessary.
 if [[ ! -d $XDG_DATA_HOME/.antidote ]]; then
-  git clone https://github.com/mattmc3/antidote $XDG_DATA_HOME/.antidote
+    git clone https://github.com/mattmc3/antidote $XDG_DATA_HOME/.antidote
 fi
 
 # Create an amazing Zsh config using antidote plugins.
@@ -46,10 +46,10 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT=65535
 LSCOLORS='ExgxFxdacxDaDaabagacad'
 
 ## Zoxide
-(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
+(($+commands[zoxide])) && eval "$(zoxide init zsh)"
 
 ## fzf
-(( $+commands[fzf] )) && source <(fzf --zsh)
+(($+commands[fzf])) && source <(fzf --zsh)
 
 ## kitty shell integration
 if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
