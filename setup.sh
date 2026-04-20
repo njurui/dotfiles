@@ -2,7 +2,7 @@
 
 # install pixi package manager and essential tools
 curl -fsSL https://pixi.sh/install.sh | sh
-~/.pixi/bin/pixi global install zsh tmux nvim fzf wget git unzip ninja ripgrep fd-find ffmpeg imagemagick tree-sitter-cli nodejs python zoxide yazi bat hexyl uv aria2
+~/.pixi/bin/pixi global install zsh tmux nvim fzf wget git unzip ninja ripgrep fd-find ffmpeg imagemagick tree-sitter-cli nodejs python zoxide bat hexyl uv aria2
 
 # install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain nightly
@@ -17,7 +17,4 @@ tar -xzf vscode/vscode_cli.tar.gz -C vscode
 ln -sf ~/.config/dotfiles/zsh ~/.config/zsh
 ln -sf ~/.config/dotfiles/tmux ~/.config/tmux
 ln -sf ~/.config/dotfiles/nvim ~/.config/nvim
-ln -sf ~/.config/dotfiles/zsh/.zshrc ~/.zshrc
 ln -sf ~/.config/dotfiles/zsh/.zshenv ~/.zshenv
-ln -sf ~/.config/dotfiles/zsh/.p10k.zsh ~/.p10k.zsh
-ln -sf ~/.config/dotfiles/zsh/.env.zsh ~/.env.zsh
