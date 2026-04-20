@@ -15,8 +15,14 @@ return {
                     return false
                 end
 
+                local bt = vim.bo[buf].buftype
                 local ft = vim.bo[buf].filetype
-                if vim.fn.win_gettype(win) ~= '' or vim.wo[win].winbar ~= "" or ft == "help" or ft == "" then
+
+                if bt == "nofile" or bt == "prompt" or bt == "quickfix" then
+                    return false
+                end
+
+                if vim.wo[win].winbar ~= "" or ft == "help" or ft == "" then
                     return false
                 end
 
