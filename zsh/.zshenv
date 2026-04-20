@@ -22,6 +22,3 @@ path=(
     /usr/local/{,s}bin(N)
     $path
 )
-
-# Rustup
-[[ ! -f $HOME/.cargo/env ]] || . "$HOME/.cargo/env"

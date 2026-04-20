@@ -45,6 +45,12 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT=65535
 ## Colors
 LSCOLORS='ExgxFxdacxDaDaabagacad'
 
+## Homebrew
+(($+commands[brew])) && eval "$(brew shellenv zsh)"
+
+## Rustup
+[[ ! -f $HOME/.cargo/env ]] || . "$HOME/.cargo/env"
+
 ## Zoxide
 (($+commands[zoxide])) && eval "$(zoxide init zsh)"
 

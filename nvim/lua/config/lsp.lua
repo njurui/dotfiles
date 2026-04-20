@@ -98,9 +98,11 @@ vim.lsp.config("texlab", {
     },
 })
 
+-- "tex-fmt"
+-- "shfmt"
 vim.lsp.enable("clangd")
-vim.lsp.enable("ruff")
 vim.lsp.enable("texlab")
+vim.lsp.enable("ruff")
 vim.lsp.enable("ty")
 vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("superhtml")
@@ -110,4 +112,3 @@ vim.lsp.enable("jsonls")
 vim.lsp.enable("tombi")
 vim.lsp.enable("lemminx")
 vim.lsp.enable("vtsls")
--- "tex-fmt"

@@ -9,3 +9,9 @@
 
 # zstyle ':antidote:bundle' file ${ZDOTDIR:-~}/.zplugins.txt
 zstyle ':antidote:static' file "$HOME/.zsh_plugins.zsh"
+
+#
+# Zsh
+#
+
+zstyle ':completion:*' cache-path ~/.cache/zsh/.zcompcache
