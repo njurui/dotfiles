@@ -6,7 +6,7 @@ return {
             on_click = false,
         },
         bar = {
-            enable = function(buf, win, info)
+            enable = function(buf, win, _)
                 if not vim.api.nvim_buf_is_valid(buf) or not vim.api.nvim_win_is_valid(win) then
                     return false
                 end
@@ -15,14 +15,8 @@ return {
                     return false
                 end
 
-                local bt = vim.bo[buf].buftype
                 local ft = vim.bo[buf].filetype
-
-                if bt == "nofile" or bt == "prompt" or bt == "quickfix" or bt == "terminal" then
-                    return false
-                end
-
-                if vim.wo[win].winbar ~= "" or ft == "help" then
+                if vim.fn.win_gettype(win) ~= '' or vim.wo[win].winbar ~= "" or ft == "help" or ft == "" then
                     return false
                 end
 
