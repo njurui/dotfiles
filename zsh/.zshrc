@@ -32,8 +32,18 @@ HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000000
 SAVEHIST=100000000
 
+## History substring search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='underline'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='underline,fg=1,bold'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT=65535
+
 ## Colors
-LSCOLORS="ExgxFxdacxDaDaabagacad"
+LSCOLORS='ExgxFxdacxDaDaabagacad'
 
 ## Zoxide
 (( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
@@ -61,7 +71,6 @@ if [[ -d "$KITTY_REMOTE_DIR" ]]; then
     unfunction kitty-integration
     alias icat="kitten icat"
 fi
-
 
 # To customize prompt, run `p10k configure` or edit .p10k.zsh.
 [[ ! -f ${ZDOTDIR:-$HOME}/.p10k.zsh ]] || source ${ZDOTDIR:-$HOME}/.p10k.zsh
