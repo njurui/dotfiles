@@ -24,5 +24,10 @@ return {
         default_format_opts = {
             lsp_format = "fallback",
         },
+        formatters = {
+            ruff_format = {
+                append_args = { "--line-length", "320" },
+            },
+        },
     },
 }
