@@ -27,6 +27,10 @@ source $XDG_DATA_HOME/.antidote/antidote.zsh
 antidote load
 
 # Source anything.
+## Editor
+export EDITOR=nvim
+export VISUAL=nvim
+
 ## History
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000000

@@ -26,12 +26,10 @@ end, { desc = "Toggle diagnostic virtual_lines" })
 vim.lsp.config("clangd", {
     cmd = {
         "clangd",
-        -- "--completion-style=detailed",
         "--fallback-style=Google",
     },
     init_options = {
         clangdFileStatus = true,
-        -- fallbackFlags = { '-std=gnu++23' },
     },
 })
 
@@ -112,3 +110,5 @@ vim.lsp.enable("jsonls")
 vim.lsp.enable("tombi")
 vim.lsp.enable("lemminx")
 vim.lsp.enable("vtsls")
+vim.lsp.enable("yamlls")
+vim.lsp.enable("tinymist")
