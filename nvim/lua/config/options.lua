@@ -142,6 +142,10 @@ vim.opt.titlestring = "nvim%{expand('%:t') != '' ? ' '.expand('%:t') : ''}"
 -- Confirm before exiting unsaved file
 -- vim.opt.confirm = true
 
+-- Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Use OSC52 if in ssh and not in tmux
 if vim.env.SSH_TTY ~= nil and vim.env.TMUX == nil then
     vim.g.clipboard = "osc52"
