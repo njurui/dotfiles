@@ -137,6 +137,11 @@ vim.opt.titlestring = "nvim%{expand('%:t') != '' ? ' '.expand('%:t') : ''}"
 -- Disable command line
 vim.opt.cmdheight = 0
 
+-- Enable ui2
+require("vim._core.ui2").enable({
+    msg = { targets = "msg" }
+})
+
 -- Confirm before exiting unsaved file
 -- vim.opt.confirm = true
 
