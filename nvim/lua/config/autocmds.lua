@@ -74,8 +74,8 @@ vim.api.nvim_create_autocmd("FileType", {
             vim.treesitter.start()
 
             -- Treesitter Folding
-            vim.wo.foldmethod = "expr"
-            vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            vim.wo[0][0].foldmethod = 'expr'
+            vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
             -- Treesitter Indent
             vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
@@ -100,26 +100,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr, desc = "vim.lsp.buf.implementation()" })
         -- vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = bufnr, desc = "vim.lsp.buf.references()" })
         -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = "vim.lsp.buf.declaration()" })
+        vim.keymap.set("n", "gl", vim.diagnostic.open_float, { buffer = bufnr, desc = "vim.diagnostic.open_float()" })
+        vim.keymap.set("n", "gK", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "vim.lsp.buf.signature_help()" })
 
         -- vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "vim.lsp.buf.hover()" })
-        vim.keymap.set(
-            "n",
-            "<C-k>",
-            vim.lsp.buf.signature_help,
-            { buffer = bufnr, desc = "vim.lsp.buf.signature_help()" }
-        )
 
         -- vim.keymap.set("n", "<leader>f", function()
         --     vim.lsp.buf.format({ async = true })
         -- end, { buffer = bufnr, desc = "vim.lsp.buf.format()" })
-
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = "vim.lsp.buf.rename()" })
-        vim.keymap.set(
-            "n",
-            "<leader>ca",
-            vim.lsp.buf.code_action,
-            { buffer = bufnr, desc = "vim.lsp.buf.code_action()" }
-        )
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "vim.lsp.buf.code_action()" })
 
         -- Highlight symbol under cursor
         if client:supports_method("textDocument/documentHighlight", bufnr) then
@@ -152,22 +142,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         -- Use LSP-provided folding
         if client:supports_method("textDocument/foldingRange", bufnr) then
-            vim.wo.foldmethod = "expr"
-            vim.wo.foldexpr = "v:lua.vim.lsp.foldexpr()"
+            vim.wo[0][0].foldmethod = "expr"
+            vim.wo[0][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
         end
 
         -- Show line diagnostics automatically in hover window
-        vim.api.nvim_create_autocmd("CursorHold", {
-            buffer = bufnr,
-            callback = function()
-                vim.diagnostic.open_float(nil, {
-                    focusable = false,
-                    close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-                    border = "rounded",
-                    source = "always",
-                    scope = "cursor",
-                })
-            end,
-        })
+        -- vim.api.nvim_create_autocmd("CursorHold", {
+        --     buffer = bufnr,
+        --     callback = function()
+        --         vim.diagnostic.open_float(nil, {
+        --             focusable = false,
+        --             close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        --             border = "rounded",
+        --             source = "always",
+        --             scope = "cursor",
+        --         })
+        --     end,
+        -- })
     end,
 })
