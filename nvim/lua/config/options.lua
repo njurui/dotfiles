@@ -25,7 +25,7 @@ vim.opt.fillchars:append({
     foldopen = "",
     foldsep = " ",
     foldclose = "",
-    -- foldinner = " ",
+    foldinner = " ",
 })
 
 -- Right-side reference line
@@ -104,12 +104,7 @@ vim.opt.wildmode = "longest:full,full"
 vim.opt.completeopt = "menu,menuone,noselect"
 
 -- Disable additional notification
-vim.opt.shortmess:append({
-    W = true,
-    I = true,
-    c = true,
-    C = true,
-})
+vim.opt.shortmess:append("WIcC")
 
 -- Maximum number of item in popup menu
 vim.opt.pumheight = 10
@@ -138,6 +133,9 @@ vim.opt.virtualedit = "block"
 vim.opt.title = true
 vim.opt.titlelen = 0 -- do not shorten title
 vim.opt.titlestring = "nvim%{expand('%:t') != '' ? ' '.expand('%:t') : ''}"
+
+-- Disable command line
+vim.opt.cmdheight = 0
 
 -- Confirm before exiting unsaved file
 -- vim.opt.confirm = true
