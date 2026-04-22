@@ -13,11 +13,6 @@ return {
     keys = { { "<leader>o", "<cmd>AerialToggle!<cr>", desc = "Outline" } },
     opts = {
         backends = { "lsp", "treesitter", "markdown", "asciidoc", "man" },
-        layout = {
-            win_opts = {
-                wrap = true,
-            },
-        },
         filter_kind = false,
         show_guides = true,
     },
