@@ -1,19 +1,23 @@
 return {
     'stevearc/oil.nvim',
+    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
     keys = {
-        {
-            "<leader>e",
-            function()
-                if vim.bo.filetype == 'oil' then
-                    require("oil.actions").close.callback()
-                else
-                    vim.cmd('Oil')
-                end
-            end,
-            desc = "Toggle Explorer"
+        { "-", "<cmd>Oil<CR>", desc = "Open parent directory" },
+    },
+    lazy = false,
+    opts = {
+        keymaps = {
+            ["<C-c>"] = false,
+            ["<Esc>"] = {
+                mode = "n",
+                callback = function()
+                    require("oil").save({ confirm = true }, function(err)
+                        if not err then
+                            require("oil.actions").close.callback()
+                        end
+                    end)
+                end,
+            },
         },
     },
-    opts = {},
-    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-    lazy = false,
 }
