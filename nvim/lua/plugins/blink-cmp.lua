@@ -26,6 +26,7 @@ return {
                 -- min_width = 45,
                 max_height = 12,
                 border = "rounded",
+                direction_priority = { "s", "n" },
                 draw = {
                     gap = 2,
                     columns = {
@@ -79,6 +80,10 @@ return {
                 window = {
                     max_width = 50,
                     border = "rounded",
+                    direction_priority = {
+                        menu_north = { "e" },
+                        menu_south = { "e" },
+                    },
                 },
             },
             ghost_text = {
@@ -93,8 +98,6 @@ return {
                 enabled = true,
                 -- Show the signature help window after typing any of alphanumerics, `-` or `_`
                 show_on_keyword = false,
-                blocked_trigger_characters = {},
-                blocked_retrigger_characters = {},
                 -- Show the signature help window after typing a trigger character
                 show_on_trigger_character = true,
                 -- Show the signature help window when entering insert mode
@@ -104,6 +107,7 @@ return {
             },
             window = {
                 border = "rounded",
+                direction_priority = { "n", "s" },
             },
         },
 

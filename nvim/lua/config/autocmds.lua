@@ -122,38 +122,36 @@ vim.api.nvim_create_autocmd("LspAttach", {
         )
 
         -- Highlight symbol under cursor
-        if client.server_capabilities.documentHighlightProvider then
+        if client:supports_method("textDocument/documentHighlight", bufnr) then
             vim.cmd([[
                 hi! LspReferenceRead cterm=bold ctermbg=Grey guibg='#5C5C5C'
                 hi! LspReferenceText cterm=bold ctermbg=Grey guibg='#5C5C5C'
                 hi! LspReferenceWrite cterm=bold ctermbg=Grey guibg='#5C5C5C'
             ]])
-            vim.api.nvim_create_augroup("LspDocumentHighlight", {
-                clear = false,
-            })
+            local group = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = false })
             vim.api.nvim_clear_autocmds({
+                group = group,
                 buffer = bufnr,
-                group = "LspDocumentHighlight",
             })
             vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-                group = "LspDocumentHighlight",
+                group = group,
                 buffer = bufnr,
                 callback = vim.lsp.buf.document_highlight,
             })
             vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-                group = "LspDocumentHighlight",
+                group = group,
                 buffer = bufnr,
                 callback = vim.lsp.buf.clear_references,
             })
         end
 
         -- Inlay Hint Enabled
-        if client.server_capabilities.inlayHintProvider then
+        if client:supports_method("textDocument/inlayHint", bufnr) then
             vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
         end
 
         -- Use LSP-provided folding
-        if client.server_capabilities.foldingRangeProvider then
+        if client:supports_method("textDocument/foldingRange", bufnr) then
             vim.wo.foldmethod = "expr"
             vim.wo.foldexpr = "v:lua.vim.lsp.foldexpr()"
         end
@@ -162,14 +160,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.api.nvim_create_autocmd("CursorHold", {
             buffer = bufnr,
             callback = function()
-                local opts = {
+                vim.diagnostic.open_float(nil, {
                     focusable = false,
                     close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
                     border = "rounded",
                     source = "always",
                     scope = "cursor",
-                }
-                vim.diagnostic.open_float(nil, opts)
+                })
             end,
         })
     end,
