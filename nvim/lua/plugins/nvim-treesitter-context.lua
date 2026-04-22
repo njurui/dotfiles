@@ -5,6 +5,6 @@ return {
     },
     opts = {
         multiwindow = true,
-        mode = "topline",
+        mode = "cursor",
     },
 }
