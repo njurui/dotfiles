@@ -117,6 +117,9 @@ return {
         },
 
         cmdline = {
+            keymap = {
+                preset = "super-tab",
+            },
             completion = {
                 menu = {
                     auto_show = true,
