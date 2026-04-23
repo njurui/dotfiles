@@ -8,8 +8,14 @@ return {
             },
         },
         "nvim-tree/nvim-web-devicons",
+        "saghen/blink.lib",
     },
-    build = "cargo build --release",
+    build = function()
+        -- build the fuzzy matcher, wait up to 60 seconds
+        -- you can use `gb` in `:Lazy` to rebuild the plugin as needed
+        require('blink.cmp').build():wait(60000)
+    end,
+
     opts = {
         keymap = {
             preset = "super-tab",
@@ -23,9 +29,7 @@ return {
                 },
             },
             menu = {
-                -- min_width = 45,
                 max_height = 12,
-                border = "rounded",
                 direction_priority = { "s", "n" },
                 draw = {
                     gap = 2,
@@ -35,9 +39,9 @@ return {
                     },
                     components = {
                         label = {
-                            width = { max = 60 },
+                            width = { max = 45 },
                             text = function(ctx)
-                                local max_width = 60
+                                local max_width = 45
 
                                 local base = (ctx.label or "") .. (ctx.label_detail or "")
                                 if #base >= max_width - 1 then
@@ -78,37 +82,17 @@ return {
                 auto_show_delay_ms = 0,
                 update_delay_ms = 50,
                 window = {
-                    max_width = 50,
-                    border = "rounded",
+                    max_width = 35,
                     direction_priority = {
                         menu_north = { "e" },
                         menu_south = { "e" },
                     },
                 },
             },
-            ghost_text = {
-                enabled = false,
-            },
         },
 
         signature = {
             enabled = true,
-            trigger = {
-                -- Show the signature help automatically
-                enabled = true,
-                -- Show the signature help window after typing any of alphanumerics, `-` or `_`
-                show_on_keyword = false,
-                -- Show the signature help window after typing a trigger character
-                show_on_trigger_character = true,
-                -- Show the signature help window when entering insert mode
-                show_on_insert = true,
-                -- Show the signature help window when the cursor comes after a trigger character when entering insert mode
-                show_on_insert_on_trigger_character = true,
-            },
-            window = {
-                border = "rounded",
-                direction_priority = { "n", "s" },
-            },
         },
 
         fuzzy = {
@@ -133,8 +117,11 @@ return {
         },
 
         cmdline = {
-            keymap = { preset = "super-tab" },
-            completion = { menu = { auto_show = true } },
+            completion = {
+                menu = {
+                    auto_show = true,
+                }
+            },
         },
     },
 }

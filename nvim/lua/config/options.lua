@@ -107,7 +107,7 @@ vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.shortmess:append("WIcC")
 
 -- Maximum number of item in popup menu
-vim.opt.pumheight = 10
+vim.opt.pumheight = 12
 
 -- Disable default mode hint (-- INSERT/VISUAL --)
 vim.opt.showmode = false
