@@ -22,6 +22,9 @@ if [[ ! -d $XDG_DATA_HOME/.antidote ]]; then
     git clone https://github.com/mattmc3/antidote $XDG_DATA_HOME/.antidote
 fi
 
+## Auto activate / deactivate venv
+PYTHON_AUTO_VRUN=true
+
 # Create an amazing Zsh config using antidote plugins.
 source $XDG_DATA_HOME/.antidote/antidote.zsh
 antidote load
