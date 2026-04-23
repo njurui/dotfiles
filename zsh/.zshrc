@@ -49,8 +49,9 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='underline'
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='underline,fg=1,bold'
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT=65535
 
-## Colors
-LSCOLORS='ExgxFxdacxDaDaabagacad'
+## Reset ls color
+LSCOLORS=""
+LS_COLORS=""
 
 ## Homebrew
 (($+commands[brew])) && eval "$(brew shellenv zsh)"

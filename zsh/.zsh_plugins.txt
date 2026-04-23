@@ -18,6 +18,7 @@ ohmyzsh/ohmyzsh path:lib/directories.zsh
 ohmyzsh/ohmyzsh path:lib/theme-and-appearance.zsh
 ohmyzsh/ohmyzsh path:plugins/python
 ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/gnu-utils
 
 # Other Fish-like features
 zsh-users/zsh-syntax-highlighting           # Syntax highlighting
