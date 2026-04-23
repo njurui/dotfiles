@@ -30,7 +30,7 @@ return {
             },
             menu = {
                 max_height = 12,
-                direction_priority = { "s", "n" },
+                direction_priority = { "s" },
                 draw = {
                     gap = 2,
                     columns = {
@@ -120,6 +120,7 @@ return {
             completion = {
                 menu = {
                     auto_show = true,
+                    direction_priority = { "n" },
                 }
             },
         },
