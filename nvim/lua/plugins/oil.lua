@@ -8,7 +8,7 @@ return {
     opts = {
         keymaps = {
             ["<C-c>"] = false,
-            ["<Esc>"] = {
+            ["q"] = {
                 mode = "n",
                 callback = function()
                     require("oil").save({ confirm = true }, function(err)
