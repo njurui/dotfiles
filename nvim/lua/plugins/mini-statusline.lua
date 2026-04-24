@@ -3,15 +3,24 @@ return {
     dependencies = {
         "lewis6991/gitsigns.nvim",
         {
-            "SmiteshP/nvim-navic",
+            "onsails/lspkind.nvim",
             opts = {
-                lsp = {
-                    auto_attach = true,
-                },
-                highlight = true,
-                depth_limit = 4,
-                click = false,
-            }
+                preset = "codicons",
+            },
+        },
+        {
+            "SmiteshP/nvim-navic",
+            config = function()
+                require("nvim-navic").setup({
+                    icons = vim.tbl_map(function(icon) return icon .. " " end, require("lspkind").symbol_map),
+                    lsp = {
+                        auto_attach = true,
+                    },
+                    highlight = true,
+                    depth_limit = 4,
+                    click = false,
+                })
+            end
         }
     },
     config = function()
