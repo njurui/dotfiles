@@ -46,8 +46,23 @@ return {
         },
     },
     opts = {
-        files = {
-            -- previewer = "bat"
-        }
-    }
+        grep = {
+            no_header_i = true,
+            rg_opts = table.concat({
+                "--column",
+                "--line-number",
+                "--no-heading",
+                "--color=always",
+                "--smart-case",
+                "--max-columns=4096",
+
+                "--colors=path:none",
+                "--colors=line:none",
+                "--colors=column:none",
+                -- "--colors=match:none",
+
+                "-e",
+            }, " "),
+        },
+    },
 }
