@@ -65,6 +65,10 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 -- vim.keymap.set("t", "<esc><esc>", "<C-\\><C-n>", { noremap = true, silent = true }) -- defined in snacks.lua
 vim.keymap.set("t", "<C-\\>", "<C-\\><C-n><C-w>c", { noremap = true, silent = true })
 
+-- Mark the position before mouse click
+vim.keymap.set("n", "<LeftMouse>", "m'<LeftMouse>", { silent = true })
+vim.keymap.set("i", "<LeftMouse>", "<C-o>m'<LeftMouse>", { silent = true })
+
 -- terminal navigation
 -- vim.keymap.set('t', '<C-h>', '<cmd>wincmd h<cr>', { noremap = true, silent = true })
 -- vim.keymap.set('t', '<C-j>', '<cmd>wincmd j<cr>', { noremap = true, silent = true })
