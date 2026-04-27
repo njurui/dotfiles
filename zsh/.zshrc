@@ -83,7 +83,6 @@ if [[ -d "$KITTY_REMOTE_DIR" ]]; then
     autoload -Uz -- "$KITTY_REMOTE_DIR"/shell-integration/zsh/kitty-integration
     kitty-integration
     unfunction kitty-integration
-    alias s="kitten ssh"
     alias icat="kitten icat"
 fi
 
