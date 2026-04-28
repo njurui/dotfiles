@@ -44,6 +44,13 @@ return {
             end,
             desc = "LSP Declarations",
         },
+        {
+            "<leader>ca",
+            function()
+                require("fzf-lua").lsp_code_actions({ jump1 = true })
+            end,
+            desc = "LSP Code Actions",
+        },
     },
     opts = {
         grep = {

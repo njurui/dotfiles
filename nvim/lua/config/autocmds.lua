@@ -109,7 +109,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         --     vim.lsp.buf.format({ async = true })
         -- end, { buffer = bufnr, desc = "vim.lsp.buf.format()" })
         -- vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr, desc = "vim.lsp.buf.rename()" })
-        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "vim.lsp.buf.code_action()" })
+        -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "vim.lsp.buf.code_action()" })
 
         -- Highlight symbol under cursor
         if client:supports_method("textDocument/documentHighlight", bufnr) then
