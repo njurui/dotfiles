@@ -12,6 +12,7 @@ return {
                 signcolumn = "no",
             },
             renderer = {
+                root_folder_label = false,
                 highlight_diagnostics = "name",
                 icons = {
                     git_placement = "right_align",
