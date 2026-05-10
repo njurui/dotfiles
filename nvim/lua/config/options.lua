@@ -1,6 +1,6 @@
 -- Scrolloff
 vim.opt.scrolloff = 4
-vim.opt.sidescrolloff = 8
+-- vim.opt.sidescrolloff = 0
 
 -- Enable smoothscroll
 vim.opt.smoothscroll = true
