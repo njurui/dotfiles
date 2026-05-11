@@ -137,6 +137,9 @@ vim.opt.titlestring = "nvim%{expand('%:t') != '' ? ' '.expand('%:t') : ''}"
 -- Disable command line
 vim.opt.cmdheight = 0
 
+-- Set cmdline cursor to beam
+vim.opt.guicursor:append("c:ver25")
+
 -- Disable mark across different sessions
 vim.opt.shada = "!,'0,<50,s10,h,r/tmp/,r/private/"
 
