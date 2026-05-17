@@ -17,4 +17,5 @@ tar -xzf vscode/vscode_cli.tar.gz -C vscode
 ln -sf ~/.config/dotfiles/zsh ~/.config/zsh
 ln -sf ~/.config/dotfiles/tmux ~/.config/tmux
 ln -sf ~/.config/dotfiles/nvim ~/.config/nvim
+ln -sf ~/.config/dotfiles/aria2 ~/.config/aria2
 ln -sf ~/.config/dotfiles/zsh/.zshenv ~/.zshenv
