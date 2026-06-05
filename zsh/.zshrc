@@ -46,12 +46,12 @@ bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='underline'
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='underline,fg=1,bold'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=''
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT=65535
 
 ## Reset ls color
-LSCOLORS=""
-LS_COLORS=""
+unset LSCOLORS
+unset LS_COLORS
 
 ## Homebrew
 (($+commands[brew])) && eval "$(brew shellenv zsh)"
