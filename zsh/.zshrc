@@ -40,14 +40,14 @@ HISTSIZE=100000000
 SAVEHIST=100000000
 
 ## History substring search
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
-HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='underline'
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=''
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT=65535
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+bindkey -M emacs '^P' up-line-or-beginning-search
+bindkey -M emacs '^N' down-line-or-beginning-search
 
 ## Reset ls color
 unset LSCOLORS
