@@ -22,6 +22,9 @@ typeset -gU path fpath
 export EDITOR=nvim
 export VISUAL=nvim
 
+# Force emacs keybinding due to vi in editor
+bindkey -e
+
 # History
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000000
