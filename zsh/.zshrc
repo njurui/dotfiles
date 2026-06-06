@@ -10,62 +10,57 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Lazy-load (autoload) Zsh function files from a directory.
-ZFUNCDIR=${ZDOTDIR:-$HOME}/.zfunc
-fpath=($ZFUNCDIR $fpath)
-
-# Set any zstyles you might use for configuration.
-[[ ! -f ${ZDOTDIR:-$HOME}/.zstyles ]] || source ${ZDOTDIR:-$HOME}/.zstyles
-
 # Clone antidote if necessary.
-if [[ ! -d $XDG_DATA_HOME/.antidote ]]; then
-    git clone https://github.com/mattmc3/antidote $XDG_DATA_HOME/.antidote
+if [[ ! -d "${XDG_DATA_HOME:-$HOME/.local/share}/.antidote" ]]; then
+    git clone https://github.com/mattmc3/antidote "${XDG_DATA_HOME:-$HOME/.local/share}/.antidote"
 fi
 
-## Auto activate / deactivate venv
-PYTHON_AUTO_VRUN=true
+# Ensure path arrays do not contain duplicates.
+typeset -gU path fpath
 
-# Create an amazing Zsh config using antidote plugins.
-source $XDG_DATA_HOME/.antidote/antidote.zsh
-antidote load
-
-# Source anything.
-## Editor
+# Editor
 export EDITOR=nvim
 export VISUAL=nvim
 
-## History
+# History
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000000
 SAVEHIST=100000000
 
-## History substring search
+# Auto activate / deactivate venv
+PYTHON_AUTO_VRUN=true
+
+# History substring search
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey '^[[A' up-line-or-beginning-search
-bindkey '^[[B' down-line-or-beginning-search
+bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
+bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 bindkey -M emacs '^P' up-line-or-beginning-search
 bindkey -M emacs '^N' down-line-or-beginning-search
 
-## Reset ls color
+# Homebrew
+(($+commands[brew])) && eval "$(brew shellenv zsh)"
+
+# Rustup
+[[ ! -f $HOME/.cargo/env ]] || . "$HOME/.cargo/env"
+
+# Create an amazing Zsh config using antidote plugins.
+source ${XDG_DATA_HOME:-$HOME/.local/share}/.antidote/antidote.zsh
+antidote load
+
+# Reset ls color
 unset LSCOLORS
 unset LS_COLORS
 
-## Homebrew
-(($+commands[brew])) && eval "$(brew shellenv zsh)"
-
-## Rustup
-[[ ! -f $HOME/.cargo/env ]] || . "$HOME/.cargo/env"
-
-## Zoxide
+# Zoxide
 (($+commands[zoxide])) && eval "$(zoxide init zsh)"
 
-## fzf
+# fzf
 (($+commands[fzf])) && source <(fzf --zsh)
 
-## kitty shell integration
+# kitty shell integration
 if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
     export KITTY_SHELL_INTEGRATION="enabled"
     autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
@@ -75,7 +70,7 @@ if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
     alias icat="kitten icat"
 fi
 
-## kitten config
+# kitten config
 export KITTY_REMOTE_DIR="$HOME/.local/share/kitty-ssh-kitten"
 if [[ -d "$KITTY_REMOTE_DIR" ]]; then
     path=($KITTY_REMOTE_DIR/kitty/bin $path)

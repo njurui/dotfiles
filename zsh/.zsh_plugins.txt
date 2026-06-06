@@ -1,7 +1,7 @@
-#!/bin/zsh
-#
 # .zsh_plugins.txt - antidote plugins file
-#
+
+# Basic Zsh plugins are defined in user/repo format
+jeffreytse/zsh-vi-mode
 
 # Completions
 mattmc3/ez-compinit
@@ -21,5 +21,5 @@ ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/gnu-utils
 
 # Other Fish-like features
-zsh-users/zsh-syntax-highlighting           # Syntax highlighting
-zsh-users/zsh-autosuggestions               # Auto-suggestions
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions
