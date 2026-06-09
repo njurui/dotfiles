@@ -54,7 +54,7 @@ vim.lsp.config("texlab", {
                 executable = "latexmk",
                 args = {
                     "-pdf",
-                    "-lualatex",
+                    "-pdflatex",
                     "-shell-escape",
                     "-interaction=nonstopmode",
                     "-synctex=1",
