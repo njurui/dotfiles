@@ -1,0 +1,8 @@
+# FIGURE
+figure.dpi: 600
+figure.constrained_layout.use: True
+
+# SAVING FIGURES
+savefig.format: pdf
+savefig.bbox: tight
+pdf.fonttype: 42
