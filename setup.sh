@@ -18,6 +18,7 @@ ln -sf ~/.config/dotfiles/zsh ~/.config/zsh
 ln -sf ~/.config/dotfiles/tmux ~/.config/tmux
 ln -sf ~/.config/dotfiles/nvim ~/.config/nvim
 ln -sf ~/.config/dotfiles/aria2 ~/.config/aria2
+ln -sf ~/.config/dotfiles/matplotlib ~/.config/matplotlib
 ln -sf ~/.config/dotfiles/zsh/.zshrc ~/.zshrc
 ln -sf ~/.config/dotfiles/zsh/.zsh_plugins.txt ~/.zsh_plugins.txt
 ln -sf ~/.config/dotfiles/zsh/.p10k.zsh ~/.p10k.zsh
