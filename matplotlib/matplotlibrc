@@ -1,6 +1,15 @@
 # LINES
 lines.linewidth: 1.0
 
+# AXES
+axes.grid: True
+axes.prop_cycle: cycler(color='petroff6')
+
+# GRIDS
+grid.linestyle: --
+grid.linewidth: 0.5
+grid.alpha: 0.5
+
 # LEGEND
 legend.frameon: False
 
