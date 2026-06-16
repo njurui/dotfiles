@@ -1,3 +1,6 @@
+# LINES
+lines.linewidth: 1.0
+
 # FIGURE
 figure.dpi: 600
 figure.constrained_layout.use: True
