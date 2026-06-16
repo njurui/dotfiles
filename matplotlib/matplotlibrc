@@ -1,6 +1,9 @@
 # LINES
 lines.linewidth: 1.0
 
+# LEGEND
+legend.frameon: False
+
 # FIGURE
 figure.dpi: 600
 figure.constrained_layout.use: True
