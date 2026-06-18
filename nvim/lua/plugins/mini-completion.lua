@@ -29,15 +29,18 @@ return {
 
         local kind_names = {}
         for name, id in pairs(vim.lsp.protocol.CompletionItemKind) do
-            if type(name) == "string" and type(id) == "number" then
-                kind_names[id] = name
-            end
+            kind_names[id] = name
         end
 
         local function process_items(items, base)
             items = MiniCompletion.default_process_items(items, base)
 
             for _, item in ipairs(items) do
+                -- fallback kind
+                if kind_names[item.kind] == nil then
+                    item.kind = vim.lsp.protocol.CompletionItemKind.Text
+                end
+
                 local details = item.labelDetails or {}
 
                 local label = item.label or ""
