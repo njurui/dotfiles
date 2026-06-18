@@ -8,6 +8,12 @@ return {
                 preset = "codicons",
             },
         },
+        {
+            'antonk52/filepaths_ls.nvim',
+            config = function()
+                vim.lsp.enable('filepaths_ls')
+            end,
+        }
     },
     config = function()
         local max_width = 45
