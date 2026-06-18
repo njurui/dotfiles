@@ -113,8 +113,8 @@ return {
             return res
         end
 
-        -- Remove signature help underline
-        vim.api.nvim_set_hl(0, "MiniCompletionActiveParameter", { bold = true })
+        -- Remove signature help underline and use v-block style
+        vim.api.nvim_set_hl(0, "MiniCompletionActiveParameter", { link = "Visual" })
 
         -- Keymap
         vim.keymap.set("i", "<Tab>", function()
