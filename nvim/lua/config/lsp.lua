@@ -22,6 +22,7 @@ vim.lsp.config("clangd", {
     cmd = {
         "clangd",
         "--fallback-style=Google",
+        "--header-insertion-decorators=false",
     },
     init_options = {
         clangdFileStatus = true,

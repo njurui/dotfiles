@@ -1,13 +1,3 @@
--- Stop insert when enter an existing terminal from other buffer
--- vim.api.nvim_create_autocmd({ 'BufEnter', 'WinEnter' }, {
---     group = vim.api.nvim_create_augroup('NoAutoTerminalInsert', { clear = true }),
---     pattern = 'term://*',
---     callback = function()
---         local keys = vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true)
---         vim.api.nvim_feedkeys(keys, "n", false)
---     end,
--- })
-
 -- Highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = vim.api.nvim_create_augroup("HighlightYankText", { clear = true }),
@@ -67,19 +57,16 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 -- Treesitter
 vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("Treesitter", { clear = true }),
-    callback = function()
-        local fts = require("nvim-treesitter").get_installed()
-        if vim.tbl_contains(fts, vim.bo.filetype) then
-            -- Treesitter Highlight
-            vim.treesitter.start()
-
-            -- Treesitter Folding
-            vim.wo[0][0].foldmethod = 'expr'
-            vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-
-            -- Treesitter Indent
-            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    callback = function(ev)
+        local ft = vim.bo[ev.buf].filetype
+        local lang = vim.treesitter.language.get_lang(ft)
+        if not lang then
+            return
         end
+
+        -- Treesitter Folding
+        vim.wo[0][0].foldmethod = 'expr'
+        vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
     end,
 })
 

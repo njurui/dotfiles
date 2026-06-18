@@ -99,16 +99,18 @@ vim.opt.listchars = {
 vim.opt.autowriteall = true
 
 -- Commandline completion mode
-vim.opt.wildmode = "longest:full,full"
+vim.opt.wildmode = "noselect,full"
+vim.opt.wildoptions = "pum,fuzzy"
 
 -- Builtin completion options
-vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.completeopt = "menuone,noinsert,fuzzy,nosort"
+vim.opt.completeitemalign = "kind,abbr,menu"
 
 -- Disable additional notification
 vim.opt.shortmess:append("WIcC")
 
 -- Maximum number of item in popup menu
-vim.opt.pumheight = 12
+vim.opt.pumheight = 10
 
 -- Disable default mode hint (-- INSERT/VISUAL --)
 vim.opt.showmode = false
