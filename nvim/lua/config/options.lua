@@ -114,6 +114,7 @@ vim.opt.pumheight = 10
 
 -- Maximum width of popup menu
 vim.opt.pummaxwidth = 45
+vim.opt.fillchars:append({ trunc = "…" })
 
 -- Disable default mode hint (-- INSERT/VISUAL --)
 vim.opt.showmode = false

@@ -16,21 +16,12 @@ return {
         }
     },
     config = function()
-        local max_width = 45
-
         -- Add padding trailing kind icon
         local kinds = vim.lsp.protocol.CompletionItemKind
         for i, kind in ipairs(kinds) do
             if type(kind) == "string" and kind ~= "" then
                 kinds[i] = kind .. " "
             end
-        end
-
-        local function truncate(s, width)
-            if vim.fn.strdisplaywidth(s) <= width then
-                return s
-            end
-            return vim.fn.strcharpart(s, 0, width - 1) .. "…"
         end
 
         local kind_names = {}
@@ -50,10 +41,9 @@ return {
                 end
 
                 local details = item.labelDetails or {}
-
                 local label = item.label or ""
                 local detail = details.detail or ""
-                local abbr = truncate(label .. detail, max_width)
+                local abbr = label .. detail
 
                 item.label = abbr
                 item.labelDetails = nil
