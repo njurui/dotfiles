@@ -103,7 +103,7 @@ vim.opt.wildmode = "noselect,full"
 vim.opt.wildoptions = "pum,fuzzy"
 
 -- Builtin completion options
-vim.opt.completeopt = "menuone,noinsert,fuzzy"
+vim.opt.completeopt = "menuone,noinsert,fuzzy,nosort"
 vim.opt.completeitemalign = "kind,abbr,menu"
 
 -- Disable additional notification
