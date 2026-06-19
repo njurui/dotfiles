@@ -2,6 +2,7 @@ return {
     "nvim-mini/mini.completion",
     lazy = false,
     dependencies = {
+        "windwp/nvim-autopairs",
         {
             "onsails/lspkind.nvim",
             opts = {
@@ -121,7 +122,7 @@ return {
         vim.keymap.set("i", "<Tab>", function()
             -- Accept
             if vim.fn.complete_info({ "selected" }).selected ~= -1 then
-                return "<C-y>"
+                return "\25"
             end
 
             if vim.fn.pumvisible() == 1 then
@@ -152,12 +153,12 @@ return {
         end, { expr = true, desc = "Super Shift-Tab" })
 
         vim.keymap.set("i", "<CR>", function()
-            -- Accept
             if vim.fn.complete_info({ "selected" }).selected ~= -1 then
-                return "<C-y>"
+                return "\25"
             end
 
-            return "CR"
-        end, { expr = true, silent = true })
+            return require("nvim-autopairs").autopairs_cr()
+            -- replace_keycodes is needed for autopairs_cr
+        end, { expr = true, replace_keycodes = false, silent = true })
     end,
 }
