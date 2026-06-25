@@ -37,6 +37,19 @@ vim.lsp.config("ruff", {
     },
 })
 
+vim.lsp.config("lemminx", {
+    settings = {
+        xml = {
+            format = {
+                maxLineWidth = 0,
+                splitAttributes = "preserve",
+                preserveAttributeLineBreaks = false,
+                preservedNewlines = 0,
+            },
+        },
+    },
+})
+
 vim.lsp.config("tinymist", {
     root_markers = { "tinymist.lock" },
     settings = {
