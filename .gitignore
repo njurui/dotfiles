@@ -1,1 +1,13 @@
+# Mac OS
 .DS_Store
+.localized
+__MACOSX/
+.AppleDouble
+.LSOverride
+
+# Neovim
+lazy-lock.json
+
+# Images
+*.png
+*.jpg
