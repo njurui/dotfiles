@@ -51,7 +51,7 @@ vim.lsp.config("lemminx", {
 })
 
 vim.lsp.config("tinymist", {
-    root_markers = { "tinymist.lock" },
+    root_markers = { ".git", "tinymist.lock" },
     settings = {
         formatterMode = "typstyle",
         exportPdf = "onType",
