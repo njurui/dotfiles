@@ -53,6 +53,7 @@ return {
         },
     },
     opts = {
+        ui_select = {},
         grep = {
             no_header_i = true,
             rg_opts = table.concat({
