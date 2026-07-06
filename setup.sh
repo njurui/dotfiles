@@ -2,7 +2,7 @@
 
 # install pixi package manager and essential tools
 curl -fsSL https://pixi.sh/install.sh | sh
-~/.pixi/bin/pixi global install zsh tmux nvim fzf wget git unzip ninja ripgrep fd-find ffmpeg imagemagick tree-sitter-cli nodejs python zoxide bat hexyl uv aria2 sshpass codex
+~/.pixi/bin/pixi global install zsh tmux nvim fzf wget git unzip ninja ripgrep fd-find ffmpeg imagemagick tree-sitter-cli nodejs python zoxide bat hexyl uv aria2 sshpass codex jq
 
 # download vscode
 mkdir vscode
@@ -11,7 +11,6 @@ tar -xzf vscode/vscode_cli.tar.gz -C vscode
 
 # setup config files
 ~/.pixi/bin/git clone https://github.com/njurui/dotfiles.git ~/.config/dotfiles
-ln -sf ~/.config/dotfiles/zsh ~/.config/zsh
 ln -sf ~/.config/dotfiles/tmux ~/.config/tmux
 ln -sf ~/.config/dotfiles/nvim ~/.config/nvim
 ln -sf ~/.config/dotfiles/aria2 ~/.config/aria2
