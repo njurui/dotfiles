@@ -9,6 +9,7 @@ return {
     } },
     opts = {
         formatters_by_ft = {
+            markdown = { "injected" },
             python = {
                 -- To fix auto-fixable lint errors.
                 "ruff_fix",
