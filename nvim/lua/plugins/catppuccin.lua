@@ -7,6 +7,10 @@ return {
             flavour = "mocha",
             transparent_background = true,
             auto_integrations = true,
+            integrations = {
+                -- mini.completion uses these groups for LSP kind icons.
+                cmp = true,
+            },
             color_overrides = {
                 mocha = {
                     rosewater = "#F0C06A",
