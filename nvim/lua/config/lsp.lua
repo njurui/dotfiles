@@ -98,7 +98,7 @@ vim.lsp.config("texlab", {
                     "%p",
                 },
             },
-            formatterLineLength = 255,
+            formatterLineLength = 2147483647,
             latexFormatter = "tex-fmt",
         },
     },
