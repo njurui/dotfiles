@@ -104,6 +104,17 @@ vim.lsp.config("texlab", {
     },
 })
 
+vim.lsp.config("html", {
+    settings = {
+        html = {
+            format = {
+                wrapLineLength = 0,
+                wrapAttributes = "preserve-aligned",
+            },
+        },
+    },
+})
+
 -- "tex-fmt"
 -- "shfmt"
 vim.lsp.enable("clangd")
