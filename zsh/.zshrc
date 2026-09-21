@@ -63,24 +63,23 @@ unset LS_COLORS
 # fzf
 (($+commands[fzf])) && source <(fzf --zsh)
 
-# kitty shell integration
+# kitty
 if [[ -n "$KITTY_INSTALLATION_DIR" ]]; then
     export KITTY_SHELL_INTEGRATION="enabled"
     autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
     kitty-integration
     unfunction kitty-integration
+
     alias s="kitten ssh"
     alias icat="kitten icat"
-fi
 
-# kitten config
-export KITTY_REMOTE_DIR="$HOME/.local/share/kitty-ssh-kitten"
-if [[ -d "$KITTY_REMOTE_DIR" ]]; then
-    path=($KITTY_REMOTE_DIR/kitty/bin $path)
+elif (($+commands[kitten])); then
+    export KITTY_REMOTE_DIR=${commands[kitten]%/kitty/bin/kitten}
     export KITTY_SHELL_INTEGRATION="enabled"
     autoload -Uz -- "$KITTY_REMOTE_DIR"/shell-integration/zsh/kitty-integration
     kitty-integration
     unfunction kitty-integration
+
     alias icat="kitten icat"
 fi
 
