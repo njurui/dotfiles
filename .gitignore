@@ -8,6 +8,9 @@ __MACOSX/
 # Neovim
 lazy-lock.json
 
+# Kitty
+ssh.conf
+
 # Images
 *.png
 *.jpg
