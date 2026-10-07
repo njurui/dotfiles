@@ -16,7 +16,7 @@ if [[ ! -d "${XDG_DATA_HOME:-$HOME/.local/share}/.antidote" ]]; then
 fi
 
 # Ensure path arrays do not contain duplicates.
-typeset -gU path fpath
+typeset -gU PATH path FPATH fpath
 
 # Editor
 export EDITOR=nvim
