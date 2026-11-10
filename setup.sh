@@ -2,7 +2,7 @@
 
 # install pixi package manager and essential tools
 curl -fsSL https://pixi.sh/install.sh | sh
-~/.pixi/bin/pixi global install zsh tmux nvim fzf wget git unzip ripgrep fd-find ffmpeg imagemagick nodejs python zoxide uv aria2 codex jq
+~/.pixi/bin/pixi global install zsh tmux nvim fzf wget git unzip ripgrep fd-find ffmpeg imagemagick nodejs python zoxide uv aria2 jq tree-sitter-cli
 
 # download vscode
 mkdir vscode
